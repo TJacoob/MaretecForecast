@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+			.no-dropdown-arrow:after { content: none }
+		</style>
+		<title>Maretec Forecast</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="description" content="">
+		<meta name="author" content="">
+
+		<!-- Bootstrap Core CSS -->
+		<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+		
+		<!-- Custom Fonts -->
+		<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
+		<link href='https://fonts.googleapis.com/css?family=Oleo Script' rel='stylesheet'>
+		
+		<!-- Animate On Scroll Library -->
+		<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+		
+		<!-- Favicon - Browser tab image -->
+		<link rel="icon" href="img/favicon.png" type="image/png">
+		
+		
+		<!-- Theme CSS -->
+		<link href="css/languages.min.css" rel="stylesheet" >
+		<link href="css/menu.css" rel="stylesheet" >
+		<link href="css/language-selection.css" rel="stylesheet">
+		<link href="css/main-style.css" rel="stylesheet">
+        
+        <!-- Common code -->
+        
+        <script src="js/common.js"></script>
+
+	</head>
+
+	<body data-spy="scroll" data-target=".navbar" info-orig="index-itens">
+
+		<div id="top"></div>
+		
+		<div class="website-navbar" info-orig="index-menu"></div>
+
+		<div class="bg1image wrapper-element">
+			<div class="bg1 inner-element">
+				<div class="container-fluid text-center">
+					<div id="welcome-panel" class="row">
+						<div class="col-12"><!--basta col-xs-12, pois BS e mobilefirst e redundante por todos os col-*-12. col-xs desaparece.. e substituido por col-.. (BS4) -->
+							<img id="logo-img" src="img/logo_forecast _maretec_V200.png" class="circle-index-image rounded-circle img-fluid" alt="MARETEC" data-aos="fade-up">
+							<div id="welcometext" data-aos="fade-up"></div> 
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-12 col-sm-6 col-md-4 collumn" data-aos="fade-up">
+							<a href="maps/index.html">
+                                <img class="circle-index-image rounded-circle img-fluid" src="img/map.png" alt="">
+                            </a>
+							<br>				
+							<a href="maps/index.html">
+                                <center><h2 id="modellingMapsText"></h2>
+							<p id="modellingMapsDescription"></p>
+                            </a>
+						</div>
+						<div class="col-12 col-sm-6 col-md-4 collumn" data-aos="fade-up">
+							<a href="stations/index.html"><img class="circle-index-image rounded-circle img-fluid" src="img/chart.png" alt=""></a>
+							<br>				
+							<a href="stations/index.html">
+                                <center><h2 id="modellingChartsText"></h2>
+							<p id="modellingChartsDescription"></p>
+                            </a>
+						</div>
+						<div class="col-12 offset-0 col-sm-6 offset-sm-3 col-md-4 offset-md-0 collumn" data-aos="fade-up">
+							<a href="http://meteo.tecnico.ulisboa.pt/"><img class="circle-index-image rounded-circle img-fluid" src="img/meteo.png" alt="">
+							<br>
+							<center><h2 id="weatherForecastText"></h2>
+							<p id="weatherForecastDescription"></p></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+		<div class="bg2image wrapper-element">
+			<div id="aboutus" class="bg2 inner-element">
+				<div class="container-fluid text-center">
+					<div class="row">
+						<div id="whatwedo" class="col-12 col-sm-7 collumn"></div>
+						<div id="contact" class="col-12 col-sm-5 collumn"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+<div class="modal fade" id="cookieSelectionModal" role="dialog" aria-labelledby="cookieWarningModalLabel" aria-hidden="true">
+    <div class="modal-dialog"  role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <center>
+                    &copy;
+                    <img src="img/logo_maretec_forecastrec.png" width="180">
+                    <br>&nbsp;
+                    <h4 lang-id="cookiesSelectionTitle_txt" class="modal-title" id="cookieWarningTitle"></h4>
+                 </center>
+            </div>
+            <div class="modal-body">
+                <span lang-id="cookiesAreImportant_txt"></span>
+                <span lang-id="cookiesDataCollection_txt"></span>
+                <br>&nbsp;<br>
+                <span lang-id="cookiesSelectionIntro_txt"></span>
+            </div>
+            <div class="custom-control custom-checkbox" style="margin: 0px 20px 20px 20px;">
+                    <input type="checkbox" id="necessaryCookies" checked disabled>
+                    &nbsp;&nbsp;<span lang-id="cookiesNecessaryHeadline_txt" style="display: inline-block"></span>   <br><span lang-id="cookiesNecessaryText_txt" style="display: inline-block"></span>
+            </div>
+            <div class="custom-control custom-checkbox" style="margin: 0px 20px 0px 20px">
+                    <input type="checkbox" class="custom-control-input" id="analyticsCookie" checked enabled>
+                    &nbsp;&nbsp;<span lang-id="cookiesAnaliticsHeadline_txt" style="display: inline-block"></span>   <br><span lang-id="cookiesAnaliticsText_txt" style="display: inline-block"></span>
+            </div><br>
+            <div class="modal-body" style="margin: 0 50px 0 50 px">
+                <button id="cookie-submit" lang-id="cookiesPreferencesSubmit_txt" type="button" class="btn btn-success btn-lg btn-block" data-dismiss="modal" onclick="if ( document.getElementById('analyticsCookie').checked ) createCookie( 'analytics', 'true', 7); else  eraseCookie( 'analytics');"></button>
+
+                <div class="modal-body"></div>
+                <div class="modal-body"  lang-id="generalFootnote_txt" Style="font-size:12px; background-color: #ffdd99; color:#996600; padding-top:0px; padding-bottom: 0px"></div>
+            </div>
+
+            <div lang-id="cookiesCopyright_txt" class="modal-footer"></div>
+        </div>
+    </div>
+</div>
+	<!--	<div class="bg2image wrapper-element">
+			<div class="bg3 inner-element">
+
+			</div>
+		</div>-->
+
+		
+		<!-- jQuery -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+		<!-- Bootstrap Core JavaScript -->
+		<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+		
+		<!-- Plugin jQuery Easing -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>	
+
+		<!-- Animate On Scroll Library -->
+		<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+		<script>AOS.init();</script>
+		
+		<!-- Main JavaScript -->
+		<script src="js/cookie-manage.js"></script>
+		<script src="js/getURLParameters.js"></script>
+		<script src="js/activable-item.js"></script>
+		<script src="js/language-selection.js"></script>
+		<script src="js/menu.js"></script>
+		<script src="js/index.js"></script>
+		
+
+
+	</body>
+</html>

@@ -1,0 +1,84 @@
+html, body, #map-content, .full-map {
+	height: 100%;
+	width: 100vw;
+	/*top:-25px*/
+}
+
+.custom-control-lg .custom-control-label::before,
+.custom-control-lg .custom-control-label::after {
+    top: 0.1rem !important;
+    left: -4rem !important;
+    width: 3rem !important;
+    height: 3rem !important;
+}
+
+
+.full-map {
+	/*height: calc(100% - 61px) !important;	*/
+	height: 100% !important;
+}
+
+.navbar {
+    margin-bottom: 0px !important;
+}
+/* mudar do css main.css"*/
+
+#map-content {
+	z-index: 1;
+}
+#zoom-reset {
+    top: 70px;
+    left: 50px;
+	position: absolute;
+	z-index: 2;
+}
+#geolocation {
+    top: 70px;
+    left: 95px;
+	position: absolute;
+	z-index: 2;
+}
+#map-tile-layers {
+	top: 70px;
+	right: 10px;
+	position: absolute;
+	z-index: 5;
+}
+#map-tile-layers button {
+	width: 45px !important;
+}
+
+#info-btn-container {
+	top: 70px;
+    left: 160px;
+	position: absolute; 
+	z-index: 34;
+}
+
+@media (min-height: 340px) {
+	#zoom-reset {
+		top: 140px;
+		left: 10px;
+	}
+	#geolocation {
+		top: 180px;
+		left: 10px;
+	}
+	#info-btn-container {
+		top: 260px;
+		left: 10px;
+	}
+}
+
+
+#selected-stations {
+	top: 110px;
+	right: 10px;
+	position: absolute;
+	z-index: 2;
+}
+.map-btn {
+	height: 37px !important;
+	width: 37px !important;
+	box-shadow: 2px 2px 1.5px #888888;
+}

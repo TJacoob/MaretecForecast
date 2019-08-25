@@ -1,0 +1,59 @@
+{
+	"title": "MAPS",
+	"titleLink": "./",
+	"lastInfoToShow":
+		{
+			"title": "Maretec",
+			"imageTitle": "images/logo_maretec_forecastrec.png",
+			"titleLink": "../"
+		},
+	"navbarElements":
+		[
+			{
+				"navbarElementId": "nb-models-00",
+				"navbarElementName": "MAPS <span class=\"caret\"></span></a>",
+				"navbarElementLink": "#",
+				"navbarElements":
+					[
+						{
+							"navbarElementId": "ND-nb-maps-00",
+							"navbarElementName": "CIRCULATION",
+							"navbarElementLink": "maps.html?section=nb-maps-00"
+						},
+						{
+							"navbarElementId": "ND-nb-maps-01",
+							"navbarElementName": "WAVES",
+							"navbarElementLink": "maps.html?section=nb-maps-01"
+						},
+						{
+							"navbarElementId": "ND-nb-maps-02",
+							"navbarElementName": "WATERSHEDS",
+							"navbarElementLink": "maps.html?section=nb-maps-02"
+						}
+					]
+			},
+			{
+				"navbarElementId": "nb-models-01",
+				"navbarElementName": "STATIONS <span class=\"caret\"></span></a>",
+				"navbarElementLink": "#",
+				"navbarElements":
+					[
+                        {
+                            "navbarElementId": "ND-nb-charts-02",
+                            "navbarElementName": "ALL STATIONS",
+                            "navbarElementLink": "../stations/stations.html?section=nb-charts-02"
+                        },
+						{
+							"navbarElementId": "ND-nb-charts-00",
+							"navbarElementName": "WATER STATIONS",
+							"navbarElementLink": "../stations/stations.html?section=nb-charts-00"
+						},
+						{
+							"navbarElementId": "ND-nb-charts-01",
+							"navbarElementName": "LAND STATIONS",
+							"navbarElementLink": "../stations/stations.html?section=nb-charts-01"
+						}
+					]
+			}
+		]
+}

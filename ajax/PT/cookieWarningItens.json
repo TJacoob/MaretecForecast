@@ -1,0 +1,34 @@
+{
+	"cookieAdviseTitle_txt": "We value your privacy.",
+	"cookieAdviseDescription_txt": "This website uses cookies to enhance your user experience and to analyze this website's traffic data to allow us to serve you even better.&#13;&#10;For this we need your consent.",
+	"accept_txt": "Accept",
+	"decline_txt": "Decline",
+
+	"cookiesSelectionTitle_txt"	: "As suas opções relativas a cookies neste Site",
+	"cookiesAreImportant_txt"	: "Os cookies são importantes para a utilização correcta dos sites web. Neste site, utilizamos Cookies para melhorar a sua experiência de utilizador, apresentando-lhe a informação de que necessitar.",
+	"cookiesDataCollection_txt"	: "Dependendo da sua escolha, poderemos recolher também informação sobre a utilização deste site por forma a melhorá-lo.",
+	"cookiesHowToDecide_txt"	:"Seleccione \"Aceito todos os cookies\" para aceitar todos os cookies ou \"Ver e Alterar as Preferências de Cookies\" para aceder a informação detalhada sobre o emprego de cookies neste site e seleccionar que cookies deverão ser usados quando nele navegar.",
+	"cookiesAgreeBtnLabel_txt"	: "ACEITO TODOS OS COOKIES",
+	"cookiesMoreInfoBtnLabel"	: "VER E ALTERAR AS PREFERÊNCIAS DE COOKIES",
+
+	"generalFootnote_txt"		: "A utilização de cookies por este site depende das preferências de cookies seleccionadas no seu browser. Para que os cookies deste site possam operar é necessário que o seu browser permita a utilização de cookies.",
+
+    	"cookiesSelectionIntro_txt"	: "Por favor, assinale a sua escolha dos cookies que podem ser usados por este site:",
+    	"cookiesNecessaryHeadline_txt"  : "COOKIES NECESSÁRIOS",
+	"cookiesNecessaryText_txt"	: "Estes cookies são imprescindíveis para a operação correcta deste site, permitindo-lhe escolher a língua utilizada e a origem dos mapas e manter tais escolhas durante a utilização deste site. A sua utilização não pode ser inibida.",
+	"cookiesAnaliticsHeadline_txt"	: "COOKIES ESTATÍSTICOS",
+    	"cookiesAnaliticsText_txt"	: "Estes cookies permitem-nos recolher, analisar e optimizar a operação deste site. Pode optar por permitir ou não a sua utilização. Todos os dados recolhidos são tratados anonimamemente e não serão partilhados com terceiros.",
+    	"cookiesStatementOne_txt"       : "Este site não recolhe nem guarda dados para além dos acima descritos. Todos os dados recolhidos são tratados anonimamente.",
+    	"cookiesStatementTwo_txt"       : "Poderá sempre impedir a utilização de cookies pelo seu browser, mas deverá recordar que tal impedimento terá como consequência a degradação da sua experiência de utilizador neste site.",
+    	"cookiesPreferencesSubmit_txt"  : "GRAVAR PREFERÊNCIAS",
+	"cookiesPreferencesCancel_txt"	: "CANCELAR",
+
+	"preferencesSubmittedTitle_txt"	: "Preferências Gravadas",
+	"preferencesSubmittedSubtitle_txt" : "As suas preferências relativamente à utilização de cookies neste site<br> foram gravadas com êxito.",
+	"preferencesSubmitted_txt"	: "Poderá a qualquer momento alterar as suas preferências de utilização de cookies neste site clicando no ícone de Informação afixado no seu ecrã e seleccionando a opção \"Uso de Cookies por este Site\".",
+	"preferencesClose_txt"		: "FECHAR",
+
+
+	"cookiesPrivacyPolicyLink_txt"  : "Política de Privacidade",
+    "cookiesCopyright_txt"          : "&copy; 2019 Maretec & J. Rebelo"
+}

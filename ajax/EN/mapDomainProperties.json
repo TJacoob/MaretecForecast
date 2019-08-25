@@ -1,0 +1,193 @@
+{
+	"OPLusitania":
+		{
+			"name": "Lusitania",
+			"imagePrefixURL": "http://hawking.tecnico.ulisboa.pt/Mapas/OPLusitania/",
+			"availableVariables": ["Salinity", "Temperature", "Velocity"],
+			"startTime": "2019-05-07-17-00",
+			"finishTime": "2019-05-07-17-00",
+			"maxNextDaysAllowed": "2",
+			"timeHourBasis": "1",
+			"threddsServerDataLink": ""
+		},
+	"BIOPCOMS":
+		{
+			"name": "PCOMS",
+			"imagePrefixURL": "http://hawking.tecnico.ulisboa.pt/Mapas/BIOPCOMS/",
+			"availableVariables": ["Salinity", "Temperature", "Velocity", "Oxygen", "Chla", "Zoo", "Nitrate", "Phosphate"],
+			"startTime": "2019-05-07-17-00",
+			"finishTime": "2019-05-23-00-00",
+			"maxNextDaysAllowed": "3",
+			"timeHourBasis": "1",
+			"threddsServerDataLink": "http://opendap.mohid.com:8080/thredds/catalog/IST_MOHID_BIO_DATA/PORTUGAL_0.06DEG_50L_3H/"
+		},
+	"BIOPCOMS_Rivers":
+		{
+			"name": "PCOMSv2(rivers)",
+			"imagePrefixURL": "http://hawking.tecnico.ulisboa.pt/Mapas/BIOPCOMS_Rivers/",
+			"availableVariables": ["Salinity", "Temperature", "Velocity", "Oxygen", "Chla", "Zoo", "Nitrate", "Phosphate"],
+			"startTime": "2015-08-24-00-00",
+			"finishTime": "2015-08-24-00-00",
+			"timeHourBasis": "1",
+			"threddsServerDataLink": ""
+		},
+	"OPTagus3D":
+		{
+			"name": "Tagus Mouth",
+			"imagePrefixURL": "http://hawking.tecnico.ulisboa.pt/Mapas/OPTagus3D/",
+			"availableVariables": ["Salinity", "Temperature", "Velocity", "Oxygen", "Chla", "Zoo", "Nitrate", "Phosphate"],
+			"startTime": "2019-05-07-17-00",
+			"finishTime": "2019-05-07-17-00",
+			"maxNextDaysAllowed": "3",
+			"timeHourBasis": "1",
+			"threddsServerDataLink": "http://opendap.mohid.com:8080/thredds/catalog/IST_MOHID_BIO_DATA/TAGUS_0.007DEG_50L_1H/FORECAST/"
+		},
+	"OPTagus200m_3D":
+		{
+			"name": "Tagus Estuary",
+			"imagePrefixURL": "http://hawking.tecnico.ulisboa.pt/Mapas/OPTagus200m_3D/",
+			"availableVariables": ["Salinity", "Temperature", "Velocity", "Oxygen", "Chla", "Zoo", "Nitrate"],
+			"startTime": "2019-05-07-17-00",
+			"finishTime": "2019-05-07-17-00",
+			"timeHourBasis": "1",
+			"threddsServerDataLink": "http://opendap.mohid.com:8080/thredds/catalog/IST_MOHID_BIO_DATA/TAGUSESTUARY_200M_1L_1H/FORECAST/"
+		},
+	"Cascais Coast---------------------------------------------------------------------------":
+		{
+			"name": "Cascais Coast",
+			"imagePrefixURL": "",
+			"availableVariables": ["Salinity", "Temperature", "Velocity", "Oxygen", "Chla", "Zoo", "Nitrate", "Phosphate"],
+			"startTime": "2012-01-01-00-00",
+			"maxNextDaysAllowed": "0",
+			"timeHourBasis": "1",
+			"threddsServerDataLink": ""
+		},
+	"Estoril Coast----------------------------------------------------------------------":
+		{
+			"name": "Estoril Coast",
+			"imagePrefixURL": "",
+			"availableVariables": ["Salinity", "Temperature", "Velocity", "Oxygen", "Chla", "Zoo", "Nitrate", "Phosphate"],
+			"startTime": "2012-01-01-00-00",
+			"maxNextDaysAllowed": "0",
+			"timeHourBasis": "1",
+			"threddsServerDataLink": "http://opendap.mohid.com:8080/thredds/catalog/IST_MOHID_HYDRO_DATA/COSTADOESTORIL_30M_12L_0.5H/catalog.html"
+		},
+	"OPMondego":
+		{
+			"name": "Mondego",
+			"imagePrefixURL": "http://hawking.tecnico.ulisboa.pt/Mapas/OPMondego/",
+			"availableVariables": ["Salinity", "Temperature", "Velocity", "Oxygen", "Chla", "Zoo", "Nitrate", "Phosphate"],
+			"startTime": "2019-05-07-18-00",
+			"finishTime": "2019-05-07-18-00",
+			"maxNextDaysAllowed": "2",
+			"timeHourBasis": "1",
+			"threddsServerDataLink": ""
+		},
+	"OPDouro":
+		{
+			"name": "Douro",
+			"imagePrefixURL": "http://hawking.tecnico.ulisboa.pt/Mapas/OPDouro/",
+			"availableVariables": ["Salinity", "Temperature", "Velocity", "Oxygen", "Chla", "Zoo", "Nitrate", "Phosphate"],
+			"startTime": "2019-05-07-18-00",
+			"finishTime": "2019-05-07-18-00",
+			"maxNextDaysAllowed": "2",
+			"timeHourBasis": "1",
+			"threddsServerDataLink": ""
+		},
+	"OPaveiro":
+		{
+			"name": "Aveiro",
+			"imagePrefixURL": "http://hawking.tecnico.ulisboa.pt/Mapas/OPaveiro/",
+			"availableVariables": ["Salinity", "Temperature", "Velocity", "Chla", "Zoo", "Nitrate", "Phosphate"],
+			"startTime": "2019-05-07-18-00",
+			"finishTime": "2019-05-07-18-00",
+			"maxNextDaysAllowed": "2",
+			"timeHourBasis": "1",
+			"threddsServerDataLink": ""
+		},
+	"OPMinhoLima":
+		{
+			"name": "MinhoLima",
+			"imagePrefixURL": "http://hawking.tecnico.ulisboa.pt/Mapas/OPMinhoLima/",
+			"availableVariables": ["Salinity", "Temperature", "Velocity", "Oxygen", "Chla", "Zoo", "Nitrate", "Phosphate"],
+			"startTime": "2019-05-07-18-00",
+			"finishTime": "2019-05-07-18-00",
+			"timeHourBasis": "1",
+			"threddsServerDataLink": ""
+		},
+        "OPGuadiana":
+        {
+            "name": "Guadiana",
+            "imagePrefixURL": "http://hawking.tecnico.ulisboa.pt/Mapas/OPGuadiana/",
+            "availableVariables": ["Salinity", "Temperature", "Velocity"],
+			"startTime": "2019-05-07-18-00",
+			"finishTime": "2019-05-07-18-00",
+            "timeHourBasis": "1",
+            "maxNextDaysAllowed": "1",
+            "threddsServerDataLink": ""
+        },
+   "OPSado":
+        {
+            "name": "Sado",
+            "imagePrefixURL": "http://hawking.tecnico.ulisboa.pt/Mapas/OPSado/",
+            "availableVariables": ["Salinity", "Temperature", "Velocity", "Oxygen", "Chla", "Zoo", "Nitrate", "Phosphate"],
+			"startTime": "2019-05-07-18-00",
+			"finishTime": "2019-05-07-18-00",
+            "timeHourBasis": "1",
+            "maxNextDaysAllowed": "1",
+            "threddsServerDataLink": ""
+        },
+	"WWIII_ATN":
+		{
+			"name": "ATN",
+			"imagePrefixURL": "http://hawking.tecnico.ulisboa.pt/Mapas/WWIII_ATN/",
+			"availableVariables": ["mean_wave_period", "significant_wave_height"],
+			"startTime": "2019-05-07-18-00",
+			"finishTime": "2019-05-07-18-00",
+			"maxNextDaysAllowed": "8",
+			"timeHourBasis": "1",
+			"threddsServerDataLink": ""
+		},
+	"WWIII_SWEurope":
+		{
+			"name": "SWEurope",
+			"imagePrefixURL": "http://hawking.tecnico.ulisboa.pt/Mapas/WWIII_SWEurope/",
+			"availableVariables": ["mean_wave_period", "significant_wave_height"],
+			"startTime": "2019-05-07-18-00",
+			"finishTime": "2019-05-07-18-00",
+			"maxNextDaysAllowed": "8",
+			"timeHourBasis": "1",
+			"threddsServerDataLink": ""
+		},
+	"WWIII_Portugal":
+		{
+			"name": "Portugal",
+			"imagePrefixURL": "http://hawking.tecnico.ulisboa.pt/Mapas/WWIII_Portugal/",
+			"availableVariables": ["mean_wave_period", "significant_wave_height"],
+			"startTime": "2019-05-07-18-00",
+			"finishTime": "2019-05-07-18-00",
+			"maxNextDaysAllowed": "8",
+			"timeHourBasis": "1",
+			"threddsServerDataLink": "http://opendap.mohid.com:8080/thredds/catalog/IST_WW3_WAVES/PORTUGAL_0.05DEG_1L_1H/catalog.html"
+		},
+	"OPIberianPeninsula_Land":
+		{
+			"name": "Iberian Peninsula",
+			"imagePrefixURL": "http://hawking.tecnico.ulisboa.pt/Mapas/OPIberianPeninsula_Land/",
+			"availableVariables": ["PorousMedia_RelWaterContent", "PorousMedia_WaterTableDepth", "Vegetation_LeafAreaIndex", "Runoff_VelocityModulus", "PorousMediaProp_Salinity", "PorousMediaProp_Nitrate"],
+			"startTime": "2019-05-07-00-00",
+			"finishTime": "2019-05-07-00-00",
+			"timeHourBasis": "24",
+			"threddsServerDataLink": ""
+		},
+	"OPPortugalGaliza_Land":
+		{
+			"name": "West Iberia",
+			"imagePrefixURL": "http://hawking.tecnico.ulisboa.pt/Mapas/OPPortugalGaliza_Land/",
+			"availableVariables": ["PorousMedia_RelWaterContent", "PorousMedia_WaterTableDepth", "Vegetation_LeafAreaIndex", "Runoff_VelocityModulus", "PorousMediaProp_Salinity", "PorousMediaProp_Nitrate" ],
+			"startTime": "2019-02-01-00-00",
+			"finishTime": "2019-02-01-00-00",
+			"timeHourBasis": "24",
+			"threddsServerDataLink": ""
+		}
+}

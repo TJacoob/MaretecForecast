@@ -1,0 +1,38 @@
+[
+	{
+		"pageElementId": "welcometext",
+		"pageElementContent": "<h1 id=\"welcome-font\">Welcome!</h1>"
+	},
+	{
+		"pageElementId": "whatwedo",
+		"pageElementContent": "<div data-aos=\"fade-up\"><h3>About us</h3><br><img src=\"images/mar.jpg\" class=\"detail-img  img-fluid rounded-circle index-img\" style=\"max-width: 200px; and height: auto\"></div><br><br><p data-aos=\"fade-up\">MARETEC is IST's multidisciplinary research centre (<a href=\"http://www.maretec.org\" class=\"black-link\">www.maretec.org</a> e <a href=\"http://www.mohid.com\" class=\"black-link\">www.mohid.com</a>) whose main activities are numerical modelling covering almost all phases of the water cycle from watershed to river, estuary and ocean.</p><p data-aos=\"fade-up\">Since 2009, Maretec has invested in operational modelling and nowadays provides daily modelling results for circulation, ecology and waves for the Portuguese Coastal waters and watersheds at different scales. If you want more information about Maretec activities and reaseach please click on the link below.</p><p> </p><a href=\"http://maretec.org/\" class=\"btn btn-default btn-lg\" data-aos=\"fade-up\">Visit MARETEC webpage <span class=\"glyphicon glyphicon-hand-right\"></span></a>"
+	},
+	{
+		"pageElementId": "contact",
+		"pageElementContent": "<div data-aos=\"fade-up\"><h3>Find Us</h3><br><img src=\"images/contacts.jpg\" class=\"detail-img img-fluid rounded-circle index-img\" style=\"max-width: 200px; and height: auto\"></div><br><br><h4 data-aos=\"fade-up\">MARETEC<br>Marine Environment and Technology Center</h4><p data-aos=\"fade-up\"><a class=\"black-link\" href=\"http://maretec.org/\">www.maretec.org</a></p><p data-aos=\"fade-up\"><b>IST – Instituto Superior Técnico<br><br>Department of Mechanical Engineering<br>University of Lisbon</b><br>Av. Rovisco Pais<br>1049-001 Lisboa<br>Portugal</p><p data-aos=\"fade-up\">Phone: (+351) 218 419 429</p><p data-aos=\"fade-up\">Email: <a class=\"black-link\" href=\"mailto:operational@maretec.org\">operational@maretec.org</a></p>"
+	},
+	{
+		"pageElementId": "modellingMapsText",
+        "pageElementContent": "Maps"
+	},
+	{
+		"pageElementId": "modellingChartsText",
+        "pageElementContent": "Stations"
+	},
+	{
+		"pageElementId": "weatherForecastText",
+		"pageElementContent": "Weather Forecast"
+	},
+	{
+		"pageElementId": "modellingMapsDescription",
+		"pageElementContent": "Graphic representation of the modelling results and forecasts"
+	},
+	{
+		"pageElementId": "modellingChartsDescription",
+		"pageElementContent": "Chart representation of the modelling results, forecasts and observations of stations."
+	},
+	{
+		"pageElementId": "weatherForecastDescription",
+		"pageElementContent": "7 day weather forecast for Portugal Continental"
+	}
+]

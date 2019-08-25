@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<!--http://jsfiddle.net/phpdeveloperrahul/Veqnh/-->
+<html>
+<head>
+	<title>Maretec Forecast</title>
+    <link rel="icon" href="../img/favicon.png" type="image/png">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<!--<link href="https://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/build/css/bootstrap-datetimepicker.css" rel="stylesheet">-->
+	<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.1.2/css/tempusdominus-bootstrap-4.min.css">
+	<!--estilo para leaflet-->
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ==" crossorigin=""/>
+	<link rel="stylesheet" href="../css/menu.css">
+	<link rel="stylesheet" href="../css/full-map.css"> <!-- so por causa de map-btn-->
+	<link rel="stylesheet" href="../css/loader.css">
+	<link rel="stylesheet" href="../css/languages.min.css">
+	<link rel="stylesheet" media="screen, projection" href="../js/drift-master/dist/drift-basic.css">
+	<link href="../css/language-selection.css" rel="stylesheet">
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!--	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+
+				<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.js"></script>
+				<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+	 <!-- Make sure you put this AFTER Leaflet's CSS -->
+	<script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js" integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log==" crossorigin=""></script>
+	<script src="https://lab.digital-democracy.org/leaflet-bing-layer/leaflet-bing-layer.js"></script>
+	<!--<script src="http://forecast.maretec.org/java/getdate.js"></script>-->
+	<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>-->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.21/moment-timezone-with-data-2012-2022.min.js"></script>
+	<!--<script src="https://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/src/js/bootstrap-datetimepicker.js"></script>-->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.1.2/js/tempusdominus-bootstrap-4.min.js"></script>
+	
+	<script src="../js/cookie-manage.js"></script>
+	<script src="../js/common.js"></script>
+
+	<script src="../js/getURLParameters.js"></script>
+		<script src="../js/activable-item.js"></script>
+	<script src="../js/language-selection.js"></script>
+	<script src="../js/menu.js"></script>
+	<script src="../js/drift-master/dist/Drift.min.js"></script>		
+		
+
+	
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
+
+
+	
+	<style>
+		.bg1{
+			background-color: #1abc9c;
+			color: #ffffff;
+		}
+		.bg2 { 
+			background-color: #474e5d;
+			color: #ffffff;
+		}
+		.bg3 { 
+			background-color: #ffffff;
+			color: #555555;
+		}
+		
+		
+		.container-fluid {
+			padding-top: 20px;
+			padding-bottom: 70px;
+		}
+		
+
+
+<!--#map_container{
+  position: relative;
+}
+#map{
+    height: 100%;
+    overflow: hidden;
+    padding-bottom: 100%;
+    padding-top: 30px;
+    position: relative;
+}-->
+		.btn:focus {
+		  outline: none;
+		}
+		html, body, #mapid {
+			height: 100%;
+			width: 100vw; <!--para ocupar inclusive as margens, = 100% e margem = 0 -->
+		}
+
+		#mapid {
+			z-index: 1;
+		}
+		#MapOrig {
+			top: 70px;
+			right: 10px;
+			position: absolute;
+			z-index: 2;
+		}
+
+		#GeoLocate {
+			bottom: 20px;
+			left: 10px;
+			position: absolute;
+			z-index: 2;
+		}
+		#varChoose {
+			top: 130px;
+			right: 10px;
+			position: absolute;
+			z-index: 2;
+		}
+		
+		#showHide {
+			bottom: 15px;
+			right: 10px;
+			position: absolute;
+			z-index: 2;
+		}
+		
+		#showHide > button {
+			width: 20px !important;
+			padding-left: 3px !important;
+			outline: none !important;
+		}
+		
+		#varChoose > button {
+			box-shadow: 2px 2px 1.5px #888888;
+		}
+		
+		.btn-primary {
+			box-shadow: 2px 2px 1.5px #888888;
+		}
+		
+		#threddsServerData {
+			top: 80px;
+			left: 10px;
+			position: absolute;
+			z-index: 3;
+		}
+		
+		#dateChoose {
+			width: 185px;
+			top: 80px;
+			right: 10px;
+			position: absolute;
+			z-index: 2;
+		}
+		#dateChoose input {
+			padding: 5px;
+		}
+		
+		#dateChoose > div > span {
+			box-shadow: 2px 2px 1.5px #888888;
+			width: 400px;
+			color:#fff;
+			background-color:#337ab7;
+			border-color:#2e6da4;
+			padding:6px 12px;
+			margin-bottom:0;
+			font-size:14px;
+			font-weight:400;
+			line-height:1.42857143;
+			text-align:center;
+			white-space:nowrap;
+			vertical-align:middle;
+			border:1px solid transparent;
+			border-radius:4px
+		}
+
+		
+		.no-dropdown-arrow:after { content: none }
+		
+	</style>
+	
+</head>
+<body>
+
+<!--<div style="left: 10px; position: absolute; top: 75px; z-index: 66;" id="logo">
+	<a href="index.html"><img style="height: 35px" src="images/logo_maretec_forecastrec.png"></a>
+</div>-->
+
+	<div class="container-fluid loader-wrap">
+		<div class="loader" id="loader-1"></div>
+	</div>
+
+<div id="top"></div>
+
+
+<div class="website-navbar" info-orig="maps-result-menu"></div>
+
+<!--<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+	<div class="navbar-header navbar-right pull-right">
+		<ul class="language-selector nav pull-left"></ul>
+	</div>
+    <div class="navbar-header">
+    <a id="domain-text" class="navbar-brand" href="maps.html"><img style="display:inline; height: 35px" src="images/logo_maretec_forecastrec.png" alt="Maretec"><span id="page-title"></span></a>
+      </ul>
+    </div>
+  </div>
+</nav>-->
+
+
+
+
+
+<div id="currentImage-wrap" class="container-fluid text-center" style="height: 100%; white-space: nowrap; text-align: center; padding-top: 10px; padding-bottom: 10px;">
+	<span style="display: inline-block; height: 100%; vertical-align: middle;" class="helper"></span>
+</div>
+<!--<div class="container-fluid" style="border-radius: 10px; width: 160px; background: rgba(110, 110, 110, 0.7);  z-index: 99999; position: absolute; padding-bottom: 0px; padding-top: 15px; padding-bottom: 15px; padding-right: 10px; top: 80px; left: 10px"><!--style="height: 100%">
+	<p style ="font-weight: bold">Actual variable:</p>
+	<p id="var-text-display"></p>
+</div>//-->
+
+<div class="container-fluid text-center" style="border-radius: 10px; width: 260px; background: rgba(110, 110, 110, 0.0);  z-index: 2; position: absolute; padding-bottom: 0px; padding-top: 15px; padding-bottom: 15px; padding-right: 10px; bottom: 0px; right: 10px"><!--style="height: 100%">-->
+	<div id="player-group-button" class="btn-group" data-toggle="buttons">
+		<button id="day-backward-button" class="map-btn btn btn-primary"><i class="fas fa-fast-backward"></i></button>
+		<button id="hour-backward-button" class="map-btn btn btn-primary hour-basis"><i class="fas fa-step-backward"></i></button>
+		<div class="btn-group">
+			<button id="plButton" class="map-btn btn btn-primary"><i class="fas fa-play"></i></button>
+			<button type="button" class="map-btn btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 30px !important">
+				<span class="sr-only">Toggle Dropdown</span>
+			</button>
+			<div class="interval-player dropdown-menu dropdown-menu-right">
+				<a class="hour-basis activable dropdown-item" name="hours" interval="1" href="#"></a>
+				<a class="hour-basis activable dropdown-item" name="hours" interval="6" href="#"></a>
+				<a class="hour-basis activable dropdown-item" name="hours" interval="8" href="#"></a>
+				<div class="dropdown-divider"></div>
+				<a class="day-basis activable dropdown-item" name="hours" interval="1" href="#"></a>
+				<a class="day-basis activable dropdown-item" name="hours" interval="8" href="#"></a>
+				<a class="day-basis activable dropdown-item" name="hours" interval="30" href="#"></a>
+			</div>
+		</div>
+		<!--<div class="dropdown">
+			<button type="button" id="dropdownMenuTimeBasisButton" class="btn btn-primary no-dropdown-arrow dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				<i class="fas fa-chevron-up"></i>
+			</button>
+			<div class="interval-player dropdown-menu" aria-labelledby="dropdownMenuTimeBasisButton">
+				<a class="hour-basis dropdown-item" interval="1" href="#"></a>
+				<a class="hour-basis dropdown-item" interval="6" href="#"></a>
+				<a class="hour-basis dropdown-item" interval="8" href="#"></a>
+				<div class="dropdown-divider"></div>
+				<a class="day-basis dropdown-item" interval="1" href="#"></a>
+				<a class="day-basis dropdown-item" interval="8" href="#"></a>
+				<a class="day-basis dropdown-item" interval="30" href="#"></a>
+			</div>
+		</div>-->
+	  <button id="hour-forward-button" class="map-btn btn btn-primary hour-basis"><i class="fas fa-step-forward"></i></button>
+	  <button id="day-forward-button" class="map-btn btn btn-primary"><i class="fas fa-fast-forward"></i></button>
+	</div>
+</div>
+
+<div id="varChoose" class="dropdown">
+	<button type="button" class="map-btn dropdown-toggle no-dropdown-arrow btn btn-primary" data-toggle="dropdown" style="padding: 0px;/*width: 60px !important; height: 40px !important;*/"><i class="fas fa-ruler"></i></button>
+	<div class="dropdown-menu dropdown-menu-right" role="menu"></div>
+</div>
+
+<div id="showHide">
+    <button type="button" class="map-btn btn btn-info btn-md active" style=""><i class="fas fa-chevron-right"></i></button>
+</div>
+
+
+
+<div id="threddsServerData" class="btn-group">
+    <button href="" type="button" class="btn map-btn btn-primary" role="button" style="padding: 0px;"><i class="fas fa-server"></i></a>
+</div>
+
+
+            <div id="dateChoose" class="form-group">
+                <div class='input-group date' id='datetimepicker1'  data-target-input="nearest">
+  <!--                  <input id='dateInput' type='hidden' style="border:none" class="form-control time-menu" />
+                    <span class="btn btn-primary input-group-addon"><span class="fas fa-calendar-alt"></span>
+                    </span>-->
+                    <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1" readonly/>
+                    <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                    </div>
+                </div>
+            </div>
+
+	<div id="info-btn-container" style="z-index: 34; position: absolute; top: 140px; left: 10px">
+		<button type="button" class="btn btn-primary" data-toggle="modal" onClick="loadInstructions();">
+			<span class="fas fa-question"></span>
+		</button>
+	</div>
+
+
+
+
+
+<!-- No map image error -->
+<div class="modal fade" id="errorNoMapImageModal" tabindex="-1" role="dialog" aria-labelledby="errorNoMapImageModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 lang-id="errorNoMapImageModalTitle_txt" class="modal-title" id="errorNoMapImageModalLabel"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div lang-id="errorNoMapImageModalDescription_txt" class="modal-body">  
+      </div>
+      <div style="display: block; margin: 0 0 10px 0;" class="modal-footer">
+			<button lang-id="close_txt" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<script src="js/map-result-display.js"></script>
+
+
+<script>
+
+
+
+
+
+</script>
+<!-- Modal Instructions (How to Use) dialog -->
+
+<div class="modal fade" id="infoDialogModal" role="dialog" aria-labelledby="cookieInfoModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+				<center>
+                    &copy;
+                    <img src="img/logo_maretec_forecastrec.png" width="180">
+                    <br>&nbsp;
+ 				    <h4 lang-id="infoTitle_txt" class="modal-title"></h4>
+                </center>
+            </div>
+            <div id ="mapsAndStationsHelp" class="modal-body" style="display: none">
+                <label class="btn btn-primary"><span class="fas fa-globe"></span></label>
+				<div lang-id="infoGeneralMapProvider_txt" class="modal-body" style="display: inline"></div>
+                <br>
+                <label class="btn btn-primary"><span class="fas fa-map-marker-alt"></span></label>
+				<div lang-id="infoGeneralCenterMap_txt" class="modal-body" style="display: inline"></div>
+                <br>
+                <label class="btn btn-default"><span class="fas fa-plus"></span></label>
+                <label class="btn btn-default"><span class="fas fa-minus"></span></label>
+                <label class="btn btn-primary"><span class="fas fa-sync"></span></label>
+				<div lang-id="infoGeneralZoomControls_txt" class="modal-body" style="display: inline"></div>
+            </div>
+            <div id = "stationsOnlyHelp" class="modal-body" style="display: none">
+                <label class="btn btn-default"> <span class="fas fa-calendar-alt"></span></label>
+				<div lang-id="infoChartSelectDates_txt" class="modal-body" style="display: inline"></div>
+                <br>
+                <label class="btn btn-primary"> <span class="fas fa-th-list"></span></label>
+				<div lang-id="infoChartManageStations_txt" class="modal-body" style="display: inline"></div>
+                <br>
+                <label class="btn btn-primary"> <span class="fas fa-times"></span></label>
+				<div lang-id="infoChartClearStations_txt" class="modal-body" style="display: inline"></div>
+                <br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<div lang-id="infoChartLeftClick_txt" class="modal-body" style="display: inline"></div>
+                <br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<div lang-id="infoChartRightClick_txt" class="modal-body" style="display: inline"></div>
+                <br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<div lang-id="infoChartMobileClick_txt" class="modal-body" style="display: inline"></div>
+                <br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <div lang-id="infoChartShiftMouseDrag_txt" class="modal-body" style="display: inline"></div>
+                <br>
+            </div>
+            <div id="domainMapHelp" class="modal-body" style="display: none">
+                <label class="btn btn-primary"> <span class="fas fa-calendar-alt"></span></label>
+				<div lang-id="infoMapSelectDate_txt" class="modal-body" style="display: inline"></div>
+                <br>
+                <label class="btn btn-primary"> <span class="fas fa-cloud"></span></label>
+                <label class="btn btn-primary"> <span class="fas fa-ruler"></span></label>
+				<div lang-id="infoMapSelectMagnitude_txt" class="modal-body" style="display: inline"></div>
+                <br>
+                <label class="btn btn-primary"> <span class="fas fa-chevron-right"></span></label>
+                <label class="btn btn-primary"> <span class="fas fa-chevron-left"></span></label>
+                <div lang-id="infoMapShowHideCommands_txt" class="modal-body" style="display: inline"></div>
+                <br>
+                <label class="btn btn-primary"> <span class="fas fa-chevron-up"></span></label>
+ 				<div lang-id="infoMapSelectTimeStep_txt" class="modal-body" style="display: inline"></div>
+                <br>
+                <label class="btn btn-primary"> <span class="fas fa-fast-backward"></span></label>
+                <label class="btn btn-primary"> <span class="fas fa-step-backward"></span></label>
+                <label class="btn btn-primary"> <span class="fas fa-play"></span></label>
+                <label class="btn btn-primary"> <span class="fas fa-pause"></span></label>
+                <label class="btn btn-primary"> <span class="fas fa-step-forward"></span></label>
+                <label class="btn btn-primary"> <span class="fas fa-fast-forward"></span></label>
+				<div lang-id="infoMapPlaybackCommands_txt" class="modal-body" style="display: inline"></div>
+                <br>
+                <label class="btn btn-primary"> <span class="fas fa-server"></span></label>
+				<div lang-id="infoMapCatalogData_txt" class="modal-body" style="display: inline"></div>
+            </div>
+            <div class="modal-body">
+                <label class="btn btn-primary"><span class="fas fa-question"></span></label>
+				<div lang-id="infoGeneralInfo_txt" class="modal-body" style="display: inline"></div>
+                <br><br>
+            </div>
+            <div class="modal-footer">
+                <span lang-id="copyrightNotice_txt" class="from-control-static pull-left"></span>
+				<button id="privacyStatement-close" lang-id="dismiss_txt" type="button" class="btn btn-info" data-dismiss="modal"></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+</body>
+</html>

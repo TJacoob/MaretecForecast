@@ -1,0 +1,4 @@
+{
+	"months": ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"],
+	"daysOfWeek": ["Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sáb"]
+}

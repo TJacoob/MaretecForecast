@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Maretec Forecast</title>
+    <!--
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fontawesome/4.7.0/css/font-awesome-min.css"> 
+-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="icon" href="../img/favicon.png" type="image/png">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<!--
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<link href="../stationsb/js/lib/chosen/chosen.min.css" rel="stylesheet" />
+	<link href="https://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/build/css/bootstrap-datetimepicker.css" rel="stylesheet">
+	<link href="../stationsb/css/main.css" rel="stylesheet" />
+	
+	<!--estilo para leaflet-->
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ==" crossorigin=""/>
+	
+
+	
+	<link rel="stylesheet" href="../css/languages.min.css">
+	<script src="../stationsb/js/lib/daterangepicker/moment.min.js"></script> <!--a tirar-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
+
+	
+	<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>-->
+	<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+	 <!-- Make sure you put this AFTER Leaflet's CSS -->
+	<script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js" integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log==" crossorigin=""></script>
+	<script src="https://lab.digital-democracy.org/leaflet-bing-layer/leaflet-bing-layer.js"></script>
+	
+	<script src="../js/cookie-manage.js"></script>
+	<script src="../js/common.js"></script>
+	
+		<!-- jQuery -->
+	<script src="../stationsb/js/lib/jquery/jquery-1.11.1.min.js"></script>
+	<!-- jQuery UI -->
+	<script src="../stationsb/js/lib/jquery-ui/js/jquery-ui-1.10.4.custom.min.js"></script>	
+	<!-- bootstrap -->
+
+
+    <!-- uniform -->
+	<script src="../stationsb/js/lib/uniform/jquery.uniform.min.js"></script>
+	
+	<!--	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+				<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.js"></script>
+				<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+		<!-- bootstrap Validation-->
+	<script src="../stationsb/js/lib/bootstrapValidation/jqBootstrapValidation.js"></script>
+	
+		<!-- chosen -->
+	<script src="../stationsb/js/lib/chosen/chosen.min.js"></script>
+	
+	
+		<!-- highcharts -->
+	<script src="https://code.highcharts.com/highcharts.js"></script>
+	<script src="https://code.highcharts.com/modules/exporting.js"></script>
+	<!--<script src="../stationsb/js/lib/highcharts/modules/export-csv.js"></script>-->
+	<script src="https://code.highcharts.com/modules/export-data.js"></script>	
+	<script src="https://code.highcharts.com/modules/no-data-to-display.js"></script>	
+		
+		
+	<!--<script src="stationsb/js/lib/highcharts/highcharts.js"></script>
+	<script src="../stationsb/js/lib/highcharts/modules/exporting.js"></script>
+	<script src="../stationsb/js/lib/highcharts/modules/export-csv.js"></script>
+	<script src="../stationsb/js/lib/highcharts/modules/no-data-to-display.js"></script>-->
+	<!-- fileDownload -->
+	<script src="../stationsb/js/lib/jquery.fileDownload/jquery.fileDownload.js"></script>
+	
+	<script src="../js/getURLParameters.js"></script>
+	
+	
+	
+		
+
+		
+	
+	
+	
+	<script src="../js/activable-item.js"></script>
+	<script src="../js/language-selection.js"></script>
+	<script src="../js/menu.js"></script>
+
+
+
+	
+	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+	<link rel="stylesheet" href="../css/menu.css">
+	<link href="../css/full-map.css" rel="stylesheet">
+	<link href="../css/language-selection.css" rel="stylesheet">
+	<link href="../css/font-awesome-4.2.0/css/font-awesome.min.css" rel="stylesheet" />
+
+
+	
+	
+	
+	<style>
+	
+	
+	
+	
+	
+	
+	#chartCanvas {
+		height: calc(100vh - 100px);
+		min-height: 220px;
+	}
+	@media screen and (min-height: 490px) {
+		#chartCanvas {
+			height: 400px;
+		}
+	}
+	
+	@media screen and (max-height: 490px) {
+		#exampleModal2 .modal-body {
+			height: calc(var(--vh, 1vh) * 100 - 75px);
+		}
+	}	
+
+	@media screen and (max-width: 1200px) {
+		#chartCanvas {
+			border: 0px;
+			border-top: 0px;
+			border-width: 0px;
+		}
+	}	
+	
+	#exampleModal .modal-body {
+		max-height: calc(var(--vh, 1vh) * 100 - 140px);
+	}
+.no-dropdown-arrow:after { content: none }
+	</style>	
+
+	
+</head>
+<body>
+
+<div id="top"></div>
+<div class="website-navbar" info-orig="maps-menu"></div>
+<div class="full-map"></div>
+
+
+
+	<div id="info-btn-container">
+		<button type="button" class="btn btn-primary map-btn" data-toggle="modal" onClick="loadInstructions();">
+			<span class="fas fa-question" style="font-size: 1.3em"></span>
+		</button>
+	</div>
+    
+	<div id="test-btn-showCookieSelectionDialog" style="z-index: 34; position: absolute; top: 340px; left: 10px">
+		<button type="button" class="btn btn-primary" data-toggle="modal">
+ 			<span class="fas fa-radiation-alt"></span>
+		</button>
+	</div>
+    
+	<div id="erase-cookies" style="z-index: 34; position: absolute; top: 380px; left: 10px">
+		<button type="button" class="btn btn-primary" onclick= "eraseLangCookie();">
+ 			<span class="fas fa-hand-paper"></span>
+		</button>
+	</div>
+    
+<script>$("#showInfoDialog").click( function() { loadModal( 'infoDialogModal', 'instructions')});</script>
+    
+
+
+	<div id="selected-stations-button" style="display:none; z-index: 34; position: absolute; top: 200px; right: 10px">
+		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" disabled>
+			<span class="fas fa-th-list"></span>
+		</button>
+	</div>
+	
+	
+<!--
+	<div id="clear-general-button" style="display:none; z-index: 34; position: absolute; top: 245px; right: 10px">
+		<button lang-id="clear_txt" type="button" class="btn btn-clearAllData btn-default btn-sm" style="float:right">
+		</button>
+	</div>
+-->
+	
+	<div id="clear-general-button" style="display:none; z-index: 34; position: absolute; top: 245px; right: 10px">
+		<button type="button" class="btn btn-clearAllData btn-default btn-sm" style="float:right">
+            <span class="fas fa-times" style="font-size: 1.8em;"></span>
+		</button>
+	</div>
+	
+	
+	
+	
+	<div class="station-calendar" style=" display:none;    height: 0; width: 147px; z-index: 37; position: absolute; top: 120px; right: 0px; padding-right: 9px;" class="container">
+            <div class="form-group">
+                <div class='input-group date' id='datetimepickerA'>
+                    <input type='text' class="form-control" readonly />
+                    <span class="input-group-addon">
+                        <span class="fas fa-calendar-alt"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+			var dA = new Date();
+			dA.setDate(dA.getDate() - 2);
+			var dB = new Date();
+			dB.setDate(dB.getDate() + 7);
+		
+		
+            $(function () {
+
+				var dMinA = new Date();
+				dMinA.setDate(dMinA.getDate() - 210);
+				var dMaxA = dB//new Date();
+				//dMaxA.setDate(dMaxA.getDate() + 7);
+                $('#datetimepickerA').datetimepicker({
+						ignoreReadonly: true,
+						useCurrent: 'day',
+						format: 'DD-MM-YYYY',
+						defaultDate: dA,
+						minDate: dMinA,
+						maxDate: dMaxA
+				});
+            });
+			
+			
+
+				
+			
+			window.getStartTime = function getStartTime() {
+				$('#datetimepickerA').data("DateTimePicker").viewDate();
+			}
+
+        </script>
+    </div>
+</div>
+
+
+<div class="station-calendar" style=" display:none;   height: 0; width: 147px; z-index: 36; position: absolute; top: 160px; right: 0px; padding-right: 9px;" class="container">
+            <div class="form-group">
+                <div class='input-group date' id='datetimepickerB'>
+                    <input type='text' class="form-control" readonly />
+                    <span class="input-group-addon">
+                        <span class="fas fa-calendar-alt"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(function () {
+
+				var dMinB = dA//new Date();
+				//dMinB.setDate(dMinB.getDate() - 210);
+				var dMaxB = new Date();
+				dMaxB.setDate(dMaxB.getDate() + 7);
+                $('#datetimepickerB').datetimepicker({
+						ignoreReadonly: true,
+						useCurrent: 'day',
+						format: 'DD-MM-YYYY',
+						defaultDate: dB,
+						minDate: dMinB,
+						maxDate: dMaxB
+				});
+			});	
+
+			
+			window.getEndTime = function getEndTime() {
+				$('#datetimepickerB').data("DateTimePicker").viewDate();
+			}
+
+
+
+			var numMinEvent = 0;
+			$('#datetimepickerA').on("dp.change", function(e) { //evento para função chamada cada vez que se muda a data ou hora no calendario
+				if(numMinEvent > 3)
+					$('#datetimepickerB').data("DateTimePicker").minDate($('#datetimepickerA').data("DateTimePicker").date());
+				numMinEvent++;
+			});
+			
+			$('#datetimepickerB').on("dp.change", function(e) { //evento para função chamada cada vez que se muda a data ou hora no calendario
+				if(numMinEvent > 3)
+					$('#datetimepickerA').data("DateTimePicker").maxDate($('#datetimepickerB').data("DateTimePicker").date());
+				numMinEvent++;
+			});
+			
+			
+			$(document).on("languageChange", function(e, langId, jsonDirectory, isDefaultLanguage) {
+				setTimeout(function(){ 
+					$('#datetimepickerA').data("DateTimePicker").locale(langId);	 //mudar calendário
+					$('#datetimepickerB').data("DateTimePicker").locale(langId);	 //mudar calendário
+				}, 500);			
+			});
+			
+        </script>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+	<!-- Modal -->
+
+		<!-- Erro info-->
+<div class="modal fade" id="errorGettingChartModal" tabindex="-1" role="dialog" aria-labelledby="errorGettingChartModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 lang-id="dChartErrorTitle_txt" class="modal-title" id="errorGettingChartModalLabel"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div lang-id="dChartErrorDescription_txt" class="modal-body">  
+      </div>
+      <div style="display: block; margin: 0 0 10px 0;" class="modal-footer">
+			<button lang-id="close_txt" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+		<!--Stations max selected-->
+<div class="modal fade" id="errorMaxStationsSelectedModal" tabindex="-1" role="dialog" aria-labelledby="errorMaxStationsSelectedModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 lang-id="maxStationsErrorTitle_txt" class="modal-title" id="errorMaxStationsSelectedModalLabel"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div lang-id="maxStationsErrorDescription_txt" class="modal-body">  
+      </div>
+      <div style="display: block; margin: 0 0 10px 0;" class="modal-footer">
+			<button lang-id="close_txt" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+		<!--Already selected station -->
+<div class="modal fade" id="errorAlreadySelectedStationModal" tabindex="-1" role="dialog" aria-labelledby="errorAlreadySelectedStationModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 lang-id="alreadySelectedStationErrorTitle_txt" class="modal-title" id="errorAlreadySelectedStationModalLabel"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div lang-id="alreadySelectedStationErrorDescription_txt" class="modal-body">  
+      </div>
+      <div style="display: block; margin: 0 0 10px 0;" class="modal-footer">
+			<button lang-id="close_txt" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+	
+
+		<!-- Modal example 1 data info-->
+<div class="modal fade" id="dataInfoModal" tabindex="-1" role="dialog" aria-labelledby="dataInfoModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 lang-id="dSource_txt" class="modal-title" id="dataInfoModalLabel">Data Source</h5>
+        <button type="button" class="close" data-dismiss="modal" data-toggle="modal" data-target="#exampleModal2" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+		<div id="bottomRight" style="display: none;">
+			<ul class="sortable">	
+				<li class="site" style=" overflow: auto;">
+					<div class="settings">  <h2></h2> </div>
+						<hr style="margin: 0">
+						<div class="chartInfo"></div>	
+				</li>
+			</ul>
+		</div>	
+	  
+      </div>
+      <div style="display: block; margin: 0 0 10px 0;" class="modal-footer">
+			<button lang-id="close_txt" type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal2" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+	
+	<!-- Modal example 2 -->
+<div class="modal fade" style="  top: 10px; right: 10px; bottom: 10px; left: 10px;" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+  <div class="modal-dialog" style=" overflow-y: initial !important; width: 100%; height: 100%; margin: 0; padding: 0;" role="document">
+    <div class="modal-content">
+     <!-- <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel2"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div> -->
+      <div class="modal-body" style="overflow-y: auto; padding-bottom: 0px;"><!--margin-bottom: -15px;">-->
+      
+	  		<!-- chart -->
+		<div style="margin-top: 0px"><!--class="row" --> 
+			<!-- chart canvas -->		
+			<div id="bottomLeft" class="col-lg-9"> <!-- class="col-md-9">			//pois so ocupa todo e nao 9 colunas	-->
+				<div id="chartCanvas" style="margin: 0px !important; width: 100%;"></div>
+			</div>
+			
+			<!-- chart Info  -->
+			<div id="bottomRight" class="col-lg-3 visible-lg" style="height: 420px">
+				<ul class="sortable">	
+					<li class="site" style="">
+						<div class="settings">  <h2 lang-id="dSource_txt"></h2> </div>
+							<hr style="margin: 0">
+							<div class="chartInfo"></div>	
+					</li>
+				</ul>
+			</div>				
+		</div>
+	  
+	  
+	  
+      </div>
+      <div class="modal-footer" style="padding: 8px">
+		<button lang-id="dSource_txt" type="button" class="btn btn-info hidden-lg" data-toggle="modal" data-target="#dataInfoModal" data-dismiss="modal">Data Source</button>
+        <button lang-id="close_txt" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<!-- Modal example 1-->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm" style="overflow-y: initial" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel" lang-id="selSta_txt">Selected Stations</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="overflow-y: auto;"><!--max-height: 400px;">-->
+
+	  				<ul class="sortable">	
+
+					
+					<li class="site"><!-- style="height: 240px">-->
+						<hr style="margin: 0">
+						<div id="selStaList"></div>
+					</li>
+					
+					<div style="border-top: 2.5px solid #497093;margin: 0 0 20px 0;padding: 0">
+						<span style="padding: 10px;overflow: auto; font-size: 14px;font-weight: bold;line-height: 45px;" lang-id="availableParams_txt">Available Parameters</span>	
+						<hr style="margin: 0 0 10px 0">
+						<!--<select id="selParamList" data-placeholder=" "  class="chosen-select" tabindex="5" disabled>
+							<option value=""></option>
+						</select>-->
+						<select id="nSelParamList" class="form-control" disabled></select>
+					</div>
+					
+
+			
+				</ul>	
+	  
+	  
+	  
+      </div>
+      <div style="padding: 8px" class="modal-footer">
+						<button lang-id="chart_txt" id="btn-makeChart" type="button" class="btn btn-primary btn-sm" style="width:48%;float:left">
+							<i class="fa fa-bar-chart"></i>  Chart
+						</button>
+						<button lang-id="clear_txt" type="button" class="btn-clearAllData btn btn-default btn-sm" style="width:48%; float:right">
+							<span class='fas fa-times'>  Clear
+						</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+	<!-- Modal download chart data -->
+<div class="modal fade" id="modalDownloadData" tabindex="-1" role="dialog" aria-labelledby="modalDownloadLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+  <div class="modal-dialog">
+	<div class="modal-content">
+	  <div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		<h4 class="modal-title" id="modalDownloadLabel">Data download</h4>
+	  </div>
+	  <div class="modal-body">
+		<form name="sentMessage" id="downloadForm"  novalidate>
+			<!-- Contacts -->
+			<div id="contacts">
+				<div class="row">
+					<div class="col-sm-offset-1 col-sm-10">					
+						<legend>Mandatory fill</legend>
+						<div class="control-group">
+							<div class="controls">
+								<input type="text" class="form-control" placeholder="Name" id="name" required data-validation-required-message="Please enter your name." />
+								<p class="help-block"></p>
+							</div>
+						</div>
+						<div class="control-group">
+							<div class="controls">
+								<input type="email" class="form-control" placeholder="Email" id="email" required data-validation-required-message="Please enter your email." />
+								<p class="help-block"></p>
+							</div>
+						</div>
+						<div class="control-group">
+							<div class="controls">
+								<input type="text" class="form-control" placeholder="Organization" id="organization" required data-validation-required-message="Please enter your organization." />
+								<p class="help-block"></p>
+							</div>
+						</div>
+						<div class="control-group">
+							<div class="controls">
+								<textarea rows="10" cols="100" class="form-control" placeholder="Purpose" id="message" required data-validation-required-message="Please enter your purpose" minlength="5" 
+								data-validation-minlength-message="Min 5 caracteres" 
+								maxlength="999" style="resize:none" ></textarea>
+								<p class="help-block"></p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div style="padding: 19px 20px 20px;margin: 20px 0;border-top: 1px solid #e5e5e5;">
+				<div style="float: left;">
+					<button type="submit" class="btn btn-primary"><i class="fa fa-download"></i> Download</button>
+					<input id="inputDownloadRes" type="text" placeholder="data_2018-12-27_1612" style="margin-left: 10px; height: 34px">	
+				</div>				
+				<button id="btnCloseDownloadModal" type="button" class="btn btn-default" data-dismiss="modal" style="float: right">Close</button>
+				
+			</div>
+		</form>
+	  </div>
+	</div>
+  </div>
+</div>	
+
+<!-- Modal Instructions (How to Use) dialog -->
+
+<div class="modal fade" id="infoDialogModal" role="dialog" aria-labelledby="cookieInfoModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+				<center>
+                    &copy;
+                    <img src="../img/logo_maretec_forecastrec.png" width="180">
+                    <br>&nbsp;
+ 				    <h4 lang-id="infoTitle_txt" class="modal-title"></h4>
+                </center>
+            </div>
+            <div id ="mapsAndStationsHelp" class="modal-body" style="display: none">
+                <label class="btn btn-primary"><span class="fas fa-globe"></span></label>
+				<div lang-id="infoGeneralMapProvider_txt" class="modal-body" style="display: inline"></div>
+                <br>
+                <label class="btn btn-primary"><span class="fas fa-map-marker-alt"></span></label>
+				<div lang-id="infoGeneralCenterMap_txt" class="modal-body" style="display: inline"></div>
+                <br>
+                <label class="btn btn-default"><span class="fas fa-plus"></span></label>
+                <label class="btn btn-default"><span class="fas fa-minus"></span></label>
+                <label class="btn btn-primary"><span class="fas fa-sync"></span></label>
+				<div lang-id="infoGeneralZoomControls_txt" class="modal-body" style="display: inline"></div>
+            </div>
+            <div id = "stationsOnlyHelp" class="modal-body" style="display: none">
+                <label class="btn btn-default"> <span class="fas fa-calendar-alt"></span></label>
+				<div lang-id="infoChartSelectDates_txt" class="modal-body" style="display: inline"></div>
+                <br>
+                <label class="btn btn-primary"> <span class="fas fa-th-list"></span></label>
+				<div lang-id="infoChartManageStations_txt" class="modal-body" style="display: inline"></div>
+                <br>
+                <label class="btn btn-primary"> <span class="fas fa-times"></span></label>
+				<div lang-id="infoChartClearStations_txt" class="modal-body" style="display: inline"></div>
+                <br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<div lang-id="infoChartLeftClick_txt" class="modal-body" style="display: inline"></div>
+                <br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<div lang-id="infoChartRightClick_txt" class="modal-body" style="display: inline"></div>
+                <br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<div lang-id="infoChartMobileClick_txt" class="modal-body" style="display: inline"></div>
+                <br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <div lang-id="infoChartShiftMouseDrag_txt" class="modal-body" style="display: inline"></div>
+                <br>
+            </div>
+            <div id="domainMapHelp" class="modal-body" style="display: none">
+                <label class="btn btn-primary"> <span class="fas fa-calendar-alt"></span></label>
+				<div lang-id="infoMapSelectDate_txt" class="modal-body" style="display: inline"></div>
+                <br>
+                <label class="btn btn-primary"> <span class="fas fa-cloud"></span></label>
+                <label class="btn btn-primary"> <span class="fas fa-ruler"></span></label>
+				<div lang-id="infoMapSelectMagnitude_txt" class="modal-body" style="display: inline"></div>
+                <br>
+                <label class="btn btn-primary"> <span class="fas fa-chevron-right"></span></label>
+                <label class="btn btn-primary"> <span class="fas fa-chevron-left"></span></label>
+                <div lang-id="infoMapShowHideCommands_txt" class="modal-body" style="display: inline"></div>
+                <br>
+                <label class="btn btn-primary"> <span class="fas fa-chevron-up"></span></label>
+ 				<div lang-id="infoMapSelectTimeStep_txt" class="modal-body" style="display: inline"></div>
+                <br>
+                <label class="btn btn-primary"> <span class="fas fa-fast-backward"></span></label>
+                <label class="btn btn-primary"> <span class="fas fa-step-backward"></span></label>
+                <label class="btn btn-primary"> <span class="fas fa-play"></span></label>
+                <label class="btn btn-primary"> <span class="fas fa-pause"></span></label>
+                <label class="btn btn-primary"> <span class="fas fa-step-forward"></span></label>
+                <label class="btn btn-primary"> <span class="fas fa-fast-forward"></span></label>
+				<div lang-id="infoMapPlaybackCommands_txt" class="modal-body" style="display: inline"></div>
+                <br>
+                <label class="btn btn-primary"> <span class="fas fa-server"></span></label>
+				<div lang-id="infoMapCatalogData_txt" class="modal-body" style="display: inline"></div>
+            </div>
+            <div class="modal-body">
+                <label class="btn btn-primary"><span class="fas fa-question"></span></label>
+				<div lang-id="infoGeneralInfo_txt" class="modal-body" style="display: inline"></div>
+                <br><br>
+            </div>
+            <div class="modal-footer">
+                <span lang-id="copyrightNotice_txt" class="from-control-static pull-left"></span>
+				<button id="privacyStatement-close" lang-id="dismiss_txt" type="button" class="btn btn-info" data-dismiss="modal"></button>
+            </div>
+        </div>
+    </div>
+</div>
+    
+<!-- Modal cookie dialog -->
+
+<div class="modal fade" id="cookieSelectionModal" role="dialog" aria-labelledby="cookieWarningModalLabel" aria-hidden="true">
+    <div class="modal-dialog"  role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <center>
+                    &copy;
+                    <img src="../img/logo_maretec_forecastrec.png" width="180">
+                    <br>&nbsp;
+                    <h4 lang-id="cookiesSelectionTitle_txt" class="modal-title" id="cookieWarningTitle"></h4>
+                 </center>
+            </div>
+            <div class="modal-body">
+                <span lang-id="cookiesAreImportant_txt"></span>
+                <span lang-id="cookiesDataCollection_txt"></span>
+                <br>&nbsp;<br>
+                <span lang-id="cookiesSelectionIntro_txt"></span>
+            </div>
+             <div class="custom-control-lg custom-control custom-checkbox" style="margin: 0px 20px 20px 60px">
+                <input class="custom-control-input" id="provisional1" type="checkbox" checked disabled/>
+                <label class="custom-control-label" for="provisional1">
+                    <span lang-id="cookiesNecessaryHeadline_txt"></span><br>
+                    <span lang-id="cookiesNecessaryText_txt" style="font-weight: normal"></span>
+                </label>
+            </div>
+             <div class="custom-control-lg custom-control custom-checkbox" style="margin: 0px 20px 20px 60px">
+                <input class="custom-control-input" id="provisional3" type="checkbox" checked />
+                <label class="custom-control-label" for="provisional3">
+                    <span lang-id="cookiesAnaliticsHeadline_txt"></span><br>
+                    <span lang-id="cookiesAnaliticsText_txt" style="font-weight: normal"></span>
+                </label>
+            </div>
+<br>
+            <div class="modal-body" style="margin: 0 50px 0 50 px">
+                <button id="cookie-submit" lang-id="cookiesPreferencesSubmit_txt" type="button" class="btn btn-success btn-lg btn-block" data-dismiss="modal" onclick="if ( document.getElementById('analyticsCookie').checked ) createCookie( 'analytics', 'true', 7); else  eraseCookie( 'analytics');"></button>
+
+                <div class="modal-body"></div>
+                <div class="modal-body"  lang-id="generalFootnote_txt" Style="font-size:12px; background-color: #ffdd99; color:#996600; padding-top:0px; padding-bottom: 0px"></div>
+            </div>
+
+            <div lang-id="cookiesCopyright_txt" class="modal-footer"></div>
+        </div>
+    </div>
+</div>
+    
+<script>
+    $("#test-btn-showCookieSelectionDialog").on( "click", function() {
+        loadModal( "cookieSelectionModal", "cookieWarningItens");
+    });
+</script>
+    
+<script>
+	// First we get the viewport height and we multiple it by 1% to get a value for a vh unit
+	let vh = window.innerHeight * 0.01;
+	// Then we set the value in the --vh custom property to the root of the document
+	document.documentElement.style.setProperty('--vh', `${vh}px`);
+	
+	// We listen to the resize event
+	window.addEventListener('resize', () => {
+	  // We execute the same script as before
+	  let vh = window.innerHeight * 0.01;
+	  document.documentElement.style.setProperty('--vh', `${vh}px`);
+	});
+	
+</script>
+
+
+	<script src="../js/full-map.js"></script>
+	<script src="../js/map-domains.js"></script>
+			<!-- The main application scrip TIRADO DE STATIONSt -->
+	<!--<script type="text/javascript" src="stationsb/js/main.js"></script>-->
+	<!--<script type="text/javascript" src="../stationsb/js/map.js"></script>
+	<script type="text/javascript" src="../stationsb/js/chart.js"></script>-->
+
+	
+<script src="https://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/src/js/bootstrap-datetimepicker.js"></script>
+<script>
+	//setInitialLanguage();
+</script>
+
+
+</body>
+</html>

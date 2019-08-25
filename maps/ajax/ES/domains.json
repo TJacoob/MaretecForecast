@@ -1,0 +1,18 @@
+{
+	"mapFeatureLayer-00": "Lusitania",
+	"mapFeatureLayer-01": ["PCOMS","PCOMSv2(rios)"],
+	"mapFeatureLayer-02": "Boca del Tajo",
+	"mapFeatureLayer-03": "Estuario del Tajo",
+	"mapFeatureLayer-04": "Costa de Cascais",
+	"mapFeatureLayer-05": "Costa de Estoril",
+	"mapFeatureLayer-06": "Mondego",
+	"mapFeatureLayer-07": "Douro",
+	"mapFeatureLayer-08": "Aveiro",
+	"mapFeatureLayer-09": "Miño-Lima",
+	"mapFeatureLayer-10": "La Rochelle",
+	"mapFeatureLayer-11": "Atlántico Norte ",
+	"mapFeatureLayer-12": "Sudoeste Europeo",
+	"mapFeatureLayer-13": "Portugal",
+	"mapFeatureLayer-14": "Península Ibérica",
+	"mapFeatureLayer-15": "Iberia Occidental"
+}

@@ -1,0 +1,73 @@
+{
+	"allLayers":
+		[
+			{
+				"name": "Base Layers",
+				"idPrefix": "base-layer-",
+				"layersInfo": [
+					{
+						"langMapId": "bLayer0",
+						"name": "Mapbox (Streets), OpenStreetMap data",
+						"type": "normal",
+						"imagerySet": "",
+						"urlTemplateOrKey": "https://api.tiles.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiemVyZWJlbG8iLCJhIjoiY2phZTF3dDNhMWw3ZDJxbDlneDJrZmtzYyJ9._V08mJyQIlRV1Gy7lrQ8NA",
+						"attribution": "Map data &copy; <a href=\"http://openstreetmap.org\">OpenStreetMap</a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery &copy; <a href=\"http://mapbox.com\">Mapbox</a>"
+					},
+					{
+						"langMapId": "bLayer1",
+						"name": "Stamen Maps (Toner), OpenStreetMap data",
+						"type": "normal",
+						"imagerySet": "",
+						"urlTemplateOrKey": "http://tile.stamen.com/toner-background/{z}/{x}/{y}.png",
+						"attribution": "Map tiles by <a href=\"http://stamen.com\">Stamen Design</a>, under <a href=\"http://creativecommons.org/licenses/by/3.0\">CC BY 3.0</a>. Data by <a href=\"http://openstreetmap.org\">OpenStreetMap</a>, under <a href=\"http://www.openstreetmap.org/copyright\">ODbL</a>."
+					},
+					{
+						"langMapId": "bLayer2",
+						"name": "OpenMapSurfer Maps",
+						"type": "normal",
+						"imagerySet": "",
+						"urlTemplateOrKey": "https://maps.heigit.org/openmapsurfer/tiles/roads/webmercator/{z}/{x}/{y}.png",
+						"attribution": "Use of <a href=\"http://map.heigit.org\">OpenMapSurfer Maps.</a>"
+					},
+					{
+						"langMapId": "bLayer3",
+						"name": "Bing Maps (Aerial)",
+						"type": "Bing",
+						"imagerySet": "AerialWithLabels",
+						"urlTemplateOrKey": "fUYWsL8uvL5zEhlvOqxq~OnmUaHlF0bBa3kwXhyZSuw~Aj3RwEywggsgabSZRl9QWP4fpDihoKvlU2JycOufAUI5xfLm1WWNloB7_U9wwEZn",
+						"attribution": ""
+					},
+					{
+						"langMapId": "bLayer4",
+						"name": "Bing Maps (Road)",
+						"type": "Bing",
+						"imagerySet": "Road",
+						"urlTemplateOrKey": "fUYWsL8uvL5zEhlvOqxq~OnmUaHlF0bBa3kwXhyZSuw~Aj3RwEywggsgabSZRl9QWP4fpDihoKvlU2JycOufAUI5xfLm1WWNloB7_U9wwEZn",
+						"attribution": ""
+					}
+				]
+			},
+			{
+				"name": "Nautical Charts Layers",
+				"idPrefix": "nautical-chart-layer-",
+				"layersInfo": [
+					{
+						"langMapId": "ncLayer0",
+						"name": "No nautical charts",
+						"type": "",
+						"imagerySet": "",
+						"urlTemplateOrKey": "",
+						"attribution": ""
+					},
+					{
+						"langMapId": "ncLayer1",
+						"name": "Transas nautical charts",
+						"type": "normal",
+						"imagerySet": "",
+						"urlTemplateOrKey": "http://wms.transas.com/TMS/1.0.0/TX97-transp/{z}/{x}/{-y}.png?token=9e53bcb2-01d0-46cb-8aff-512e681185a4",
+						"attribution": "Use of <a href=\"http://wms.transas.com/terms-use\">Transas WMS.</a>"
+					}
+				]
+			}
+		]
+}

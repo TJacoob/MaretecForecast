@@ -1,0 +1,12 @@
+{
+	"title": "Maretec",
+	"titleLink": "#top",
+	"imageTitle": "images/logo_maretec_forecastrec.png",
+	"navbarElements":
+		{
+			"nb-00": "QUIEN somos / ENCUÉNTRANOS",
+			"nb-01": "MODELOS: Mapas",
+			"nb-02": "MODELOS: Gráficos",
+			"nb-03": "METEOROLOGÍA: previsiones"
+		}
+}

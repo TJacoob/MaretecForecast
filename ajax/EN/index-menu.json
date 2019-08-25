@@ -1,0 +1,28 @@
+{
+	"title": "Maretec",
+	"titleLink": "#top",
+	"imageTitle": "images/logo_maretec_forecastrec.png",
+	"navbarElements":
+		[
+			{
+				"navbarElementId": "nb-01",
+				"navbarElementName": "MODELLING Maps",
+				"navbarElementLink": "maps"
+			},
+			{
+				"navbarElementId": "nb-02",
+				"navbarElementName": "MODELLING Charts",
+				"navbarElementLink": "stations"
+			},
+			{
+				"navbarElementId": "nb-03",
+				"navbarElementName": "WEATHER forecast",
+				"navbarElementLink": "http://meteo.tecnico.ulisboa.pt/"
+			},
+			{
+				"navbarElementId": "nb-00",
+				"navbarElementName": "ABOUT us / FIND us",
+				"navbarElementLink": "#aboutus"
+			}
+		]
+}

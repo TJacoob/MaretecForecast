@@ -1,0 +1,9 @@
+{
+	"mapNamePage_txt": "Maps",
+	"hour_txt": "hour",
+	"hours_txt": "hours",
+	"day_txt": "day",
+	"days_txt": "days",
+	"errorNoMapImageModalTitle_txt" : "No map image available",
+	"errorNoMapImageModalDescription_txt": "There is no map image available for these moment now."
+}

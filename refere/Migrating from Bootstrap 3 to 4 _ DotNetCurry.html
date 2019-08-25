@@ -1,0 +1,1207 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head id="ctl00_Head1"><meta charset="utf-8" /><title>
+	Migrating from Bootstrap 3 to 4 | DotNetCurry
+</title><meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" /><meta name="description" content="Look into a migrating scenario from a simple Bootstrap 3 website to Bootstrap 4, step by step. We will be using a small, single-page, demo website for this purpose." /><meta name="keywords" content="Bootstrap &amp; CSS" /><meta name="author" content="DotNetCurry.com" /><link rel="shortcut icon" href="../../img/favicon.ico" /><link rel="icon" type="image/ico" href="../../img/favicon.ico" /><link rel="stylesheet" href="../../js/font-awesome/css/font-awesome.min.css" /><link rel="canonical" href="https://www.dotnetcurry.com/javascript/1334/migrating-bootstrap-3-to-bootstrap-4" /><link href="/content/site?v=pR9pUdDpuBLOOXRaxtF2ofW1cn1JqLSkXdPj0-8Eaks1" rel="stylesheet"/>
+
+
+    <style>.async-hide { opacity: 0 !important} </style>
+    <script>(function(a,s,y,n,c,h,i,d,e){s.className+=' '+y;h.start=1*new Date;
+    h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
+    (a[n]=a[n]||[]).hide=h;setTimeout(function(){i();h.end=null},c);h.timeout=c;
+    })(window,document.documentElement,'async-hide','dataLayer',4000,
+    {'GTM-NJXQ5BG':true});</script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-2417460-4', 'auto');
+      ga('require', 'GTM-NJXQ5BG');
+      ga('send', 'pageview');
+    </script>
+
+    <!-- Facebook Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1902706389940870', {
+    //em: 'insert_email_variable'
+    });
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1902706389940870&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- DO NOT MODIFY -->
+    <!-- End Facebook Pixel Code -->
+
+    <!-- Twitter universal website tag code May 30 17 -->
+    <script>
+    !function(e,t,n,s,u,a){e.twq||(s=e.twq=function(){s.exe?s.exe.apply(s,arguments):s.queue.push(arguments);
+    },s.version='1.1',s.queue=[],u=t.createElement(n),u.async=!0,u.src='//static.ads-twitter.com/uwt.js',
+    a=t.getElementsByTagName(n)[0],a.parentNode.insertBefore(u,a))}(window,document,'script');
+    // Insert Twitter Pixel ID and Standard Event data below
+    twq('init','nw0gz');
+    twq('track','PageView');
+    </script>
+    <!-- End Twitter universal website tag code -->
+</head>
+<body>
+    <form name="aspnetForm" method="post" action="./migrating-bootstrap-3-to-bootstrap-4?ID=1334" id="aspnetForm">
+<div>
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTE0MDk2ODQwMTdkZJysVikQVHzjAtZqOeUvZO1Bu1pl" />
+</div>
+
+<div>
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="A9C58E29" />
+</div>
+        <div class="wrapper">
+            <!-- header -->
+            <header class="header header-megamenu">
+                <nav class="navbar navbar-default" role="navigation">
+                    <div class="container">
+                            <!--<div class="search-bar">                       
+                                <input type="search" onkeyup="executeQuery();" placeholder="Type search text here..." name="search" id="search-keyword">
+                                <div class="search-close" id="x"><i class="fa fa-times"></i></div>                               
+                            </div>-->                
+                       
+
+                            <!-- Brand and toggle get grouped for better mobile display -->
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                                <!--<a class="navbar-brand" href="./index.html">
+                                    <img src="img/dnc-logo-tee-trans.png"
+                                         srcset="img/dnc-logo-small.jpg 1980w, img/dnc-logo-x-small.jpg 320w" 
+                                         sizes ="100vw"
+                                         class="img-responsive" alt="DNC Magazine" />
+                                </a>-->
+                                <a class="navbar-brand" href="https://www.dotnetcurry.com">
+                                    <img src="/img/dnc-logo-small.jpg"
+                                         class="img-responsive" alt="DNC Magazine" />
+                                </a>
+                            </div>
+
+                            <!--<div class="search-trigger pull-right"></div>-->
+
+                            <div class="navbar-social pull-right visible-xs-block, hidden-xs">
+                                <a href="https://www.facebook.com/dotnetcurry"><img src="/img/icon/fb.png" class="img-responsive" alt="DotNetCurry's Official Facebook Account" /></a>
+                                <a href="https://www.twitter.com/dotnetcurry"><img src="/img/icon/twit.png" class="img-responsive" alt="DotNetCurry's Official Twitter Account" /></a>
+                                <a href="https://github.com/dotnetcurry"><img src="/img/icon/git.png" class="img-responsive" alt="DotNetCurry's Official Github Account" /></a>
+                            </div>
+
+                            <!-- Collect the nav links, forms, and other content for toggling -->
+                            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                                <ul class="nav navbar-nav">
+                                    <li class="dropdown megamenu">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tutorials <span class="fa fa-angle-down"></span></a>
+                                        <ul class="dropdown-menu">
+                                            <li>
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <h5>ASP.NET</h5>
+                                                        <a href="https://www.dotnetcurry.com/tutorials/aspnet">ASP.NET</a>
+                                                        <a href="https://www.dotnetcurry.com/tutorials/aspnet-mvc">ASP.NET MVC</a>
+                                                        <a href="https://www.dotnetcurry.com/tutorials/aspnet-core">ASP.NET Core</a>
+                                                        <a href="https://www.dotnetcurry.com/tutorials/sharepoint">SharePoint</a>
+                                                        <a href="https://www.dotnetcurry.com/tutorials/aspnet-ajax" class="last">ASP.NET AJAX</a>
+                                                        <h5>Patterns and Practices</h5>
+                                                        <a href="https://www.dotnetcurry.com/tutorials/software-gardening">Software Gardening</a>
+                                                        <a href="https://www.dotnetcurry.com/tutorials/patterns-practices">Design Patterns</a>
+                                                    </div>
+
+                                                    <div class="col-md-3">
+                                                        <h5>.NET</h5>
+                                                        <a href="https://www.dotnetcurry.com/tutorials/csharp">C#</a>
+                                                        <a href="https://www.dotnetcurry.com/tutorials/visualstudio">Visual Studio</a>
+                                                        <a href="https://www.dotnetcurry.com/tutorials/vsts-tfs">VSTS (Azure DevOps) & TFS</a>
+                                                        <a href="https://www.dotnetcurry.com/tutorials/linq">LINQ</a>
+                                                        <a href="https://www.dotnetcurry.com/tutorials/entityframework">Entity Framework</a>
+                                                        <a href="https://www.dotnetcurry.com/tutorials/dotnetframework">.NET Framework</a>
+                                                        <a href="https://www.dotnetcurry.com/tutorials/dotnet-standard-core">.NET Standard & .NET Core</a>
+                                                        <a href="https://www.dotnetcurry.com/tutorials/wpf">WPF</a>
+                                                        <a href="https://www.dotnetcurry.com/tutorials/wcf">WCF</a>
+                                                        <a href="https://www.dotnetcurry.com/tutorials/winforms">WinForms</a>
+                                                    </div>
+
+                                                    <div class="col-md-3">
+                                                        <h5>Cloud and Mobile</h5>
+                                                        <a href="https://www.dotnetcurry.com/tutorials/windows-azure">Microsoft Azure</a>
+                                                        <a href="https://www.dotnetcurry.com/tutorials/devops">DevOps</a>
+                                                        <a href="https://www.dotnetcurry.com/tutorials/xamarin">Xamarin</a>
+                                                        <a href="https://www.dotnetcurry.com/tutorials/powershell">Powershell</a>
+                                                        <a href="https://www.dotnetcurry.com/tutorials/machine-learning-ai">Machine Learning & AI</a>
+                                                        <a href="https://www.dotnetcurry.com/tutorials/windows-store">UWP & Windows Store</a>
+                                                        <a href="https://www.dotnetcurry.com/tutorials/windowsphone" class="last">Windows Phone</a>
+                                                        <h5>Useful</h5>
+                                                        <a href="https://www.dotnetcurry.com/tutorials/dotnetinterview">.NET Interview Q&A</a>
+                                                        <a href="https://www.dotnetcurry.com/tutorials/product-articles-review">Product Reviews</a>
+                                                        <a href="https://www.dotnetcurry.com/tutorials/general-programming-topics">General Topics</a>
+                                                    </div>
+
+                                                    <div class="col-md-3">
+                                                        <h5>JavaScript</h5>
+                                                        <a href="https://www.dotnetcurry.com/tutorials/jquery-aspnet">jQuery</a>
+                                                        <a href="https://www.dotnetcurry.com/tutorials/angularjs">Angular</a>
+                                                        <a href="https://www.dotnetcurry.com/tutorials/typescript">TypeScript</a>
+                                                        <a href="https://www.dotnetcurry.com/tutorials/nodejs">Node.js</a>
+                                                        <a href="https://www.dotnetcurry.com/tutorials/reactjs">React.js</a>
+                                                        <a href="https://www.dotnetcurry.com/tutorials/backbonejs">Backbone.js</a>
+                                                        <a href="https://www.dotnetcurry.com/tutorials/html5-javascript">HTML5 & JavaScript</a>
+                                                        <a href="https://www.dotnetcurry.com/tutorials/bootstrap-css">Bootstrap & CSS</a>
+                                                    </div>
+
+                                                    <div class="col-md-3">
+                                                        <h5>Publications</h5>
+                                                        <a href="http://www.jquerycookbook.com/">Books</a>
+                                                        <a href="https://www.dotnetcurry.com/magazine/" class="last">Magazines</a>
+
+                                                        <h5>Older Technologies</h5>
+                                                        <a href="https://www.dotnetcurry.com/tutorials/silverlight">Silverlight</a>
+                                                        <a href="https://www.dotnetcurry.com/tutorials/expression-web">Expression Web</a>
+                                                        <a href="https://www.dotnetcurry.com/tutorials/expression-blend">Expression Blend</a>
+                                                        <a href="https://www.dotnetcurry.com/tutorials/windows-vista">Windows Vista</a>
+                                                        <a href="https://www.dotnetcurry.com/tutorials/microsoft-word">Word 2007</a>
+                                                        <a href="https://www.dotnetcurry.com/tutorials/microsoft-outlook">Outlook 2007</a>
+                                                        <a href="#"></a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+
+                                    <li class="dropdown megamenu">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Featured <span class="fa fa-angle-down"></span></a>
+                                        <ul class="dropdown-menu">
+                                            <li>
+                                                <div class="row">
+                                                    <div class="col-md-3 col-xs-12">
+                                                        <div class="header-post">
+                                                            <a href="https://www.dotnetcurry.com/angular/1385/angular-4-cheat-sheet">
+                                                                <div class="hp-thumb">
+                                                                    <img data-src="/img/header/1385.jpg" class="img-responsive lazyload" alt="" />
+                                                                </div>
+                                                            </a>
+
+                                                            <date>Aug 30, 2017</date>
+                                                            <h4><a href="https://www.dotnetcurry.com/angular/1385/angular-4-cheat-sheet">Angular 4 Development Cheat Sheet</a></h4>
+                                                            <p class="hidden-xs">A quick reference guide to get you going with Angular development. It uses Angular v4 with TypeScript.</p>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-3 col-xs-12">
+                                                        <div class="header-post">
+                                                            <a href="https://www.dotnetcurry.com/patterns-practices/1364/error-handling-dotnet-projects">
+                                                                <div class="hp-thumb">
+                                                                    <!-- <div class="hp-overlay">
+                                                        <img src="img/header/gallery.png" alt=""/>
+                                                        <span>12 Photos</span>
+                                                    </div> -->
+                                                                    <img data-src="/img/header/1364.jpg" class="img-responsive lazyload" alt="" />
+                                                                </div>
+                                                            </a>
+
+                                                            <date>May 12, 2017</date>
+                                                            <h4><a href="https://www.dotnetcurry.com/patterns-practices/1364/error-handling-dotnet-projects">Error Handling in Large .NET Projects - Best Practices</a></h4>
+                                                            <p class="hidden-xs">Learn some effective error handling strategies that you can use in your .NET projects.</p>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-3 col-xs-12">
+                                                        <div class="header-post">
+                                                            <a href="https://www.dotnetcurry.com/patterns-practices/1375/behavior-driven-development-bdd">
+                                                                <div class="hp-thumb">
+                                                                    <img data-src="/img/header/1375.jpg" class="img-responsive lazyload" alt="" />
+                                                                </div>
+                                                            </a>
+                                                            <date>July 3, 2017</date>
+                                                            <h4><a href="https://www.dotnetcurry.com/patterns-practices/1375/behavior-driven-development-bdd">Behavior Driven Development (BDD) – an in-depth look</a></h4>
+                                                            <p class="hidden-xs">Learn how Behavior Driven Development (BDD) works with a real-world example of how to use it.</p>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-3 col-xs-12">
+                                                        <div class="header-post">
+                                                            <a href="https://www.dotnetcurry.com/patterns-practices/1305/aspect-oriented-programming-aop-csharp-using-solid">
+                                                                <div class="hp-thumb">
+                                                                    <img data-src="/img/header/1305.jpg" class="img-responsive lazyload" alt="" />
+                                                                </div>
+                                                            </a>
+
+                                                            <date>Sep 25, 2016</date>
+                                                            <h4><a href="https://www.dotnetcurry.com/patterns-practices/1305/aspect-oriented-programming-aop-csharp-using-solid">Aspect Oriented Programming (AOP) in C# with SOLID</a></h4>
+                                                            <p class="hidden-xs">Aspect Oriented Programming (AOP) in C# using SOLID principles, with challenges and solutions.</p>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-3 col-xs-12">
+                                                        <div class="header-post">
+                                                            <a href="https://www.dotnetcurry.com/javascript/1359/javascript-frameworks-aspnet-mvc-developer">
+                                                                <div class="hp-thumb">
+                                                                    <img data-src="/img/header/1359.jpg" class="img-responsive lazyload" alt="" />
+                                                                </div>
+                                                            </a>
+
+                                                            <date>Sep 25, 2016</date>
+                                                            <h4><a href="https://www.dotnetcurry.com/javascript/1359/javascript-frameworks-aspnet-mvc-developer">JavaScript Frameworks for ASP.NET MVC Developers</a></h4>
+                                                            <p class="hidden-xs">Learn about a few JavaScript frameworks, and which one will be a good fit in your ASP.NET MVC apps</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+
+                                    <li class="dropdown megamenu">
+                                        <a href="https://www.dotnetcurry.com/magazine/">.NET Magazines</a>
+                                    </li>
+
+                                    <li class="dropdown dropdown-v1">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">About<span class="fa fa-angle-down"></span></a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="https://www.dotnetcurry.com/About.aspx">About Us</a></li>
+                                            <li><a href="https://www.dotnetcurry.com/WriteForUs.aspx">Write For Us</a></li>
+                                            <li><a href="https://www.dotnetcurry.com/Contact.aspx">Contact Us</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown megamenu">
+                                        <a href="https://www.dotnetcurry.net/s/dnc-products">Developer Tools</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- /.navbar-collapse -->
+                    </div>
+                </nav>
+            </header>
+            <!--header-->
+
+            <!-- container -->
+            <div class="container">           
+
+	            <div class="clearfix divborder">              
+
+		                <div class="col-md-8 column">
+                             
+     <div class="col-md-12 articlebox row">
+            <div class="articletitle">
+                   <h1 class="articlehead">
+                     <span id="ctl00_MainContent_lblTitle">Migrating from Bootstrap 3 to 4</span>   
+                    </h1>
+                          
+
+ 
+                     
+    
+                        <b>Posted by: </b> <a id="ctl00_MainContent_lnkAddedBy" href="../../Author.aspx?AuthorName=Benjamin Jakobus">Benjamin Jakobus</a> , 
+                    on 1/20/2017, 
+                    in <b> Category </b> <a id="ctl00_MainContent_lnkCategory" href="../../BrowseArticles.aspx?CatID=91">Bootstrap & CSS</a> 
+                    <br />
+            </div>
+       
+            <div class="articlestats">
+                    <div class="stats1">
+                        <b>Views: </b>
+                    36692   <br/>   
+                    </div> 
+            </div>
+
+            <div class="articleabstract">
+                <b>Abstract: </b> Look into a migrating scenario from a simple Bootstrap 3 website to Bootstrap 4, step by step. We will be using a small, single-page, demo website for this purpose.
+            </div>
+
+           <div class="socialshare">
+                <a class="resp-sharing-button__link" id="fbsharelinktop" target="_blank" aria-label="">
+                  <div class="resp-sharing-button resp-sharing-button--facebook resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+                    <svg version="1.1" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
+                        <g>
+                            <path d="M18.768,7.465H14.5V5.56c0-0.896,0.594-1.105,1.012-1.105s2.988,0,2.988,0V0.513L14.171,0.5C10.244,0.5,9.5,3.438,9.5,5.32 v2.145h-3v4h3c0,5.212,0,12,0,12h5c0,0,0-6.85,0-12h3.851L18.768,7.465z"/>
+                        </g>
+                    </svg>
+                      <span></span>
+                    </div>
+                  </div>
+                </a>
+
+                <a class="resp-sharing-button__link" id="twtsharelinktop" target="_blank" aria-label="">
+                  <div class="resp-sharing-button resp-sharing-button--twitter resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+                    <svg version="1.1" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
+                        <g>
+                            <path d="M23.444,4.834c-0.814,0.363-1.5,0.375-2.228,0.016c0.938-0.562,0.981-0.957,1.32-2.019c-0.878,0.521-1.851,0.9-2.886,1.104 C18.823,3.053,17.642,2.5,16.335,2.5c-2.51,0-4.544,2.036-4.544,4.544c0,0.356,0.04,0.703,0.117,1.036 C8.132,7.891,4.783,6.082,2.542,3.332C2.151,4.003,1.927,4.784,1.927,5.617c0,1.577,0.803,2.967,2.021,3.782 C3.203,9.375,2.503,9.171,1.891,8.831C1.89,8.85,1.89,8.868,1.89,8.888c0,2.202,1.566,4.038,3.646,4.456 c-0.666,0.181-1.368,0.209-2.053,0.079c0.579,1.804,2.257,3.118,4.245,3.155C5.783,18.102,3.372,18.737,1,18.459 C3.012,19.748,5.399,20.5,7.966,20.5c8.358,0,12.928-6.924,12.928-12.929c0-0.198-0.003-0.393-0.012-0.588 C21.769,6.343,22.835,5.746,23.444,4.834z"/>
+                        </g>
+                    </svg>
+                      <span></span>
+                    </div>
+                  </div>
+                </a>
+
+               <a class="resp-sharing-button__link" id="linkdinsharelinktop"  target="_blank" aria-label="">
+                  <div class="resp-sharing-button resp-sharing-button--linkedin resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+                    <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.5 21.5h-5v-13h5v13zM4 6.5C2.5 6.5 1.5 5.3 1.5 4s1-2.4 2.5-2.4c1.6 0 2.5 1 2.6 2.5 0 1.4-1 2.5-2.6 2.5zm11.5 6c-1 0-2 1-2 2v7h-5v-13h5V10s1.6-1.5 4-1.5c3 0 5 2.2 5 6.3v6.7h-5v-7c0-1-1-2-2-2z"/></svg>
+                    <span></span>
+                   </div>
+                  </div>
+                </a>
+
+                <!--<a class="resp-sharing-button__link" id="googsharelinktop" target="_blank" aria-label="">
+                  <div class="resp-sharing-button resp-sharing-button--google resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+                    <svg version="1.1" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
+                        <g>
+                            <path d="M11.366,12.928c-0.729-0.516-1.393-1.273-1.404-1.505c0-0.425,0.038-0.627,0.988-1.368 c1.229-0.962,1.906-2.228,1.906-3.564c0-1.212-0.37-2.289-1.001-3.044h0.488c0.102,0,0.2-0.033,0.282-0.091l1.364-0.989 c0.169-0.121,0.24-0.338,0.176-0.536C14.102,1.635,13.918,1.5,13.709,1.5H7.608c-0.667,0-1.345,0.118-2.011,0.347 c-2.225,0.766-3.778,2.66-3.778,4.605c0,2.755,2.134,4.845,4.987,4.91c-0.056,0.22-0.084,0.434-0.084,0.645 c0,0.425,0.108,0.827,0.33,1.216c-0.026,0-0.051,0-0.079,0c-2.72,0-5.175,1.334-6.107,3.32C0.623,17.06,0.5,17.582,0.5,18.098 c0,0.501,0.129,0.984,0.382,1.438c0.585,1.046,1.843,1.861,3.544,2.289c0.877,0.223,1.82,0.335,2.8,0.335 c0.88,0,1.718-0.114,2.494-0.338c2.419-0.702,3.981-2.482,3.981-4.538C13.701,15.312,13.068,14.132,11.366,12.928z M3.66,17.443 c0-1.435,1.823-2.693,3.899-2.693h0.057c0.451,0.005,0.892,0.072,1.309,0.2c0.142,0.098,0.28,0.192,0.412,0.282 c0.962,0.656,1.597,1.088,1.774,1.783c0.041,0.175,0.063,0.35,0.063,0.519c0,1.787-1.333,2.693-3.961,2.693 C5.221,20.225,3.66,19.002,3.66,17.443z M5.551,3.89c0.324-0.371,0.75-0.566,1.227-0.566l0.055,0 c1.349,0.041,2.639,1.543,2.876,3.349c0.133,1.013-0.092,1.964-0.601,2.544C8.782,9.589,8.363,9.783,7.866,9.783H7.865H7.844 c-1.321-0.04-2.639-1.6-2.875-3.405C4.836,5.37,5.049,4.462,5.551,3.89z"/>
+                            <polygon points="23.5,9.5 20.5,9.5 20.5,6.5 18.5,6.5 18.5,9.5 15.5,9.5 15.5,11.5 18.5,11.5 18.5,14.5 20.5,14.5 20.5,11.5  23.5,11.5 	"/>
+                        </g>
+                    </svg>
+                    </div>
+                  </div>
+                </a>-->
+
+          </div>
+      </div>
+         
+      <div id="articleBody"  class="col-md-12 row">
+        <p>Bootstrap has become the world&rsquo;s favorite framework for building responsive web UI. In the last edition of DNC Magazine, we took a more detailed look into the newest Bootstrap release - Bootstrap 4 Alpha - and discussed what the project has to offer. In this article, we will look into a migrating scenario from simple Bootstrap 3 website to Bootstrap 4, step by step.</p>
+<p><em>This article is published from the <strong>DNC Magazine for Developers and Architects. </strong></em><a href="https://www.dotnetcurry.net/s/dnc-mag-28th-single" rel="nofollow" target="_blank"><strong>Download this magazine from here</strong></a><em> [PDF] or </em><a href="https://www.dotnetcurry.com/magazine/"><em>Subscribe to this magazine for FREE</em></a><em> and download all previous and current editions.</em></p>
+<p>In a previous article, &ldquo;<a href="https://www.dotnetcurry.com/javascript/1327/bootstrap-4-new-features">Exploring Bootstrap 4</a>&rdquo;, we briefly touched upon the major differences and new features that come about with the latest release of Bootstrap. To recap: Bootstrap 4 is a complete re-write of its predecessor - as such, it comes with a number of breaking changes, including:</p>
+<ul>
+    <li>Dropping support for panels, wells and thumbnails</li>
+    <li>The replacement of the badge component with labels</li>
+    <li>The addition of a new grid tier</li>
+    <li>Favoring root em (rem) over pixels (px) as the preferred typographic measurement</li>
+    <li>Class name changes for the nav bar, carousel, dropdown and pagination</li>
+</ul>
+<p>(Note: A complete list of changes can be found here: <a href="https://v4-alpha.getbootstrap.com/migration/">https://v4-alpha.getbootstrap.com/migration/</a>)</p>
+<h2>Migrating to Bootstrap v4</h2>
+<p>With these changes in mind, this article hopes to serve as a (non-exhaustive) step-by-step guide for migrating an existing Bootstrap 3 website to Bootstrap 4. To this end, we will be utilizing a small, single-page, demo website built using sample snippets provided by the official Bootstrap 3 documentation. Figure 1 below illustrates the landing page of this website.</p>
+<p><img title="bootstrap3-website-overview" border="0" alt="bootstrap3-website-overview" src="https://www.dotnetcurry.com/images/javascript/bootstrap4-migration/bootstrap3-website-overview.png" width="1902" height="895" /></p>
+<p>Figure 1: The landing page of our demo website, built using sample snippets found in the official Bootstrap 3 documentation.</p>
+<p>It is composed of a top nav bar, a carousel, an alert and a grid using panels, followed by a pagination component.</p>
+<h3>Adding Bootstrap 4</h3>
+<p>The first step on our migration journey is to replace the Bootstrap 3 reference (stylesheet and JavaScript file) with the Bootstrap 4 equivalent. To do so, first install Bootstrap 4 using bower install bootstrap#v4.0.0-alpha.4. This should create a new folder, bower_components, in your working directory.</p>
+<p>Replace the Bootstrap 3 stylesheet reference with:</p>
+<pre class="brush: xml;">
+&lt; link rel=&quot;stylesheet&quot; href=&quot;bower_components/bootstrap/dist/css/bootstrap.min.css&quot; /&gt;</pre>
+<p>Similarly, replace the Bootstrap 3 JavaScript reference with:</p>
+<pre class="brush: js;">
+&lt; script src=&ldquo;bower_components/bootstrap/dist/js/bootstrap.min.js&quot;&gt;<!-- script--></pre>
+<p>Instead of bower, one can also use npm (npm install bootstrap@4.0.0-alpha.5), or composer (composer require twbs/bootstrap:4.0.0-alpha.5) to install Bootstrap.</p>
+<p>Alternatively, as per the Bootstrap 4 documentation, you can use the Bootstrap 4 CDN:</p>
+<pre class="brush: js;">
+&lt; link rel=&quot;stylesheet&quot; href=&quot;https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css&quot; integrity=&quot;sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi&quot; crossorigin=&quot;anonymous&quot; &gt;
+&lt; script src=&quot;https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js&quot; integrity=&quot;sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK&quot; crossorigin=&quot;anonymous&quot;&gt;<!-- script--></pre>
+<p>Save and refresh. Our demo page should now appear broken, as shown in figure 2 below.</p>
+<p><img title="bootstrap4-website-broken" border="0" alt="bootstrap4-website-broken" src="https://www.dotnetcurry.com/images/javascript/bootstrap4-migration/bootstrap4-website-broken.png" width="774" height="1182" /></p>
+<p>Figure 2: The landing page of our demo website rendering incorrectly after including Bootstrap 4.</p>
+<h3>Fixing the navigation bar</h3>
+<p>First, let&rsquo;s look into fixing the navigation bar. Our Bootstrap 3 nav bar is defined as follows:</p>
+<pre class="brush: xml;">
+&lt;nav class=&quot;navbar navbar-default&quot;&gt;
+    &lt;div class=&quot;container-fluid&quot;&gt;
+      &lt;div class=&quot;navbar-header&quot;&gt;
+          &lt;a class=&quot;navbar-brand&quot; href=&quot;#&quot;&gt;Brand&lt;/a&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;collapse navbar-collapse&quot; id=&quot;navbar-collapse&quot;&gt;
+        &lt;ul class=&quot;nav navbar-nav&quot;&gt;
+          &lt;li class=&quot;active&quot;&gt;&lt;a href=&quot;#&quot;&gt;Home &lt;span class=&quot;sr-only&quot;&gt;(current)&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+          &lt;li class=&quot;dropdown&quot;&gt;
+            &lt;a href=&quot;#&quot; class=&quot;dropdown-toggle&quot; role=&quot;button&quot;&gt;Dropdown &lt;span class=&quot;caret&quot;&gt;&lt;/span&gt;&lt;/a&gt;
+            &lt;ul class=&quot;dropdown-menu&quot;&gt;
+              &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Item 1&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Item 2&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+              &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Item 3&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/nav&gt;</pre>
+<p>Bootstrap 4 greatly simplifies the navbar. However, this simplification will require us to make several changes to our markup, in order to get the navbar working again. Firstly, we no longer need the div, wrapping the navbar contents, to which the container-fluid class is applied, because navbars are now fluid by default. We also no longer need to explicitly specify that the navbar items are collapsible. Hence, we can remove the div to which the class collapse navbar-collapse was assigned. Last but not least, we also no longer require the navbar-header class, so we can also remove that element.</p>
+<p>Bootstrap 4 also requires that a color scheme be specified for the navbar.</p>
+<p><em>For more information on color schemes see </em><a href="https://v4-alpha.getbootstrap.com/components/navbar/%23color-schemes"><em>https://v4-alpha.getbootstrap.com/components/navbar/#color-schemes</em></a></p>
+<p>Let&rsquo;s go ahead and apply navbar navbar-light bg-faded to the nav element.</p>
+<p>Any navbar list item now requires the nav-item class. Similarly, any links must have the nav-link class applied to them. Both the nav-item and nav-link classes ensure that the display type is set to inline-block.</p>
+<p>Finally, we must also apply the dropdown-item to all dropdown items (more on this later).</p>
+<p>Our Bootstrap 4 navigation markup now looks as follows:</p>
+<pre class="brush: xml;">
+&lt;nav class=&quot;navbar navbar-light bg-faded&quot;&gt;
+  &lt;a class=&quot;navbar-brand&quot; href=&quot;#&quot;&gt;Brand&lt;/a&gt;
+    &lt;ul class=&quot;nav navbar-nav&quot;&gt;
+          &lt;li class=&quot;nav-item active&quot;&gt;&lt;a class=&quot;nav-link&quot; href=&quot;#&quot;&gt;Home &lt;span         class=&quot;sr-only&quot;&gt;(current)&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+  
+          &lt;li class=&quot;nav-item dropdown&quot;&gt;
+            &lt;a href=&quot;#&quot; class=&quot;nav-link dropdown-toggle&quot; data-        toggle=&quot;dropdown&quot; role=&quot;button&quot; aria-haspopup=&quot;true&quot; aria-expanded=&quot;false&quot;&gt;Dropdown &lt;span class=&quot;caret&quot;&gt;&lt;/span&gt;&lt;/a&gt;
+    &lt;ul class=&quot;dropdown-menu&quot;&gt;
+      &lt;li class=&quot;dropdown-item&quot;&gt;&lt;a href=&quot;#&quot;&gt;Item 1&lt;/a&gt;&lt;/li&gt;
+      &lt;li class=&quot;dropdown-item&quot;&gt;&lt;a href=&quot;#&quot;&gt;Item 2&lt;/a&gt;&lt;/li&gt;
+      &lt;li class=&quot;dropdown-item&quot;&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+      &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
+      &lt;li class=&quot;dropdown-item&quot;&gt;&lt;a href=&quot;#&quot;&gt;Item 3&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;</pre>
+<p>As can be seen above, the markup required for the Bootstrap 4 navbar is much flatter and simpler, causing it to render faster, and making it easier to parse by the reader.</p>
+<h3>Replacing panels</h3>
+<p>As noted in the introduction, Bootstrap 4 dropped support for panels, wells and thumbnails. Instead, developers should make use of a new Bootstrap 4 concept: <i>cards</i>. Cards aim to merge the three aforementioned components into one, flexible, component that supports various types of content at the same time. For example, cards support images, lists, footers and headers, and as such are much less restrictive than their individual counter-parts.</p>
+<p>Our demo website defines a series of panels within a 4x2 grid. The markup for each panel is as follows:</p>
+<pre class="brush: xml;">
+&lt;div class=&quot;panel panel-default&quot;&gt;
+        &lt;div class=&quot;panel-body&quot;&gt;
+              Lorem ipsum dolor sit amet, posse fabellas periculis at mei, fierent suscipiantur, in mei populo eloquentiam. Vel luptatum             repudiare tincidunt cu. An mei adhuc imperdiet signiferumque. 
+        &lt;/div&gt;
+&lt;/div&gt;</pre>
+<p>We will go ahead and replace each occurrence of these panels with a card. The simplest form of card is defined (figure 3):</p>
+<pre class="brush: xml;">
+&lt;div class=&quot;card&quot;&gt;
+    &lt;div class=&quot;card-block&quot;&gt;
+        &lt;p class=&quot;card-text&quot;&gt;
+            Lorem ipsum dolor sit amet, posse fabellas periculis at mei,             sit at fierent suscipiantur, in mei populo eloquentiam. Vel             luptatum repudiare tincidunt cu. An mei adhuc imperdiet                 signiferumque. 
+              &lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</pre>
+<p><img title="bs4-website-simple-cards" border="0" alt="bs4-website-simple-cards" src="https://www.dotnetcurry.com/images/javascript/bootstrap4-migration/bs4-website-simple-cards.png" width="1042" height="446" /></p>
+<p>Figure 3: The simplest form of cards, containing only a card text, and no title or image.</p>
+<p>Since cards offer various types of content, we could add a title, an image and some links, using the card-title, card-img-* and card-link classes respectively (figure 4):</p>
+<pre class="brush: xml;">
+&lt;div class=&quot;card&quot;&gt;
+&lt;img class=&quot;card-img-top&quot; src=&quot;beach.jpg&quot; alt=&quot;Card image cap&quot;&gt;
+          &lt;div class=&quot;card-block&quot;&gt;
+              &lt;h4 class=&quot;card-title&quot;&gt;Surf it up!&lt;/h4&gt;
+              &lt;p class=&quot;card-text&quot;&gt;
+                    Lorem ipsum dolor sit amet, posse fabellas periculis at                 mei, sit at fierent suscipiantur, in mei populo                     eloquentiam. Vel luptatum repudiare tincidunt cu. An mei                 adhuc imperdiet signiferumque. 
+              &lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;card-block&quot;&gt;
+          &lt;a href=&quot;#&quot; class=&quot;card-link&quot;&gt;Stoked!&lt;/a&gt;
+    &lt;a href=&quot;#&quot; class=&quot;card-link&quot;&gt;Hang lose!&lt;/a&gt;
+      &lt;/div&gt;
+&lt;/div&gt;</pre>
+<p><img title="bootstrap4 advanced card" border="0" alt="bootstrap4 advanced card" src="https://www.dotnetcurry.com/images/javascript/bootstrap4-migration/bs4-website-advanced-card.png" /></p>
+<p>Figure 4: A card containing an image, title and two links.</p>
+<h3>Updating pagination</h3>
+<p>Bootstrap 4 introduced two new classes to use for pagination:</p>
+<p>1. page-item which adjusts the display to inline, and sets the margins of the first and last children</p>
+<p>2. page-link which adjusts the border, position, margin and text decoration of an anchor element.</p>
+<p>As such, we must update the Bootstrap 3 pagination markup, from:</p>
+<pre class="brush: xml;">
+&lt;nav aria-label=&quot;Page navigation&quot;&gt;
+  &lt;ul class=&quot;pagination&quot;&gt;
+    &lt;li&gt;
+      &lt;a href=&quot;#&quot; aria-label=&quot;Previous&quot;&gt;
+        &lt;span aria-hidden=&quot;true&quot;&gt;&amp;laquo;&lt;/span&gt;
+      &lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;1&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;2&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;3&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;4&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;5&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;
+      &lt;a href=&quot;#&quot; aria-label=&quot;Next&quot;&gt;
+        &lt;span aria-hidden=&quot;true&quot;&gt;&amp;raquo;&lt;/span&gt;
+      &lt;/a&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;</pre>
+<p>to:</p>
+<pre class="brush: xml;">
+&lt;nav aria-label=&quot;Page navigation&quot;&gt;
+  &lt;ul class=&quot;pagination&quot;&gt;
+    &lt;li class=&quot;page-item&quot;&gt;
+      &lt;a class=&quot;page-link&quot; href=&quot;#&quot; aria-label=&quot;Previous&quot;&gt;
+        &lt;span aria-hidden=&quot;true&quot;&gt;&amp;laquo;&lt;/span&gt;
+      &lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li class=&quot;page-item&quot;&gt;&lt;a class=&quot;page-link&quot; href=&quot;#&quot;&gt;1&lt;/a&gt;&lt;/li&gt;
+    &lt;li class=&quot;page-item&quot;&gt;&lt;a class=&quot;page-link&quot; href=&quot;#&quot;&gt;2&lt;/a&gt;&lt;/li&gt;
+    &lt;li class=&quot;page-item&quot;&gt;&lt;a class=&quot;page-link&quot; href=&quot;#&quot;&gt;3&lt;/a&gt;&lt;/li&gt;
+    &lt;li class=&quot;page-item&quot;&gt;&lt;a class=&quot;page-link&quot; href=&quot;#&quot;&gt;4&lt;/a&gt;&lt;/li&gt;
+    &lt;li class=&quot;page-item&quot;&gt;&lt;a class=&quot;page-link&quot; href=&quot;#&quot;&gt;5&lt;/a&gt;&lt;/li&gt;
+    &lt;li class=&quot;page-item&quot;&gt;
+      &lt;a href=&quot;#&quot; aria-label=&quot;Next&quot; class=&quot;page-link&quot;&gt;
+        &lt;span aria-hidden=&quot;true&quot;&gt;&amp;raquo;&lt;/span&gt;
+      &lt;/a&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;</pre>
+<h3>Updating the carousel</h3>
+<p>The changes to the carousel code are minor. In Bootstrap 3, a carousel is defined through the following markup:</p>
+<pre class="brush: xml;">
+&lt;div class=&quot;carousel-inner&quot; role=&quot;listbox&quot;&gt;
+        &lt;div class=&quot;item active&quot;&gt;
+          &lt;img class=&quot;first-slide&quot; src=&quot;http://placehold.it/1150x450&quot; alt=&quot;First slide&quot;&gt;
+          &lt;div class=&quot;container&quot;&gt;
+            &lt;div class=&quot;carousel-caption&quot;&gt;
+              &lt;p&gt;Note: The sample carousel image was created using &lt;code&gt;placehold.it&lt;/code&gt;Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh .&lt;/p&gt;
+              &lt;p&gt;&lt;a class=&quot;btn btn-lg btn-primary&quot; href=&quot;#&quot; role=&quot;button&quot;&gt;Click me!&lt;/a&gt;&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;!-- Other carousel items here --&gt;
+&lt;/div&gt;</pre>
+<p>The only changes required are</p>
+<p>i) Renaming the item class to carousel-item</p>
+<p>ii) Replacing the Glyphicon classes with icon-prev and icon-next</p>
+<h3>Glyphicons</h3>
+<p>Although the demo project discussed in this article does not use of Glyphicons, and important change to point out is the removal of Glyphicons from Bootstrap 4. As a result of this decision, Bootstrap 4 may be more light-weight, and may have a smaller footprint than its predecessor. This means that icon sets now need to be included manually - which is advantageous as one is now no longer coupled to the default Bootstrap icon set.</p>
+<h3>Updating Dropdowns</h3>
+<p>As already noted previously, Bootstrap 4 dropdown list items are now required to have the dropdown-item class applied to them. Furthermore, the dropdown menu is no longer required to be an anchor tag - instead, one can use buttons. Aside from these two changes, the classes used to define a dropdown menu remain the same for Bootstrap 4.</p>
+<h3>The Grid System</h3>
+<p>The most striking change to the Bootstrap grid system is the introduction of a new grid tier, which contains a breakpoint at 480px. This gives Bootstrap 4, four grid tiers, instead of 3: xs, sm, md, and lg.</p>
+<p>The addition of the sm grid tier means that Bootstrap now has five breakpoints:</p>
+<p>&bull; An extra-small breakpoint for handheld devices that boast a smaller screen than normal (0px)</p>
+<p>&bull; A small breakpoint aimed at phones / handhelds (544px)</p>
+<p>&bull; A breakpoint for screens of medium size, such as tablets (768px)</p>
+<p>&bull; A breakpoint for large screens - that is, desktops (992px)</p>
+<p>&bull; An extra-large breakpoint to support wide-screen (1200px)</p>
+<p>Furthermore, the offsetting of columns has changed, from .col-*-offset-** to .offset-*-**. That is, .col-md-offset-* now is .offset-md-*. Likewise, the pushing of columns changed from .col-push-*-* to .push-*-*.</p>
+<h3>Conclusion</h3>
+<p>In this article, we took a brief look into migrating a simple, existing Bootstrap 3 website to Bootstrap 4. The website was constructed using various sample snippets encountered in the official Bootstrap 3 documentation. Although the overall task may have appeared daunting at first, the changes themselves were straight forward - with the most effort being expended by updating the navigation bar and replacing panels with cards. In summary, the major changes that one should watch out for are:</p>
+<p>&bull; The replacement of panels, wells and thumbnails with cards</p>
+<p>&bull; The renaming of classes and the introduction of a new grid tier</p>
+<p>&bull; The removal of Glyphicons</p>
+<p>&bull; The replacement of badges with labels</p>
+<p>&bull; The simplification of the navigation bar</p>
+<p>&bull; The introduction of additional classes around dropdowns and pagination</p>
+<p><em>Thanks to <a href="https://www.dotnetcurry.com/author/gil-fink">Gil Fink</a> for reviewing this article.</em></p>
+<p><em>This article has been editorially reviewed by </em><a href="https://www.dotnetcurry.com/author/suprotim-agarwal"><em>Suprotim Agarwal.</em></a></p>
+<div id="csharpbook" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 articletext">
+<!--<a href="http://www.dotnetcurry.org/r/dnc-csharpbk-web-imgbtm" target="_blank" style="color:#cd282f"><img alt="Absolutely Awesome Book on C# and .NET" src="/csharpbook/images/csharpbook-hori.jpg" /></a>-->
+        <div class="col-md-3 col-sm-3 col-xs-4">
+            <a href="http://www.dotnetcurry.org/r/dnc-csharpbk-web-imgbtm" target="_blank"><img alt="Absolutely Awesome Book on C# and .NET" src="/csharpbook/images/csharp-book-ad.jpg" /></a>
+		</div>
+		<div class="col-md-9 col-sm-9 col-xs-8">
+			<p>C# and .NET have been around for a very long time, but their constant growth means there’s always more to learn.</p>
+            <p>We at DotNetCurry are very excited to announce the <strong><a href="http://www.dotnetcurry.org/r/dnc-csharpbk-web-textad-solid" target="_blank">The Absolutely Awesome Book on C# and .NET</a></strong>. This is a 500 pages concise technical eBook available in PDF, ePub (iPad), and Mobi (Kindle). </p><p>Organized around concepts, this eBook aims to provide a concise, yet solid foundation in C# and .NET, covering <b>C# 6.0, C# 7.0 and .NET Core, with chapters on .NET Standard and the upcoming C# 8.0 too</b>. Use these concepts to deepen your existing knowledge of C# and .NET, to have a solid grasp of the latest in C# and .NET OR to crack your next .NET Interview.</p>
+            <p><strong><a href="http://www.dotnetcurry.org/r/dnc-csharpbk-web-textad-solid" target="_blank" style="color:#cd282f">Click here to Explore the Table of Contents or Download Sample Chapters!<a /></strong></p>
+		</div>
+      </div>
+          <div class="footerheading margin-top-20">What Others Are Reading!</div>
+          <div class="col-xs-12 col-sm-12 col-md-12 similarauthor">  
+                <div class="row">
+                    <div class="col-md-12 similararticles">
+                                  
+                    <a href="http://www.dotnetcurry.com/ShowArticle.aspx?ID=1327" style="color:#4A75AD;font-weight:normal;">Bootstrap 4 – New Features</a>
+                     <br /><br />
+                    
+
+
+
+<span id="ctl00_MainContent_SimilarPosts1_lblCategoNam"></span>
+
+        
+        
+     
+
+                    </div>
+                </div>              
+          </div>  
+		<!-- DNC_BottomText -->
+          <div class="visible-xs visible-sm visible-md visible-lg">
+		    <div id='dnc-bot-txtad' class="articletext">	
+
+		    </div>
+        </div>
+          <div class="socialbox">
+<b>Was this article worth reading? Share it with fellow developers too. Thanks!</b>
+<br/>
+		<!-- Sharingbutton Facebook -->
+<a class="resp-sharing-button__link" id="fbsharelink" target="_blank" aria-label="Share on Facebook">
+  <div class="resp-sharing-button resp-sharing-button--facebook resp-sharing-button--large"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+    <svg version="1.1" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
+        <g>
+            <path d="M18.768,7.465H14.5V5.56c0-0.896,0.594-1.105,1.012-1.105s2.988,0,2.988,0V0.513L14.171,0.5C10.244,0.5,9.5,3.438,9.5,5.32 v2.145h-3v4h3c0,5.212,0,12,0,12h5c0,0,0-6.85,0-12h3.851L18.768,7.465z"/>
+        </g>
+    </svg>
+    </div>Share on Facebook</div>
+</a>
+
+<!-- Sharingbutton Twitter -->
+
+<a class="resp-sharing-button__link" id="twtsharelink" target="_blank" aria-label="Share on Twitter">
+  <div class="resp-sharing-button resp-sharing-button--twitter resp-sharing-button--large"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+    <svg version="1.1" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
+        <g>
+            <path d="M23.444,4.834c-0.814,0.363-1.5,0.375-2.228,0.016c0.938-0.562,0.981-0.957,1.32-2.019c-0.878,0.521-1.851,0.9-2.886,1.104 C18.823,3.053,17.642,2.5,16.335,2.5c-2.51,0-4.544,2.036-4.544,4.544c0,0.356,0.04,0.703,0.117,1.036 C8.132,7.891,4.783,6.082,2.542,3.332C2.151,4.003,1.927,4.784,1.927,5.617c0,1.577,0.803,2.967,2.021,3.782 C3.203,9.375,2.503,9.171,1.891,8.831C1.89,8.85,1.89,8.868,1.89,8.888c0,2.202,1.566,4.038,3.646,4.456 c-0.666,0.181-1.368,0.209-2.053,0.079c0.579,1.804,2.257,3.118,4.245,3.155C5.783,18.102,3.372,18.737,1,18.459 C3.012,19.748,5.399,20.5,7.966,20.5c8.358,0,12.928-6.924,12.928-12.929c0-0.198-0.003-0.393-0.012-0.588 C21.769,6.343,22.835,5.746,23.444,4.834z"/>
+        </g>
+    </svg>
+    </div>Share on Twitter</div>
+</a>
+
+<!-- Sharingbutton LinkedIn -->
+<a class="resp-sharing-button__link" id="linkdinsharelink" target="_blank" aria-label="Share on LinkedIn">
+  <div class="resp-sharing-button resp-sharing-button--linkedin resp-sharing-button--large"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+    <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.5 21.5h-5v-13h5v13zM4 6.5C2.5 6.5 1.5 5.3 1.5 4s1-2.4 2.5-2.4c1.6 0 2.5 1 2.6 2.5 0 1.4-1 2.5-2.6 2.5zm11.5 6c-1 0-2 1-2 2v7h-5v-13h5V10s1.6-1.5 4-1.5c3 0 5 2.2 5 6.3v6.7h-5v-7c0-1-1-2-2-2z"/></svg>
+    </div>Share on LinkedIn</div>
+</a>
+
+<!-- Sharingbutton Google+ -->
+<a class="resp-sharing-button__link" id="googsharelink" target="_blank" aria-label="Share on Google+">
+  <div class="resp-sharing-button resp-sharing-button--google resp-sharing-button--large"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+    <svg version="1.1" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
+        <g>
+            <path d="M11.366,12.928c-0.729-0.516-1.393-1.273-1.404-1.505c0-0.425,0.038-0.627,0.988-1.368 c1.229-0.962,1.906-2.228,1.906-3.564c0-1.212-0.37-2.289-1.001-3.044h0.488c0.102,0,0.2-0.033,0.282-0.091l1.364-0.989 c0.169-0.121,0.24-0.338,0.176-0.536C14.102,1.635,13.918,1.5,13.709,1.5H7.608c-0.667,0-1.345,0.118-2.011,0.347 c-2.225,0.766-3.778,2.66-3.778,4.605c0,2.755,2.134,4.845,4.987,4.91c-0.056,0.22-0.084,0.434-0.084,0.645 c0,0.425,0.108,0.827,0.33,1.216c-0.026,0-0.051,0-0.079,0c-2.72,0-5.175,1.334-6.107,3.32C0.623,17.06,0.5,17.582,0.5,18.098 c0,0.501,0.129,0.984,0.382,1.438c0.585,1.046,1.843,1.861,3.544,2.289c0.877,0.223,1.82,0.335,2.8,0.335 c0.88,0,1.718-0.114,2.494-0.338c2.419-0.702,3.981-2.482,3.981-4.538C13.701,15.312,13.068,14.132,11.366,12.928z M3.66,17.443 c0-1.435,1.823-2.693,3.899-2.693h0.057c0.451,0.005,0.892,0.072,1.309,0.2c0.142,0.098,0.28,0.192,0.412,0.282 c0.962,0.656,1.597,1.088,1.774,1.783c0.041,0.175,0.063,0.35,0.063,0.519c0,1.787-1.333,2.693-3.961,2.693 C5.221,20.225,3.66,19.002,3.66,17.443z M5.551,3.89c0.324-0.371,0.75-0.566,1.227-0.566l0.055,0 c1.349,0.041,2.639,1.543,2.876,3.349c0.133,1.013-0.092,1.964-0.601,2.544C8.782,9.589,8.363,9.783,7.866,9.783H7.865H7.844 c-1.321-0.04-2.639-1.6-2.875-3.405C4.836,5.37,5.049,4.462,5.551,3.89z"/>
+            <polygon points="23.5,9.5 20.5,9.5 20.5,6.5 18.5,6.5 18.5,9.5 15.5,9.5 15.5,11.5 18.5,11.5 18.5,14.5 20.5,14.5 20.5,11.5  23.5,11.5 	"/>
+        </g>
+    </svg>
+    </div>Share on Google+</div>
+</a>
+		<!--<ul class="socialshare">
+			<li><div class="gplusarticle"><b>Please Share this article if you think it was worth reading. Thanks!</b></div></li>
+			<li><div class="fb-share-button" data-layout="button"> </div> </li>
+			<li><script type="IN/Share"></script></li>                    
+		</ul>-->
+	</div>
+		    <br />
+          <div class="col-xs-12 col-sm-12 col-md-12 similarauthor">  
+            
+          <div class="row footerheading">Author</div>
+            <div class="row">
+                <div class="col-md-12">
+                    
+
+<div class="col-md-12 author-wrap img-rounded">
+    <div class="author-image thumbnail">
+        <img id="ctl00_MainContent_authorInfo_imgAuthor" onerror="this.onload = null; this.src=&#39;/images/authors/NoImage.jpg&#39;;" src="../../images/authors/Benjamin%20Jakobus.jpg" style="border-width:0px;" />
+         
+    </div>
+    <div class="author-desc caption">
+            Benjamin Jakobus graduated with a BSc in Computer Science from University College Cork and obtained an MSc in Advanced Computing from Imperial College London. As a software engineer, he has worked on various web-development projects across Europe and Brazil.
+    </div>
+   
+</div>
+
+
+
+  
+                </div>
+            </div>
+      </div>
+      </div>
+
+            
+      
+      <!--<div class="footerheading">Further Reading - Articles You May Like!</div>-->
+      
+      <br /><br />
+    <div class="col-xs-12 col-sm-12 col-md-12">
+     <a href="http://www.copyscape.com/" target="blank" rel="nofollow"><img src="/images/copyscape.gif" alt="Page copy protected against web site content infringement 	by Copyscape" title="Do not copy content from the page. Plagiarism will be detected by Copyscape." height="16" border="0"/></a>
+    </div>
+<br /><br /><br />
+       
+   
+   <hr />
+  
+   <div id="ctl00_MainContent_panComments" class="col-md-12 spacer">
+	
+   <div class="footerheading">Feedback - Leave us some adulation, criticism and everything in between!</div>
+    <ul class="tabHeader">
+        <li><a class="show-comments" href="#t1">Click here to post your Comments</a>
+        </li>
+        
+    </ul>
+   <div class="tabContent">
+    <div id="t1" class="col-md-12 column">
+            <div id="disqus_thread"></div>      
+       <!--<script type="text/javascript">
+            var disqus_shortname = 'dotnetcurry';
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function () {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>-->
+   </div>
+    <div id="t2">
+   
+   
+</div> <!-- t2 -->
+    </div> <!-- tabcontent -->
+   
+</div>  
+      <!-- Place this render call where appropriate 
+<script type="text/javascript">
+    (function () {
+        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+        po.src = 'https://apis.google.com/js/plusone.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+    })();
+</script> 
+<script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
+
+<script>    !function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = "//platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } } (document, "script", "twitter-wjs");</script>-->
+<!-- Finally, to actually run the highlighter, you need to include this JS on your page -->
+
+       
+
+		                </div>
+
+                        
+
+                
+
+		                <div id="rightcol" class="col-md-4">
+    
+                            <!-- <div class="row">
+                                  <div class="spacerforsearch">
+                                    <div class="input-group">
+                                      <input name="ctl00$searchbox" id="ctl00_searchbox" type="text" class="form-control" placeholder="Search DotNetCurry.com for..." onFocus="this.className = &#39;form-control&#39;" style="border-color:#94C7EF;border-width:1px;border-style:solid;width:100%" />
+                                      <span class="input-group-btn">
+                                        <input type="submit" name="ctl00$SearchButton" value="Go!" id="ctl00_SearchButton" class="btn btn-default" type="button" />
+                                      </span>
+                                    </div>
+                                  </div>
+                            </div> -->
+                            <div class="margin-vertical-20" />                           
+                            
+                            <div class="side-widget">
+					            <div class="featured-tools">
+						            <span>Featured Tools</span>
+						            <div id="creatives">
+				                        <div id='ban-pos-1'>
+				                        </div>                                        
+				                        <div id='ban-pos-2'>
+                                            <div class="padding-vertical-10"></div>
+				                        </div>
+                                        <div class="padding-vertical-10"></div>
+				                        <div id='ban-pos-3'>
+				                        </div>
+					                    <div class="padding-vertical-10"></div>
+				                        <div id='ban-pos-4'>
+				                        </div>
+			                        </div>
+					            </div>
+				            </div>                          
+                            
+
+                            <div class="sec-title">
+                                <h4>Categories</h4>
+                            </div>
+                            <div class="side-widget">
+                                <ul id="toggle-view">
+                                    <li>
+                                        <h3>.NET Web</h3>
+                                        <span class="fa fa-angle-down"></span>
+                                        <div class="toggle-panel">
+                                            <div>
+                                                <a href="https://www.dotnetcurry.com/tutorials/aspnet">ASP.NET</a>
+                                                <a href="https://www.dotnetcurry.com/tutorials/aspnet-mvc">ASP.NET MVC</a>
+                                            </div>
+                                            <div>
+                                                <a href="https://www.dotnetcurry.com/tutorials/aspnet-core">ASP.NET Core</a>
+                                                <a href="https://www.dotnetcurry.com/tutorials/aspnet-ajax">ASP.NET AJAX</a>
+                                            </div>
+                                            <div>
+                                                <a href="https://www.dotnetcurry.com/tutorials/sharepoint">SharePoint</a>
+                                                <a href="https://www.dotnetcurry.com/tutorials/wcf">WCF</a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <h3>.NET Framework, Visual Studio and C#</h3>
+                                        <span class="fa fa-angle-down"></span>
+                                        <div class="toggle-panel">
+                                            <div>
+                                                <a href="https://www.dotnetcurry.com/tutorials/csharp">C#</a>
+                                                <a href="https://www.dotnetcurry.com/tutorials/linq">LINQ</a>
+                                            </div>
+                                            <div>
+                                                <a href="https://www.dotnetcurry.com/tutorials/visualstudio">Visual Studio</a>
+                                                <a href="https://www.dotnetcurry.com/tutorials/vsts-tfs">VSTS & TFS</a>
+                                            </div>
+                                            <div>
+                                                <a href="https://www.dotnetcurry.com/tutorials/entityframework">Entity Framework</a>
+                                                <a href="https://www.dotnetcurry.com/tutorials/dotnetframework">.NET Framework</a>
+                                            </div>
+                                            <div>
+                                                <a href="https://www.dotnetcurry.com/tutorials/dotnet-standard-core">.NET Standard & .NET Core</a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <h3>Patterns & Practices</h3>
+                                        <span class="fa fa-angle-down"></span>
+                                        <div class="toggle-panel">
+                                            <div>
+                                                <a href="https://www.dotnetcurry.com/tutorials/patterns-practices">Design Patterns</a>
+                                                <a href="https://www.dotnetcurry.com/tutorials/software-gardening">Software Gardening</a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <h3>Cloud and Mobile</h3>
+                                        <span class="fa fa-angle-down"></span>
+                                        <div class="toggle-panel">
+                                            <div>
+                                                <a href="https://www.dotnetcurry.com/tutorials/windows-azure">Microsoft Azure</a>
+                                                <a href="https://www.dotnetcurry.com/tutorials/xamarin">Xamarin</a>
+                                            </div>
+                                            <div>
+                                                <a href="https://www.dotnetcurry.com/tutorials/powershell">Powershell</a>
+                                                <a href="https://www.dotnetcurry.com/tutorials/machine-learning-ai">Machine Learning & AI</a>
+                                            </div>
+                                            <div>
+                                                <a href="https://www.dotnetcurry.com/tutorials/windows-store">UWP & Windows Store</a>
+                                                <a href="https://www.dotnetcurry.com/tutorials/windowsphone">Windows Phone</a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <h3>JavaScript</h3>
+                                        <span class="fa fa-angle-down"></span>
+                                        <div class="toggle-panel">
+                                            <div>
+                                                <a href="https://www.dotnetcurry.com/tutorials/typescript">TypeScript</a>
+                                                <a href="https://www.dotnetcurry.com/tutorials/angularjs">Angular</a>
+                                            </div>
+                                            <div>
+                                                <a href="https://www.dotnetcurry.com/tutorials/jquery-aspnet">jQuery</a>
+                                                <a href="https://www.dotnetcurry.com/tutorials/nodejs">Node.js</a>
+                                            </div>
+                                            <div>
+                                                <a href="https://www.dotnetcurry.com/tutorials/reactjs">React.js</a>
+                                                <a href="https://www.dotnetcurry.com/tutorials/backbonejs">Backbone.js</a>
+                                            </div>
+                                            <div>
+                                                <a href="https://www.dotnetcurry.com/tutorials/html5-javascript">HTML5 & JavaScript</a>
+                                                <a href="https://www.dotnetcurry.com/tutorials/bootstrap-css">Bootstrap & CSS</a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <h3>.NET Desktop</h3>
+                                        <span class="fa fa-angle-down"></span>
+                                        <div class="toggle-panel">
+                                            <div>
+                                                <a href="https://www.dotnetcurry.com/tutorials/wpf">WPF</a>
+                                                <a href="https://www.dotnetcurry.com/tutorials/winforms">WinForms</a>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <li>
+                                        <h3>Interview Questions & Product Reviews</h3>
+                                        <span class="fa fa-angle-down"></span>
+                                        <div class="toggle-panel">
+                                            <div>
+                                                <a href="https://www.dotnetcurry.com/tutorials/dotnetinterview">.NET Interview Q&A</a>
+                                                <a href="https://www.dotnetcurry.com/tutorials/product-articles-review">Product Reviews</a>
+                                            </div>
+                                            <div>
+                                                <a href="https://www.dotnetcurry.com/tutorials/general-programming-topics">General Topics</a>
+
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="sec-title">
+                                <h3><b>JOIN OUR COMMUNITY</b></h3>
+                            </div>
+                            <div class="side-widget">
+					            
+                                <div class="side-social">
+                        <a href="https://www.facebook.com/dotnetcurry"><i class="fa fa-facebook"></i> 51,659 <span>fans</span></a>
+                        <a href="https://www.twitter.com/dotnetcurry"><i class="fa fa-twitter"></i> 7,923 <span>followers</span></a>
+                        <a href="https://www.dotnetcurry.com/magazine/"><i class="fa fa-envelope"></i> 106,812 <span>subscribers</span></a>
+                    </div>
+				            </div>
+
+                            <div class="sec-title">
+                                <h3><b>POPULAR ARTICLES</b></h3>
+                            </div>
+                            <div id="latestart" class="side-widget">
+                                <div>
+                                     
+            <a id="ctl00_toplat_Repeater1_ctl00_lnkTitle" class="top" href="http://www.dotnetcurry.com/ShowArticle.aspx?ID=1480" style="color:#4A75AD;font-weight:normal;">Using ASP.NET Core SignalR with Vue.js (to create a mini Stack Overflow rip-off)</a>
+            
+                 <br /><br />
+            
+            <a id="ctl00_toplat_Repeater1_ctl02_lnkTitle" class="top" href="http://www.dotnetcurry.com/ShowArticle.aspx?ID=1489" style="color:#4A75AD;font-weight:normal;">New C# 8 Features in Visual Studio 2019</a>
+            
+                 <br /><br />
+            
+            <a id="ctl00_toplat_Repeater1_ctl04_lnkTitle" class="top" href="http://www.dotnetcurry.com/ShowArticle.aspx?ID=1466" style="color:#4A75AD;font-weight:normal;">How to Choose the Right .NET Collection Class?</a>
+            
+                 <br /><br />
+            
+            <a id="ctl00_toplat_Repeater1_ctl06_lnkTitle" class="top" href="http://www.dotnetcurry.com/ShowArticle.aspx?ID=1474" style="color:#4A75AD;font-weight:normal;">What Was New for .NET Developers in 2018 & the Road Ahead</a>
+            
+                 <br /><br />
+            
+            <a id="ctl00_toplat_Repeater1_ctl08_lnkTitle" class="top" href="http://www.dotnetcurry.com/ShowArticle.aspx?ID=1483" style="color:#4A75AD;font-weight:normal;">Parallel workflow with the .NET Task Parallel Library (TPL) DataFlow (C#)</a>
+            
+                 <br /><br />
+            
+            <a id="ctl00_toplat_Repeater1_ctl10_lnkTitle" class="top" href="http://www.dotnetcurry.com/ShowArticle.aspx?ID=1471" style="color:#4A75AD;font-weight:normal;">Garbage Collection in C# (.NET Framework and .NET Core)</a>
+            
+                 <br /><br />
+            
+            <a id="ctl00_toplat_Repeater1_ctl12_lnkTitle" class="top" href="http://www.dotnetcurry.com/ShowArticle.aspx?ID=1473" style="color:#4A75AD;font-weight:normal;">VSTS is now Azure DevOps. What has changed and why?</a>
+            
+                 <br /><br />
+            
+            <a id="ctl00_toplat_Repeater1_ctl14_lnkTitle" class="top" href="http://www.dotnetcurry.com/ShowArticle.aspx?ID=1469" style="color:#4A75AD;font-weight:normal;">Composing Honest Methods in C#</a>
+            
+                 <br /><br />
+            
+            <a id="ctl00_toplat_Repeater1_ctl16_lnkTitle" class="top" href="http://www.dotnetcurry.com/ShowArticle.aspx?ID=1468" style="color:#4A75AD;font-weight:normal;">Facade Design Pattern: Still relevant in ASP.NET Core?</a>
+            
+                 <br /><br />
+            
+            <a id="ctl00_toplat_Repeater1_ctl18_lnkTitle" class="top" href="http://www.dotnetcurry.com/ShowArticle.aspx?ID=1467" style="color:#4A75AD;font-weight:normal;">Building Single Page Applications (SPA) with Angular Router</a>
+            
+                 <br /><br />
+            
+            <a id="ctl00_toplat_Repeater1_ctl20_lnkTitle" class="top" href="http://www.dotnetcurry.com/ShowArticle.aspx?ID=1475" style="color:#4A75AD;font-weight:normal;">Designing Data Objects in C#: More examples</a>
+            
+                 <br /><br />
+            
+            <a id="ctl00_toplat_Repeater1_ctl22_lnkTitle" class="top" href="http://www.dotnetcurry.com/ShowArticle.aspx?ID=1472" style="color:#4A75AD;font-weight:normal;">Less commonly used C# operators</a>
+            
+                 <br /><br />
+            
+            <a id="ctl00_toplat_Repeater1_ctl24_lnkTitle" class="top" href="http://www.dotnetcurry.com/ShowArticle.aspx?ID=1477" style="color:#4A75AD;font-weight:normal;">Jenkins for DevOps – Part 1</a>
+            
+                 <br /><br />
+            
+            <a id="ctl00_toplat_Repeater1_ctl26_lnkTitle" class="top" href="http://www.dotnetcurry.com/ShowArticle.aspx?ID=1488" style="color:#4A75AD;font-weight:normal;">Azure DevOps to build and deploy ReactJS App</a>
+            
+                 <br /><br />
+            
+            <a id="ctl00_toplat_Repeater1_ctl28_lnkTitle" class="top" href="http://www.dotnetcurry.com/ShowArticle.aspx?ID=1481" style="color:#4A75AD;font-weight:normal;">How does a C# LINQ Query execute and How does this affect Performance?</a>
+            
+        <br />
+        <br />
+        <br />
+        
+                                </div>
+                            </div>
+
+                            <div class="sec-title">
+                                <h3><b>C# .NET BOOK</b></h3>
+                            </div>
+                            <div class="side-widget"> 
+			                    <a href="http://www.dotnetcurry.org/r/dnc-csharpbk-web-300x600x2-green"><img src="/images/creatives/csharpbook-300x600-2.jpg" style="width:300px;" alt="C# Book for Building Concepts and Interviews" /></a>
+                            </div>
+
+                            <div class="sec-title-plain">
+                                 <h4>Tags</h4>
+                            </div>
+                            <div class="side-widget">
+                                <div class="tags">
+                                    <a href="https://www.dotnetcurry.com/tutorials/aspnet-mvc">ASP.NET MVC</a>
+                                    <a href="https://www.dotnetcurry.com/tutorials/aspnet-core">ASP.NET Core</a>
+                                    <a href="https://www.dotnetcurry.com/tutorials/aspnet">ASP.NET</a>
+                                    <a href="https://www.dotnetcurry.com/tutorials/sharepoint">SharePoint</a>
+                                    <a href="https://www.dotnetcurry.com/tutorials/patterns-practices">Design Patterns</a>
+                                    <a href="https://www.dotnetcurry.com/tutorials/csharp">C#</a>
+                                    <a href="https://www.dotnetcurry.com/tutorials/linq">LINQ</a>
+                                    <a href="https://www.dotnetcurry.com/tutorials/wpf">WPF</a>
+                                    <a href="https://www.dotnetcurry.com/tutorials/wcf">WCF</a>
+                                    <a href="https://www.dotnetcurry.com/tutorials/visualstudio">Visual Studio</a>
+                                    <a href="https://www.dotnetcurry.com/tutorials/vsts-tfs">VSTS & TFS</a>
+                                    <a href="https://www.dotnetcurry.com/tutorials/windows-azure">Azure</a>
+                                    <a href="https://www.dotnetcurry.com/tutorials/entityframework">Entity Framework</a>
+                                    <a href="https://www.dotnetcurry.com/tutorials/angularjs">Angular.js</a>
+                                    <a href="https://www.dotnetcurry.com/tutorials/reactjs">React.js</a>
+                                    <a href="https://www.dotnetcurry.com/tutorials/jquery-aspnet">jQuery</a>
+                                    <a href="https://www.dotnetcurry.com/tutorials/html5-javascript">JavaScript</a>
+                                    <a href="https://www.dotnetcurry.com/tutorials/html5-javascript">HTML5</a>
+                                    <a href="https://www.dotnetcurry.com/tutorials/dotnet-standard-core">.NET Core</a>
+                                    <a href="https://www.dotnetcurry.com/tutorials/dotnetframework">.NET Framework</a>
+                                </div>
+                            </div>
+
+                            <div class="sec-title">
+                                <h3><b>JQUERY COOKBOOK</b></h3>
+                            </div>
+                            <div class="side-widget">
+                                <a href="https://www.dotnetcurry.net/s/dnc-jqcookbook"><img src="https://www.dotnetcurry.com/images/books/300x300-jqckbk.png"  alt="jQuery CookBook" /></a>
+                            </div>		                
+                       
+                            
+
+
+                    </div>
+	            </div>                
+
+            </div> 
+            <!-- container -->
+
+	    
+        </div>
+
+        <!-- footer -->
+        <footer class="margin-top-30">
+            <div class="container">
+                <div class="footer-head">
+                        <div class="row center-content">
+                        <div class="col-md-2 col-sm-3">
+                            <a href="https://www.dotnetcurry.com">
+                                <img data-src="/img/dnc-logo-tee-trans.png" class="img-responsive lazyload" alt="" />
+                            </a>
+                        </div>
+                        <div class="col-md-6 col-sm-4">
+                    <p></p>
+                </div>
+                <!--<div class="col-md-4 col-sm-5">
+                    <form class="footer-search">
+                        <input type="search" placeholder="Search">
+                        <button type="submit"><i class="fa fa-search"></i></button>
+                    </form>
+                </div>-->
+            </div>
+        </div>
+
+            <div class="footer-content">
+            <div class="row">
+                <div class="col-sm-2">
+                    <h5 class="text-white">Server-Side</h5>
+                    <ul class="footer-links">
+                        <li><a href="https://www.dotnetcurry.com/tutorials/aspnet">ASP.NET</a></li>
+                        <li><a href="https://www.dotnetcurry.com/tutorials/aspnet-core">ASP.NET Core</a></li>
+                        <li><a href="https://www.dotnetcurry.com/tutorials/aspnet-mvc">ASP.NET MVC</a></li>
+                        <li><a href="https://www.dotnetcurry.com/tutorials/wcf">WCF</a></li>
+                        <li><a href="https://www.dotnetcurry.com/tutorials/sharepoint">SharePoint</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-2">
+                    <h5 class="text-white">Client-side</h5>
+                    <ul class="footer-links">
+                        <li><a href="https://www.dotnetcurry.com/tutorials/angularjs">Angular.js</a></li>
+                        <li><a href="https://www.dotnetcurry.com/tutorials/reactjs">React.js</a></li>
+                        <li><a href="https://www.dotnetcurry.com/tutorials/jquery-aspnet">jQuery</a></li>
+                        <li><a href="https://www.dotnetcurry.com/tutorials/backbonejs">Backbone.js</a></li>
+                        <li><a href="https://www.dotnetcurry.com/tutorials/html5-javascript">HTML5</a></li>
+                        <li><a href="https://www.dotnetcurry.com/tutorials/bootstrap-css">CSS</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-2">
+                    <h5 class="text-white">.NET</h5>
+                    <ul class="footer-links">
+                        <li><a href="https://www.dotnetcurry.com/tutorials/csharp">C#</a></li>
+                        <li><a href="https://www.dotnetcurry.com/tutorials/visualstudio">Visual Studio</a></li>
+                        <li><a href="https://www.dotnetcurry.com/tutorials/vsts-tfs">VSTS & TFS</a></li>
+                        <li><a href="https://www.dotnetcurry.com/tutorials/linq">LINQ</a></li>
+                        <li><a href="https://www.dotnetcurry.com/tutorials/entityframework">Entity Framework</a></li>
+                        <li><a href="https://www.dotnetcurry.com/tutorials/dotnetframework">.NET Framework</a></li>
+                        <li><a href="https://www.dotnetcurry.com/tutorials/dotnet-standard-core">.NET Standard & .NET Core</a></li>
+                        <li><a href="https://www.dotnetcurry.com/tutorials/wpf">WPF</a></li>
+                        <li><a href="https://www.dotnetcurry.com/tutorials/winforms">WinForms</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-2">
+                    <h5 class="text-white">Cloud and Mobile</h5>
+                    <ul class="footer-links">
+                        <li><a href="https://www.dotnetcurry.com/tutorials/windows-azure">Microsoft Azure</a></li>
+                        <li><a href="https://www.dotnetcurry.com/tutorials/devops">DevOps</a></li>
+                        <li><a href="https://www.dotnetcurry.com/tutorials/xamarin">Xamarin</a></li>
+                        <li><a href="https://www.dotnetcurry.com/tutorials/powershell">Powershell</a></li>
+                        <li><a href="https://www.dotnetcurry.com/tutorials/machine-learning-ai">Machine Learning & AI</a></li>
+                        <li><a href="https://www.dotnetcurry.com/tutorials/windows-store">UWP & Windows Store</a></li>
+                        <li><a href="https://www.dotnetcurry.com/tutorials/windowsphone">Windows Phone</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-2">
+                    <h5 class="text-white">Skill Up</h5>
+                    <ul class="footer-links">
+                        <li><a href="https://www.dotnetcurry.com/tutorials/patterns-practices">Design Patterns</a></li>
+                        <li><a href="https://www.dotnetcurry.com/tutorials/software-gardening">Software Gardening</a></li>
+                        <li><a href="https://www.dotnetcurry.com/tutorials/dotnetinterview">.NET Interview Q&A</a></li>
+                        <li><a href="https://www.dotnetcurry.com/magazine/" class="last">Magazines</a></li>
+                        <li><a href="http://www.jquerycookbook.com/">Books</a></li>
+                        <li><a href="https://www.dotnetcurry.com/tutorials/product-articles-review">Product Reviews</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-2">
+                    <h5 class="text-white">Follow Us</h5>
+                    <ul class="footer-social">
+                        <li><a href="https://www.facebook.com/dotnetcurry">Facebook</a></li>
+                        <li><a href="https://www.twitter.com/dotnetcurry">Twitter</a></li>
+                        <li><a href="https://github.com/dotnetcurry">Github</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+                <div class="footer-bottom">
+            <div class="row">
+                <div class="col-sm-6">
+                    <p>&copy; 2007-2019 DotNetCurry.com (A subsidiary of A2Z Knowledge Visuals Pvt. Ltd). All rights reserved.</p>
+                </div>
+                <div class="col-sm-6 text-right">
+                    <ul class="list-inline">
+                        <li><a href="https://www.dotnetcurry.com/Contact.aspx">Contact Us</a></li>
+                        <li><a href="https://www.dotnetcurry.com/WriteForUs.aspx">Write For Us</a></li>
+                        <li><a href="https://www.dotnetcurry.com/PrivacyPolicy.aspx">Privacy</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+            </div>
+        </footer>
+        <!-- footer -->	
+    </form>
+
+   
+        <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="/bundles/maxm"></script>
+<script src="/bundles/scriptsmin?v=zRWRdhRFue1VYqf0lJzTsnjqtxk61Etv2vgfy-59NLs1"></script>
+<script src="/bundles/framework?v=yOkBizHgoWwNt4OFd4FauUxu9fucEJ_a4EJrci8uIGA1"></script>
+-->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="/bundles/scriptsmin?v=zRWRdhRFue1VYqf0lJzTsnjqtxk61Etv2vgfy-59NLs1"></script>
+<script src="/bundles/framework?v=yOkBizHgoWwNt4OFd4FauUxu9fucEJ_a4EJrci8uIGA1"></script>
+
+           <script type="text/javascript">
+               SyntaxHighlighter.defaults['auto-links'] = false;
+               SyntaxHighlighter.defaults['gutter'] = false;
+               SyntaxHighlighter.defaults['toolbar'] = false;
+               SyntaxHighlighter.all()
+            </script>
+            <script>
+                   $(function () {
+                       $('.tabHeader').children().first().addClass('current');
+                       $('.tabContent').children().first().addClass('current');
+
+
+                       $('.tabHeader li').click(function (e) {
+                           e.preventDefault();
+
+                           $(this).siblings('.current').removeClass('current');
+                           $(this).addClass('current');
+
+                           $('.tabContent').children('.current').removeClass('current');
+                           $('.tabContent').children().eq($(this).index()).addClass('current');
+                       });
+                   });
+            </script>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+    <script>
+         WebFont.load({
+             google: {
+                 families: ['Hind Vadodara:300,400,500,600,700']
+             }
+         });
+    </script>
+</body>
+</html>

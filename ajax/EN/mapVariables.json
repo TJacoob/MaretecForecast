@@ -1,0 +1,19 @@
+{
+	"Salinity": "Salinity",
+	"Temperature": "Temperature",
+	"Velocity": "Velocity",
+	"Oxygen": "Dissolved Oxygen",
+	"Chla": "Chlorophyll-a",
+	"Zoo": "Zooplancton",
+	"Nitrate": "Nitrate",
+	"Phosphate": "Phosphate",
+	"Sediments": "Sediments",
+	"mean_wave_period": "Mean Wave Period",
+	"significant_wave_height": "Significant Wave Height",
+	"PorousMedia_RelWaterContent": "Soil Surface Relative Water Content",
+	"PorousMedia_WaterTableDepth": "Soil Water Table Depth",
+	"Vegetation_LeafAreaIndex": "Vegetation Leaf Area Index", 
+	"Runoff_VelocityModulus": "Runoff Velocity Modulus",
+	"PorousMediaProp_Salinity": "Soil Surface Salinity",
+	"PorousMediaProp_Nitrate": "Soil Surface Nitrate"
+}

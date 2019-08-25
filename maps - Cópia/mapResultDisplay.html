@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<!--http://jsfiddle.net/phpdeveloperrahul/Veqnh/-->
+<html>
+<head>
+	<title>Maretec Forecast</title>
+    <link rel="icon" href="../img/favicon.png" type="image/png">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link href="https://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/build/css/bootstrap-datetimepicker.css" rel="stylesheet">
+	
+	<!--estilo para leaflet-->
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ==" crossorigin=""/>
+	<link rel="stylesheet" href="../css/menu.css">
+	<link rel="stylesheet" href="../css/loader.css">
+	<link rel="stylesheet" href="../css/languages.min.css">
+	<link rel="stylesheet" media="screen, projection" href="../js/drift-master/dist/drift-basic.css">
+	<link href="../css/language-selection.css" rel="stylesheet">
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	 <!-- Make sure you put this AFTER Leaflet's CSS -->
+	<script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js" integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log==" crossorigin=""></script>
+	<script src="https://lab.digital-democracy.org/leaflet-bing-layer/leaflet-bing-layer.js"></script>
+	<!--<script src="http://forecast.maretec.org/java/getdate.js"></script>-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
+	<script src="https://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/src/js/bootstrap-datetimepicker.js"></script>
+	
+	<script src="../js/cookie-manage.js"></script>
+	<script src="../js/common.js"></script>
+
+	<script src="../js/getURLParameters.js"></script>
+	<script src="../js/language-selection.js"></script>
+	<script src="../js/drift-master/dist/Drift.min.js"></script>		
+		
+
+	
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
+
+
+	
+	<style>
+		.bg1{
+			background-color: #1abc9c;
+			color: #ffffff;
+		}
+		.bg2 { 
+			background-color: #474e5d;
+			color: #ffffff;
+		}
+		.bg3 { 
+			background-color: #ffffff;
+			color: #555555;
+		}
+		
+		
+		.container-fluid {
+			padding-top: 20px;
+			padding-bottom: 70px;
+		}
+		
+
+
+<!--#map_container{
+  position: relative;
+}
+#map{
+    height: 100%;
+    overflow: hidden;
+    padding-bottom: 100%;
+    padding-top: 30px;
+    position: relative;
+}-->
+		
+		html, body, #mapid {
+			height: 100%;
+			width: 100vw; <!--para ocupar inclusive as margens, = 100% e margem = 0 -->
+		}
+
+		#mapid {
+			z-index: 1;
+		}
+		#MapOrig {
+			top: 70px;
+			right: 10px;
+			position: absolute;
+			z-index: 2;
+		}
+
+		#GeoLocate {
+			bottom: 20px;
+			left: 10px;
+			position: absolute;
+			z-index: 2;
+		}
+		#varChoose {
+			top: 120px;
+			right: 10px;
+			position: absolute;
+			z-index: 2;
+		}
+		
+		#showHide {
+			bottom: 15px;
+			right: 10px;
+			position: absolute;
+			z-index: 2;
+		}
+		
+		#showHide > button {
+			width: 20px;
+			padding-left: 3px;
+			box-shadow: 2px 2px 1.5px #888888;
+			outline: none !important;
+		}
+		
+		#varChoose > button {
+			box-shadow: 2px 2px 1.5px #888888;
+		}
+		
+		.btn-primary {
+			box-shadow: 2px 2px 1.5px #888888;
+		}
+		
+		#threddsServerData {
+			top: 80px;
+			left: 10px;
+			position: absolute;
+			z-index: 3;
+		}
+		
+		#dateChoose {
+			width: 40px;
+			top: 80px;
+			right: 10px;
+			position: absolute;
+			z-index: 2;
+		}
+			
+		#dateChoose > div > span {
+			box-shadow: 2px 2px 1.5px #888888;
+			width: 400px;
+			color:#fff;
+			background-color:#337ab7;
+			border-color:#2e6da4;
+			padding:6px 12px;
+			margin-bottom:0;
+			font-size:14px;
+			font-weight:400;
+			line-height:1.42857143;
+			text-align:center;
+			white-space:nowrap;
+			vertical-align:middle;
+			border:1px solid transparent;
+			border-radius:4px
+		}
+
+		
+		
+		
+	</style>
+	
+</head>
+<body>
+
+<!--<div style="left: 10px; position: absolute; top: 75px; z-index: 66;" id="logo">
+	<a href="index.html"><img style="height: 35px" src="images/logo_maretec_forecastrec.png"></a>
+</div>-->
+
+	<div class="container-fluid loader-wrap">
+		<div class="loader" id="loader-1"></div>
+	</div>
+
+<div id="top"></div>
+
+
+
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+	<div class="navbar-header navbar-right pull-right">
+		<ul class="language-selector nav pull-left"></ul>
+	</div>
+    <div class="navbar-header">
+    <a id="domain-text" class="navbar-brand" href="maps.html"><img style="display:inline; height: 35px" src="../images/logo_maretec_forecastrec.png" alt="Maretec"><span id="page-title"></span></a>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+
+
+
+<div id="currentImage-wrap" class="container-fluid text-center" style="height: 100%; white-space: nowrap; text-align: center; padding-top: 10px; padding-bottom: 10px;">
+	<span style="display: inline-block; height: 100%; vertical-align: middle;" class="helper"></span>
+</div>
+<!--<div class="container-fluid" style="border-radius: 10px; width: 160px; background: rgba(110, 110, 110, 0.7);  z-index: 99999; position: absolute; padding-bottom: 0px; padding-top: 15px; padding-bottom: 15px; padding-right: 10px; top: 80px; left: 10px"><!--style="height: 100%">
+	<p style ="font-weight: bold">Actual variable:</p>
+	<p id="var-text-display"></p>
+</div>//-->
+
+<div class="container-fluid text-center" style="border-radius: 10px; width: 260px; background: rgba(110, 110, 110, 0.0);  z-index: 2; position: absolute; padding-bottom: 0px; padding-top: 15px; padding-bottom: 15px; padding-right: 10px; bottom: 0px; right: 19px"><!--style="height: 100%">-->
+	<div id="player-group-button" class="btn-group" data-toggle="buttons">
+	  <label id="day-backward-button" class="btn btn-primary"><span class="fas fa-fast-backward"></span></label>
+	  <label id="hour-backward-button" class="btn btn-primary hour-basis"><span class="fas fa-step-backward"></span></label>
+	  <label id="plButton" class="btn btn-primary"><span class="fas fa-play"></span></label>
+	  <div class="btn-group dropup">
+		<label class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="fas fa-chevron-up" /></label> <!-- ha forma de melhorar isto, ver link no diario-->
+			<ul class="dropdown-menu dropdown-menu-right" role="menu">
+			  <li name="time-basis" interval="1" class = "interval-player activable hour-basis"><a class = "hour-basis" interval="1" href="#"></a></li>
+			  <li name="time-basis" interval="6" class = "interval-player activable hour-basis"><a class = "hour-basis" interval="6" href="#"></a></li>
+			  <li name="time-basis" interval="8" class = "interval-player activable hour-basis"><a class = "hour-basis" interval="8" href="#"></a></li>
+			  <li name="time-basis" interval="12" class = "interval-player activable hour-basis"><a class = "hour-basis" interval="12" href="#"></a></li>
+			  <li class="divider" />
+			  <li name="time-basis" interval="1" class = "interval-player activable day-basis"><a class = "day-basis" interval="1" href="#"></a></li>
+			  <li name="time-basis" interval="8" class = "interval-player activable day-basis"><a class = "day-basis" interval="8" href="#"></a></li>
+			  <li name="time-basis" interval="30" class = "interval-player activable day-basis"><a class = "day-basis" interval="30" href="#"></a></li>
+			</ul>
+	  </div>
+	  <label id="hour-forward-button" class="btn btn-primary hour-basis"><span class="fas fa-step-forward"></span></label>
+	  <label id="day-forward-button" class="btn btn-primary"><span class="fas fa-fast-forward"></span></label>
+	</div>
+</div>
+
+<div id="varChoose" class="btn-group">
+    <button type="button" class="btn btn-primary btn-md dropdown-toggle" data-toggle="dropdown"><span class="fas fa-ruler"></span></button>
+	<ul class="dropdown-menu dropdown-menu-right" role="menu"></ul>
+</div>
+
+<div id="showHide" class="btn-group">
+    <button type="button" class="btn btn-info btn-md active"><span class="fas fa-chevron-right"></span></button>
+</div>
+
+
+
+<div id="threddsServerData" class="btn-group">
+    <a href="" style="box-shadow: 2px 2px 1.5px #888888;" type="button" class="btn btn-primary btn-md" role="button" data-toggle=""><i class="fas fa-server"></i></a>
+</div>
+
+
+
+            <div id="dateChoose" class="form-group">
+                <div class='input-group date' id='datetimepicker1'>
+                    <input id='dateInput' type='hidden' style="border:none" class="form-control time-menu" />
+                    <span class="btn btn-primary input-group-addon"><span class="fas fa-calendar-alt"></span>
+                    </span>
+                </div>
+            </div>
+
+	<div id="info-btn-container" style="z-index: 34; position: absolute; top: 140px; left: 10px">
+		<button type="button" class="btn btn-primary" data-toggle="modal" onClick="loadInstructions();">
+			<span class="fas fa-question"></span>
+		</button>
+	</div>
+
+
+
+
+<script>
+
+$(document).ready(function() {
+	
+	var domainsNameLangJsonFilename = "domainsLang.json";
+	var mapResultLanguageChangeableTextJsonFilename = "mapResultLanguageChangeableText.json";
+	var variablesJsonFilename = "mapVariables.json";
+	var mapDomainPropertiesJsonFilename = "mapDomainProperties.json";
+	var region = getParameterByName("region");
+	var imagePrefixURL;
+	var defaultPossibleVariables; //todas as variáveis possíveis, no par id -> nome da variavel, na linguagem Default
+	var availableVariables;
+	var actualVariable;
+	var d = new Date(); //vai conter sempre a data actual
+	var dAnterior = new Date(); //vai conter o momento da imagem que estava antes;
+	var dMin;
+	var dMax;
+	var dailyBasis = false;
+	var interval = 1; // vai conter o valor do intervalo definido para o play.
+	var intervalFunc; // vai conter o handler da função que faz o play, passando as imagens
+	var minDate;
+	var maxDate;
+	var playerHidden = false;
+	var isPlaying = false; // se esta a fazer play.
+	var img; //vai conter o objecto da imagem a adicionar
+	var firstImageErrorOccured = false;
+	var actualImageLoaded = false;
+	var drift;
+	var $dtp = $("#datetimepicker1");
+	var threddsServerDataLink;
+	var firstLoad = true;
+	var defaultRegionName;
+	
+	var hoursNotFound = 0;
+	var daysNotFound = 0;
+	
+	$(document).trigger("readyNavbar");
+	loadRegionDomainInfoAndInitializeItems();
+	loadDefaultPossibleVariables();
+	presentVarSetAndRegisterEventOfVariableChange();
+	registLoadFirstImageEvents();
+	//Sets às funções dos botões são feitos no handler de load da primeira imagem, pois só podem ser feitos após tal.
+
+	//addLanguageEvents();
+	
+	function loadRegionDomainInfoAndInitializeItems() {
+		//$(document).on("languagesLoaded", function(jsonDirectory) {
+			$.getJSON(getDefaultLanguageDirectory() + mapResultLanguageChangeableTextJsonFilename, function(data) {
+				$("#page-title").html("> "+ data.mapNamePage_txt + " > ");
+				
+				//Botões horas e dias.
+				
+				var dayBasisItens = $(".interval-player.day-basis > a");
+				var hourBasisItens = $(".interval-player.hour-basis > a");
+				
+				for(var i = 0 ; i < dayBasisItens.length; i++)
+					dayBasisItens[i].innerHTML = dayBasisItens[i].getAttribute("interval") + " " +((parseInt(dayBasisItens[i].getAttribute("interval")) == 1)? data.day_txt : data.days_txt);
+						
+				for(var i = 0 ; i < hourBasisItens.length; i++)
+					hourBasisItens[i].innerHTML = hourBasisItens[i].getAttribute("interval") + " " +((parseInt(hourBasisItens[i].getAttribute("interval")) == 1)? data.hour_txt : data.hours_txt);
+
+				
+			});
+		
+			$.getJSON(getDefaultLanguageDirectory() + mapDomainPropertiesJsonFilename, function(data) {
+				var regionInfo = data[region];
+				var defaultRegionName = regionInfo.name;
+				
+				$("#domain-text").html($("#domain-text").html() + "<span id='region-name'>" + regionInfo.name + "</span>");
+				
+				imagePrefixURL = regionInfo.imagePrefixURL;
+				
+				availableVariables = regionInfo.availableVariables;
+				
+				threddsServerDataLink = regionInfo.threddsServerDataLink;
+				
+				var startTimeSplitted = regionInfo.startTime.split("-");
+				
+				dMin = new Date(parseInt(startTimeSplitted[0]), parseInt(startTimeSplitted[1]) - 1, parseInt(startTimeSplitted[2]), 0);
+				
+				if(regionInfo.finishTime) { //Se a região tem um campo com finishTime, vamos po-lo em dMax
+					var finishTimeSplitted = regionInfo.finishTime.split("-");		
+
+					dMax = new Date(parseInt(finishTimeSplitted[0]), parseInt(finishTimeSplitted[1]) - 1, parseInt(finishTimeSplitted[2]), 0);
+					d = dMax;
+					
+				} else if(regionInfo.maxNextDaysAllowed) { //Se não, se a região tem um campo com maximo de dias permitidos para a frente, calculamos a data maxima e pomos
+					dMax = new Date();
+					dMax.setHours(0);
+					dMax.setDate(dMax.getDate() + parseInt(regionInfo.maxNextDaysAllowed));
+
+					
+				} //Senao, vai ter de ser visto caso a caso.
+
+				var dateFormat;
+				var useCurrentUnit;
+				
+				//Se tem uma base diária, vamos desactivar os controlos horários
+				if(parseInt(regionInfo.timeHourBasis) > 23) {
+					$(".hour-basis").addClass("disabled");
+					dailyBasis = true;
+					$(".interval-player.day-basis[interval=1]").addClass("active");
+					dateFormat = 'DD-MM-YYYY';
+					useCurrentUnit = 'day';
+				} else {
+					$(".interval-player.hour-basis[interval=1]").addClass("active");
+					dateFormat = 'DD-MM-YYYY HH:00';
+					useCurrentUnit = 'hour';
+				}
+				
+				//inicializaçao do datetimepicker
+				$(function () {
+					$dtp.datetimepicker({
+						useCurrent: useCurrentUnit,
+						format: dateFormat,
+						locale: getDefaultLanguage(),
+						defaultDate: d,
+						minDate: dMin,
+						maxDate: dMax
+					});
+				});
+				
+				$dtp.on("dp.change", function(e) { //evento para função chamada cada vez que se muda a data ou hora no calendario
+					if( $dtp && $dtp.data("DateTimePicker") ) //Para verificar, se não sao undefined , o que acontecia, por usar defaultDate
+						changeDateTimeOnPicker($dtp.data("DateTimePicker").date());
+				});
+				
+				//Registar evento mudança de linguagem no calendario e no título e nos botões
+				$(document).on("languageChange", function(e, langId, jsonDirectory, isDefaultLanguage) {		
+					$dtp.data("DateTimePicker").locale(langId);	 //mudar calendário
+					
+					$.getJSON(jsonDirectory + mapResultLanguageChangeableTextJsonFilename, function(data) {
+						$("#page-title").html("> "+ data.mapNamePage_txt + " > ");
+						
+						//botões
+						var dayBasisItens = $(".interval-player.day-basis > a");
+						var hourBasisItens = $(".interval-player.hour-basis > a");
+						
+						for(var i = 0 ; i < dayBasisItens.length; i++)
+							dayBasisItens[i].innerHTML = dayBasisItens[i].getAttribute("interval") + " " +((parseInt(dayBasisItens[i].getAttribute("interval")) == 1)? data.day_txt : data.days_txt);
+								
+						for(var i = 0 ; i < hourBasisItens.length; i++)
+							hourBasisItens[i].innerHTML = hourBasisItens[i].getAttribute("interval") + " " +((parseInt(hourBasisItens[i].getAttribute("interval")) == 1)? data.hour_txt : data.hours_txt);
+
+					});
+					
+				
+					//mudar o nome da região para a língua
+					if(isDefaultLanguage)
+						$("#region-name").html(defaultRegionName);
+					else
+						$.getJSON(jsonDirectory + domainsNameLangJsonFilename, function(data) {
+							var langDomainName = data[$("#region-name").html()];
+							if(langDomainName)
+								$("#region-name").html(langDomainName);
+							else
+								$("#region-name").html(defaultRegionName);
+						});
+				
+				
+				
+				});
+				
+				
+				//Carregar threddsServerData
+				if(threddsServerDataLink == "")
+					$("#threddsServerData").hide();
+				else {
+					$("#threddsServerData > a").attr("href", threddsServerDataLink);
+				}
+					
+				
+				
+				
+				
+				
+				//trigger para evento a dizer que a informação foi toda carregada
+				$(document).trigger("regionDomainInfoLoaded", []);
+			});
+			
+		//});
+	}
+	
+	//Para fazer load de todas as variáveis
+	function loadDefaultPossibleVariables() {
+		// Deixa de ser necessário fazer isto. Pois, deste modo agora, estou a dizer a ordem pelo qual os elementos devem ser
+		// loaded. as DefaultPossibleVariables só são loaded depois de regionDomainInfoLoaded, que por sua vez só ocorre depois de languagesLoaded
+		//$(document).on("languagesLoaded", function(jsonDirectory) {
+		$(document).on("regionDomainInfoLoaded", function() {
+			$.getJSON(getDefaultLanguageDirectory() + variablesJsonFilename, function(data) {
+
+				defaultPossibleVariables = data;
+
+				//trigger para evento a dizer que a informação sobre todas as variáveis foi toda carregada
+				$(document).trigger("defaultPossibleVariablesLoaded", []);
+			});
+		});
+	}
+	
+	//Para mostrar as variáveis possíveis para esta região e registar o evento de, quando mudamos de variável, ele ter a variável actual escolhida.
+	function presentVarSetAndRegisterEventOfVariableChange() {
+		$(document).on("defaultPossibleVariablesLoaded", function() {
+			//Começa-se por fazer o set a primeira variável, a variável activa. Por isso active and activable
+			actualVariable = availableVariables[0];
+			//$("#var-text-display").html(defaultPossibleVariables[actualVariable]);
+			
+			var htmlList = "<li id=\"" + actualVariable + "\" class=\"variable-item active activable\" name=\"varset\"><a href=\"#\">" + defaultPossibleVariables[actualVariable] + "</a></li>";
+			
+			
+			for(n = 1; n < availableVariables.length; n++)
+				htmlList += "<li id=\"" + availableVariables[n] + "\" class=\"variable-item activable\" name=\"varset\" ><a href=\"#\">" + defaultPossibleVariables[availableVariables[n]] + "</a></li>";
+			
+			$("#varChoose > ul").html(htmlList);
+			
+			//Quando clico numa variável, actualiza a variável actual
+			$(".variable-item").click(function () {
+				actualVariable = $(this).attr("id");
+				actualizeImgSrc();
+				//$("#var-text-display").html(defaultPossibleVariables[actualVariable]);
+			});
+			
+			
+			//Adicionar eventos de mudança de linguagem
+			$(document).on("languageChange", function(e, langId, jsonDirectory, isDefaultLanguage) {			
+				if(isDefaultLanguage)
+					for(i = 0; i < availableVariables.length; i++)
+						$("#" + availableVariables[i] + " > a").html(defaultPossibleVariables[availableVariables[i]]);
+				else {
+					$.getJSON(jsonDirectory + variablesJsonFilename, function(data) {
+						for(i = 0; i < availableVariables.length; i++) {
+							var elementOnLanguage = data[availableVariables[i]];
+							$("#" + availableVariables[i] + " > a").html((elementOnLanguage)? elementOnLanguage : defaultPossibleVariables[availableVariables[i]]);
+						}
+					}).fail(function(d) {
+						for(i = 0; i < availableVariables.length; i++)
+							$("#" + availableVariables[i] + " > a").html(defaultPossibleVariables[availableVariables[i]]);
+					});
+				}
+				
+				
+				
+				
+				
+				
+			});	
+			
+			setInitialLanguage();
+		});
+	}
+	
+	
+	
+
+	
+	
+	
+	
+	
+	// **** ------- IMAGE EVENTS ------ ****
+	
+	// *** FIRST IMAGE ***
+	
+	// Vai ser a função para o handler se a primeira imagem não é encontrada, vai recuando até encontrar uma que exista.
+	function firstImageNotFound() {
+		//$(".loader-wrap").show();
+		
+		
+		
+		//algoritmo para apresentar imagens para trás. Ainda tem um problema: que é o facto de andar para trás e apresentar a imagem, em que está, mas pode haver mais para a frente.
+		if(!dailyBasis && (hoursNotFound <= 24)) { //base horaria e ainda nao passaram 24 horas
+			hoursNotFound++;
+			changeHour(-1);
+		} else if((dailyBasis || (hoursNotFound > 24)) &&  (daysNotFound <= 8)) { //base diária ou base horária e ja passaram 24 horas, mas ainda não 8 dias
+			daysNotFound++
+			changeDay(-1);
+		} else if ((daysNotFound > 8) && (daysNotFound <= 60)) {
+			daysNotFound+=8;
+			changeDay(-8);
+		} else if (daysNotFound > 60) {
+			daysNotFound+=30;
+			changeDay(-30);
+		}	
+			
+		img.src = getActualPath();
+		firstImageErrorOccured = true;
+	};
+
+	// Vai ser a função para o handler do load da primeira imagem, em que vai fazer set ao estilo de como a imagem vai ser apresentada.
+	// remove os handlers actuais também,. O novo load, já não precisa de estar constantemente a fazer set a estas coisas e é mais simples.
+	// Por último, regista os novos load e errors events para as imagens, a partir de agora.
+	function firstImageLoad() {
+		$("#currentImage-wrap").append(img);
+		
+		
+		console.log("dd");
+		
+		img.className = "img-fluid";
+		img.id = "currentImage";
+		img.alt = "";
+		img.style.maxHeight = "100%"; 
+		img.style.maxWidth = "100%";
+		img.style.verticalAlign = "middle";
+		$("#currentImage").attr("data-zoom", getActualPath());
+		
+		drift = new Drift(document.querySelector("#currentImage"), {
+			paneContainer: document.querySelector("div"),
+			inlinePane: true,
+			inlineOffsetY: -85,
+			containInline: true,
+			zoomFactor: 2,
+			hoverBoundingBox: false
+		});
+		
+		
+		
+		$(".loader-wrap").hide();
+		
+		img.removeEventListener("load", firstImageLoad);
+		img.removeEventListener("error", firstImageNotFound);
+		
+		if(firstImageErrorOccured) { // Se ocorreu pelo menos um erro de não encontrar a imagem, significa que há necessidade de recuar o dMax
+			dMax.setTime(d.getTime());
+			$dtp.data("DateTimePicker").maxDate(dMax);
+		}
+		
+		registNewImageLoadEvents();
+		
+		//so aqui pode surgir os calendars e fazer sets
+		registPlayerButtonEvents();
+		
+		
+		
+	};
+
+	function registLoadFirstImageEvents() { // Se a imagem actual
+		$(document).on("defaultPossibleVariablesLoaded", function() {
+			
+			if(dMax)
+				if(dMax.getTime() < d.getTime()) {
+					d.setTime(dMax.getTime());
+					dAnterior.setTime(dMax.getTime());
+				}
+				
+			img = new Image();
+			var div = $("#currentImage-wrap");
+			
+			img.addEventListener('error', firstImageNotFound);
+			img.addEventListener('load', firstImageLoad);
+			
+			img.src = getActualPath();
+			
+		});
+	}
+
+	// *** IMAGE EVENTS AFTER FIRST IMAGE
+	
+	function registNewImageLoadEvents() {
+		firstLoad = false;
+		img.addEventListener('load', function() {
+			$(".loader-wrap").hide();
+			actualImageLoaded = true;
+		});
+		
+		// Se a imagem actual não existe, faz replace pela imagem que estava antes e devolve o erro de que não dispõe da imagem actual, mudar para modal.
+		img.addEventListener('error', function() {
+			alert("Não existem imagens para este momento."); // a substituir por um modal
+			if(isPlaying) play();
+			d.setTime(dAnterior.getTime());
+			actualizeImgSrc();
+		});
+	}
+	
+	
+	// **** BUTTON EVENT REGISTER
+	
+	function registPlayerButtonEvents() {
+		$("#day-backward-button").click(function () { changeDay(-1); });
+		$("#hour-backward-button").click(function () { changeHour(-1); });
+		$("#hour-forward-button").click(function () { changeHour(1); });
+		$("#day-forward-button").click(function () { changeDay(1); });
+		$("#plButton").click(function () { play(); });
+		$(".interval-player.day-basis").click(function () { setIntervalValue(true, parseInt($(this).attr("interval"))); });
+		$(".interval-player.hour-basis:not(.disabled)").click(function () { setIntervalValue(false, parseInt($(this).attr("interval"))); });
+		$("#day-backward-button").click(function () { changeDay(-1); });
+		
+		$("#showHide > button").click(function () { 
+			if(playerHidden) {
+				$("#player-group-button").fadeIn();
+				$("#showHide > button").addClass("active");
+				$("#showHide > button").html("<span class=\"fa fa-chevron-right\"></span>");
+			} else {
+				$("#player-group-button").fadeOut();
+				$("#showHide > button").removeClass("active");
+				$("#showHide > button").html("<span class=\"fa fa-chevron-left\"></span>");
+			}
+				
+			playerHidden = !playerHidden;
+		});
+	}
+	
+	
+	// **** INTERNAL FUNCTION
+	
+	function setIntervalValue(db, val) {
+		dailyBasis = db;
+		interval = val;
+		if(isPlaying) {//Vamos adicionar opção de que se possa alterar a base, enquanto se está a fazer play
+			play(); // uma vez para parar o play e tirar a função que se está a usar (day/hour)
+			play(); // outra vez para por a nova função e fazer play
+		}
+	}
+	
+	function changeHour(val) {
+		//Pois o setTime utiliza o numero de milisegundos desde 1 Jan 1970, para a frente ou para trás.
+		//Por isso, tem de se ir buscar a data actual e adicionar tal valor
+		
+		var dNextTime = d.getTime() + val*3600000;
+		
+		if(!dateTest(dNextTime)) {
+			alert("Não existem imagens para este momento. +");
+			if(isPlaying) play();
+			return;
+		}
+		
+		dAnterior.setTime(d.getTime());
+		d.setTime(dNextTime);
+
+		//É preciso fazer também actualizar o calendário
+		synchronizeTimeOnCalendar();
+		
+		//E, por fim, o nome do ficheiro
+		actualizeImgSrc(d);
+	}
+
+	//Change Day precisa de ser distinto de change hours, por causa de aspectos como, por exemplo, mudança da hora que acrescenta hora inadevertidamente
+	// e deixa de funcionar, se fizessemos changeHour(24), podia dar uma hora diferente do dia seguinte.
+	function changeDay(val) {
+	
+		var nextDate = new Date(d.getTime());
+		nextDate.setDate(nextDate.getDate()+val);
+
+		//Necessario, por causa da mudanca da hora. No dia em que mudava a hora, e preciso mudar ou 23 ou 25 horas (consoante solsticio ou equinocio),
+		//por isso fazemos simplesmente set da hora anterior.
+		nextDate.setHours(d.getHours());
+	
+		var dNextTime = nextDate.getTime();
+		
+		if(!dateTest(dNextTime)) {
+			alert("Não existem imagens para este momento. +");
+			if(isPlaying) play();
+			return;
+		}
+		
+		dAnterior.setTime(d.getTime());
+		d.setTime(dNextTime);
+		
+		//É preciso fazer também actualizar o calendário
+		synchronizeTimeOnCalendar();
+		
+		
+		//E, por fim, o nome do ficheiro
+		actualizeImgSrc(d);
+	}
+	
+	// Função que trata do play, fazendo passar as imagens
+	function play() {
+		var funcToUse = (dailyBasis)? changeDay : changeHour;
+		var delay = 1000; //em milisegundos, o tempo para mudar.
+		isPlaying = !isPlaying;
+		
+		if(isPlaying) { //Se se quer playing, vai iniciar timer;
+		
+			//é necessário criar função anónima, pois necessitavamos passar argumentos e a funcao passada como argumento, nao pode ter
+			intervalFunc = setInterval( function() {
+										funcToUse(interval)//funcToUse(1); quando so mudava um dia ou uma hora...
+									}, delay);
+			$("#plButton").html("<span class=\"fas fa-pause\"></span>");
+			$("#plButton").addClass("active");
+		} else {
+			clearInterval(intervalFunc);
+			$("#plButton").html("<span class=\"fas fa-play\"></span>");
+			$("#plButton").removeClass("active");
+		}
+	}
+	
+	// testa se passa dos limites temporais teóricos.
+	// false, se segundo o dateTest a data não for possível, so segundo o teste logico. Nao verifica a existencia do ficheiro correspondente.
+	function dateTest(newDate) {
+
+		if(newDate < dMin.getTime())//Se o tempo, é menor que o mínimo
+			return false;
+		else if(dMax) //Se dMax existir
+			if(newDate > dMax.getTime())
+				return false;
+		
+		return true;
+	}
+	
+	function synchronizeTimeOnCalendar() {
+		//Não fuunciona
+		//$dtp.data("DateTimePicker").date().set(moment(d).toObject());
+
+		//Vamos fazer a mão
+
+		$dtp.data("DateTimePicker").date(d);
+
+	}
+		
+	//Função relativa à mudança do Date Time no Calendário, vai actualizar tudo o resto (imagem).
+	function changeDateTimeOnPicker(timeObject) {
+
+		d = timeObject.toDate();
+		actualizeImgSrc();
+		
+	}
+	
+	function actualizeImgSrc() {
+		actualImageLoaded = false;
+		$("#currentImage").attr("src", getActualPath());
+		$("#currentImage").attr("data-zoom", getActualPath());
+		if(drift) drift.setZoomImageURL(getActualPath());
+		
+		// Check a propriedade complete. Porque se o load está logo complete, 
+		// é pq a imagem já está disponível. Provavelmente, já foi feito o load anteriormente e está na cache.
+		// Assim, nem, vamos pôr o ecrã de load (loader-wrap). Se não está, então pomos.
+		// É retirado, quando faz onload, ou seja, Quando o load fica completo. Mediante evento registado
+		// nas primeiras funções.
+		if(!$("#currentImage").prop("complete") && !firstLoad) {
+			// agora vai fazer esperar 0,5 segundos, antes de mostrar o loader. Só após 0,5 segundos é que mostra.
+			// decidiu-se isso, precisamente por causa do play, às vezes há casos em que a imagem carrega logo a seguir e 
+			// aparece logo o ecrã de load.
+			setTimeout(function(){
+				if(!actualImageLoaded)
+					$(".loader-wrap").show();
+			}, 500);
+			
+		}
+			
+	}
+	
+	// Devolve o caminho actual para a imagem, segundo  d (dateTime actual)
+	function getActualPath() {
+		//return "https://picsum.photos/200/300/?random=" + Math.floor(Math.random() * 300); // imagens random
+		return imagePrefixURL + actualVariable + '/0/' + getActualFileName();
+	}
+	
+	// Da o nome que o ficheiro deve ter em função de d (o dateTime actual)
+	function getActualFileName() {
+		return d.getFullYear() + getTwoDigitNumber(d.getMonth()+1) + getTwoDigitNumber(d.getDate()) + '-' + getTwoDigitNumber(d.getHours()) + "00"+ ".png";
+	}
+	
+	// da o numero em função de string, e se ele for < 10, poe um 0 atras. (ex: 1 -> 01)
+	function getTwoDigitNumber(value) {
+		return ((value < 10)? '0' : '') + value.toString();
+	}
+	
+
+	
+	
+	
+});
+
+
+
+
+
+
+
+
+/*
+
+
+
+//E necessario estudar melhor os limites
+var maxNextDays = getParameterByName("maxNextDays");
+var maxDate = getParameterByName("maxDate");
+var indexOfVariable = getParameterByName("varIndex");
+
+
+//por as add event listener
+var actualVariableIndex = 0; //Indice de qual é a variável a apresentar. Apresenta sempre a primeira de um dado set de variáveis. (ind = 0)
+var interval; //vai conter o handler para setInterval
+var dailyBasis = false; // se o play é diário ou horário .. False = horário
+var intervalBasis = 1; //Nova variável, valor de variação das imagens. Se dailyBasis = true, 1 = 1 dia. Senão, 1 = 1 hora.
+var playing = false; // se está a fazer play
+var d = new Date(); // vai conter sempre a data actual
+var dMin = (indexOfVariable == 1)? new Date(2014, 5, 11, 0) : new Date(2012, 0, 1, 0); //Cria a data minima, com ano, mes (Note-se 0-11), dia e hora (0h). Results since????
+var dMax = new Date();  dMax.setHours(0); //Cria dMax com a data actual e faz set para 4 dias a frente às 0h. (data limite maximo)
+var hidden = true;
+var dMidn = new Date(2015, 5, 11, 0);
+
+
+if(maxNextDays) {
+	var parsedMaxNextDays = parseInt(maxNextDays);
+	dMax.setDate(dMax.getDate()+parsedMaxNextDays);
+	
+	if(parsedMaxNextDays < 1)
+		d.setTime(dMax.getTime()); // Se é negativo ou 0, a imagem a mostrar actualmente é inferior a data actual, logo vai fazer set do d para dmax (possivel) e é esse que vai ser mostrado
+
+} else if(maxDate) {
+	var maxDateSplitted = maxDate.split("-");
+	dMax.setDate(parseInt(maxDateSplitted[0]));
+	dMax.setMonth(parseInt(maxDateSplitted[1])-1);
+	dMax.setFullYear(parseInt(maxDateSplitted[2]));
+	d.setTime(dMax.getTime());
+} else
+	dMax.setDate(dMax.getDate()+2);
+
+
+var $dtp = $("#datetimepicker1");
+var prefix = 'http://forecast.maretec.org/Operational_Data/Resultados/Mapas/' + getParameterByName("region") + '/';
+var nameVariables = [ new Array("Salinity", "Temperature", "Velocity", "Oxygen", "Chla", "Zoo", "Nitrate", "Phosphate"),
+					  new Array("significant_wave_height", "mean_wave_period"),
+					  new Array("PorousMedia_RelWaterContent", "PorousMedia_WaterTableDepth", "Vegetation_LeafAreaIndex", "Runoff_VelocityModulus", "PorousMediaProp_Salinity", "PorousMediaProp_Nitrate")]
+
+
+//var actualFileName = d.getFullYear() + getTwoDigitNumber(d.getMonth()+1) + getTwoDigitNumber(d.getDate()) + '-' + getTwoDigitNumber(d.getHours()) + "00"+ ".png";
+var now = new Date();
+//Todas as funçoes de DateTimePicker são acedidas $('#datetimepicker1').data("DateTimePicker").FUNCTION()
+//d=dMidn;
+
+var dateFormat = (indexOfVariable == 2)? 'DD-MM-YYYY' : 'DD-MM-YYYY HH:00';
+var useCurrentUnit = (indexOfVariable == 2)? 'day': 'hour'
+            $(function () {
+                $dtp.datetimepicker({
+					useCurrent: useCurrentUnit,
+					format: dateFormat,
+					locale: 'pt',
+					defaultDate: d,
+					minDate: dMin,
+					maxDate: dMax
+				});
+            });
+			
+			$("*:not(:has(.time-menu))").on("click", function (e) {
+					//$(this).addClass('blaaa');
+					//alert("AAAss");
+					if( $dtp && $dtp.data("DateTimePicker") ) //Para verificar, se não sao undefined , o que acontecia, por usar defaultDate
+						$dtp.data("DateTimePicker").hide();
+
+			});
+			
+
+
+//$dtp.data('DateTimePicker').date(new Date ());
+			
+			//$dtp.data("DateTimePicker").show();
+						
+			//$dtp.on("dp.show", function(e) {
+				
+			//	$dtp.data("DateTimePicker").date(d);
+			//});
+
+			$dtp.on("dp.change", function(e) { //evento para função chamada cada vez que se muda a data ou hora no calendario
+				if( $dtp && $dtp.data("DateTimePicker") ) //Para verificar, se não sao undefined , o que acontecia, por usar defaultDate
+					changeDateTimeOnPicker($dtp.data("DateTimePicker").date());
+			});
+
+		
+	
+presentVarSet(indexOfVariable, nameVariables);
+
+changeVariable(actualVariableIndex, d);
+
+if(indexOfVariable == 2) {
+	dailyBasis = true;
+	d.setHours(0);
+	d.setMinutes(0);
+	
+	var hourBasisElements = document.getElementsByClassName("hour-basis");
+	
+	for(n = 0; n < hourBasisElements.length; n++) {
+		hourBasisElements[n].className += " disabled";
+		hourBasisElements[n].removeAttribute("onclick");
+	}
+	
+	
+}
+
+actualizeImgSrc(d);
+
+function presentVarSet(index, varSet) {
+	var htmlList = "";
+	
+	var limit = varSet[index].length;
+	
+	for(n = 0; n < limit; n++) {
+		htmlList += "<li><a onclick=\"javascript:changeVariable(" + n + ", d)\" href=\"#\">" + varSet[index][n].replace(/_/g, " ") +"</a></li>";
+	}
+	
+	document.getElementById("varChoose").getElementsByTagName("UL")[0].innerHTML = htmlList;
+
+}
+
+//Função relativa à mudança do Date Time no Calendário, vai actualizar tudo o resto (imagem).
+function changeDateTimeOnPicker(timeObject) {
+
+	d = timeObject.toDate();
+	actualizeImgSrc(d);
+	
+}
+
+function changeVariable(value, dateObject) {
+	actualVariableIndex = value;
+	actualizeImgSrc(dateObject);
+	document.getElementById("activeVariable").innerHTML = nameVariables[indexOfVariable][actualVariableIndex].replace(/_/g, " ");
+}
+
+function actualizeImgSrc(dateObject) {
+	getActualFileName(dateObject);
+	document.getElementById("currentImage").src = prefix + nameVariables[indexOfVariable][actualVariableIndex] + '/0/' + getActualFileName(dateObject);
+	$(".loader-wrap").show();
+}
+
+function getTwoDigitNumber(value) {
+	return ((value < 10)? '0' : '') + value.toString();
+}
+
+function changeHour(val) {
+	//Pois o setTime utiliza o numero de milisegundos desde 1 Jan 1970, para a frente ou para trás.
+	//Por isso, tem de se ir buscar a data actual e adicionar tal valor
+	var dNextTime = d.getTime() + val*3600000;
+	
+	//Se passa dos limites temporais
+	if((dNextTime > dMax.getTime()) || (dNextTime < dMin.getTime()) ) {
+		if(playing) //se está a fazer play, vai parar pause
+			play();
+		alert("Chegou à data limite!");
+		return;
+	}
+	
+	
+	d.setTime(d.getTime() + val*3600000);
+	
+	
+
+	//É preciso fazer também actualizar o calendário
+	synchronizeTimeOnCalendar();
+	
+	
+	//E, por fim, o nome do ficheiro
+	actualizeImgSrc(d);
+
+
+}
+
+function changeDay(val) {
+
+	var hour = d.getHours();
+	
+	
+	var dNextTime = d.getTime() + val*3600000*24; //*24 horas de um dia
+		
+	//Se passa dos limites temporais
+	if((dNextTime > dMax.getTime()) || (dNextTime < dMin.getTime())) {
+		if(playing) //se está a fazer play, vai parar pause
+			play();
+		alert("Chegou à data limite!");
+		return;
+	}
+	
+	
+	d.setDate(d.getDate()+val);
+	
+	
+	//Necessario, por causa da mudanca da hora. No dia em que mudava a hora, e preciso mudar ou 23 ou 25 horas (consoante solsticio ou equinocio),
+	//por isso fazemos simplesmente set da hora anterior.
+	d.setHours(hour);
+	
+	
+
+	//É preciso fazer também actualizar o calendário
+	synchronizeTimeOnCalendar();
+	
+	//E, por fim, o nome do ficheiro
+	actualizeImgSrc(d);
+	//Pois o setTime utiliza o numero de milisegundos desde 1 Jan 1970, para a frente ou para trás.
+	//Por isso, tem de se ir buscar a data actual e adicionar tal valor
+	/*dateObject.setTime(dateObject.getTime() + val*24*3600000);
+	actualizeImgSrc(dateObject);*/
+	
+	
+	/*
+
+}
+
+function play() {
+	var funcToUse = (dailyBasis)? changeDay : changeHour;
+	var delay = 1000; //em milisegundos, o tempo para mudar.
+	playing = !playing;
+	if(playing) { //Se se quer playing, vai iniciar timer;
+		//é necessário criar função anónima, pois necessitavamos passar argumentos e a funcao passada como argumento, nao pode ter
+		interval = setInterval( function() {
+									funcToUse(intervalBasis)//funcToUse(1); quando so mudava um dia ou uma hora...
+								}, delay);
+		document.getElementById("plButton").innerHTML = "<span class=\"glyphicon glyphicon-pause\" />";
+	} else {
+		clearInterval(interval);
+		document.getElementById("plButton").innerHTML = "<span class=\"glyphicon glyphicon-play\" />";
+	}
+}
+
+function getActualFileName(dateObject) {
+	return dateObject.getFullYear() + getTwoDigitNumber(dateObject.getMonth()+1) + getTwoDigitNumber(dateObject.getDate()) + '-' + getTwoDigitNumber(dateObject.getHours()) + "00"+ ".png";
+}
+
+function setDailyBasis(daily, interval) {
+
+	dailyBasis = daily;
+	intervalBasis = interval;
+	if(playing) {//Vamos adicionar opção de que se possa alterar a base, enquanto se está a fazer play
+		play(); // uma vez para parar o play e tirar a função que se está a usar (day/hour)
+		play(); // outra vez para por a nova função e fazer play
+	}
+}
+
+function synchronizeTimeOnCalendar() {
+	//Não fuunciona
+	//$dtp.data("DateTimePicker").date().set(moment(d).toObject());
+
+	//Vamos fazer a mão
+
+	$dtp.data("DateTimePicker").date(d);
+
+	
+}
+
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+	
+	/*
+	// Encoded URI
+https%3A%2F%2Fw3schools.com%2Fmy%20test.asp%3Fname%3Dst%C3%A5le%26car%3Dsaab
+
+// Decoded URI
+https://w3schools.com/my test.asp?name=ståle&car=saab
+	*/
+//}
+
+
+
+
+</script>
+<!-- Modal Instructions (How to Use) dialog -->
+
+<div class="modal fade" id="infoDialogModal" role="dialog" aria-labelledby="cookieInfoModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+				<center>
+                    &copy;
+                    <img src="../img/logo_maretec_forecastrec.png" width="180">
+                    <br>&nbsp;
+ 				    <h4 lang-id="infoTitle_txt" class="modal-title"></h4>
+                </center>
+            </div>
+            <div id ="mapsAndStationsHelp" class="modal-body" style="display: none">
+                <label class="btn btn-primary"><span class="fas fa-globe"></span></label>
+				<div lang-id="infoGeneralMapProvider_txt" class="modal-body" style="display: inline"></div>
+                <br>
+                <label class="btn btn-primary"><span class="fas fa-map-marker-alt"></span></label>
+				<div lang-id="infoGeneralCenterMap_txt" class="modal-body" style="display: inline"></div>
+                <br>
+                <label class="btn btn-default"><span class="fas fa-plus"></span></label>
+                <label class="btn btn-default"><span class="fas fa-minus"></span></label>
+                <label class="btn btn-primary"><span class="fas fa-sync"></span></label>
+				<div lang-id="infoGeneralZoomControls_txt" class="modal-body" style="display: inline"></div>
+            </div>
+            <div id = "stationsOnlyHelp" class="modal-body" style="display: none">
+                <label class="btn btn-default"> <span class="fas fa-calendar-alt"></span></label>
+				<div lang-id="infoChartSelectDates_txt" class="modal-body" style="display: inline"></div>
+                <br>
+                <label class="btn btn-primary"> <span class="fas fa-th-list"></span></label>
+				<div lang-id="infoChartManageStations_txt" class="modal-body" style="display: inline"></div>
+                <br>
+                <label class="btn btn-primary"> <span class="fas fa-times"></span></label>
+				<div lang-id="infoChartClearStations_txt" class="modal-body" style="display: inline"></div>
+                <br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<div lang-id="infoChartLeftClick_txt" class="modal-body" style="display: inline"></div>
+                <br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<div lang-id="infoChartRightClick_txt" class="modal-body" style="display: inline"></div>
+                <br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<div lang-id="infoChartMobileClick_txt" class="modal-body" style="display: inline"></div>
+                <br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <div lang-id="infoChartShiftMouseDrag_txt" class="modal-body" style="display: inline"></div>
+                <br>
+            </div>
+            <div id="domainMapHelp" class="modal-body" style="display: none">
+                <label class="btn btn-primary"> <span class="fas fa-calendar-alt"></span></label>
+				<div lang-id="infoMapSelectDate_txt" class="modal-body" style="display: inline"></div>
+                <br>
+                <label class="btn btn-primary"> <span class="fas fa-cloud"></span></label>
+                <label class="btn btn-primary"> <span class="fas fa-ruler"></span></label>
+				<div lang-id="infoMapSelectMagnitude_txt" class="modal-body" style="display: inline"></div>
+                <br>
+                <label class="btn btn-primary"> <span class="fas fa-chevron-right"></span></label>
+                <label class="btn btn-primary"> <span class="fas fa-chevron-left"></span></label>
+                <div lang-id="infoMapShowHideCommands_txt" class="modal-body" style="display: inline"></div>
+                <br>
+                <label class="btn btn-primary"> <span class="fas fa-chevron-up"></span></label>
+ 				<div lang-id="infoMapSelectTimeStep_txt" class="modal-body" style="display: inline"></div>
+                <br>
+                <label class="btn btn-primary"> <span class="fas fa-fast-backward"></span></label>
+                <label class="btn btn-primary"> <span class="fas fa-step-backward"></span></label>
+                <label class="btn btn-primary"> <span class="fas fa-play"></span></label>
+                <label class="btn btn-primary"> <span class="fas fa-pause"></span></label>
+                <label class="btn btn-primary"> <span class="fas fa-step-forward"></span></label>
+                <label class="btn btn-primary"> <span class="fas fa-fast-forward"></span></label>
+				<div lang-id="infoMapPlaybackCommands_txt" class="modal-body" style="display: inline"></div>
+                <br>
+                <label class="btn btn-primary"> <span class="fas fa-server"></span></label>
+				<div lang-id="infoMapCatalogData_txt" class="modal-body" style="display: inline"></div>
+            </div>
+            <div class="modal-body">
+                <label class="btn btn-primary"><span class="fas fa-question"></span></label>
+				<div lang-id="infoGeneralInfo_txt" class="modal-body" style="display: inline"></div>
+                <br><br>
+            </div>
+            <div class="modal-footer">
+                <span lang-id="copyrightNotice_txt" class="from-control-static pull-left"></span>
+				<button id="privacyStatement-close" lang-id="dismiss_txt" type="button" class="btn btn-info" data-dismiss="modal"></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+	<script src="../js/activable-item.js"></script>
+
+</body>
+</html>

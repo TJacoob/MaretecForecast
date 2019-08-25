@@ -1,0 +1,485 @@
+{
+	"velocity_U" : {
+				"name" : "velocity_U",
+				"name_alt" : "velocity U",
+				"units" : "m/s",
+				"ndecimal" : 1,
+				"online" : false
+	},
+	"velocity_V" : {
+				"name" : "velocity_V",
+				"name_alt" : "velocity V",
+				"units" : "m/s",
+				"ndecimal" : 1,
+				"online" : false
+	},
+	"velocity_modulus" : {
+				"name" : "velocity_modulus",
+				"name_alt" : "Velocity modulus",
+				"units" : "m/s",
+				"ndecimal" : 1,
+				"online" : true
+	},
+	"velocity_direction" : {
+				"name" : "velocity_direction",
+				"name_alt" : "Velocity direction",
+				"units" : "º",
+				"ndecimal" : 1,
+				"online" : false
+	},
+	"water_level" : {
+				"name" : "water_level",
+				"name_alt" : "Water level",
+				"units" : "m",
+				"ndecimal" : 1,
+				"online" : true
+	},	
+	"significant_wave_height" : {
+				"name" : "significant_wave_height",
+				"name_alt" : "Significant Wave height",
+				"units" : "m",
+				"ndecimal" : 1,
+				"online" : true
+	},	
+	"mean_wave_period" : {
+				"name" : "mean_wave_period",
+				"name_alt" : "Mean Wave period",
+				"units" : "s",
+				"ndecimal" : 2,
+				"online" : true
+	},
+	"mean_wave_direction" : {
+			"name" : "mean_wave_direction",
+			"name_alt" : "Mean Wave direction",
+			"units" : "º",
+			"ndecimal" : 2,
+			"online" : true
+	},
+	"peak_period" : {
+			"name" : "peak_period",
+			"name_alt" : "Peak period",
+			"units" : "s",
+			"ndecimal" : 2,
+			"online" : true
+	},
+	"peak_direction" : {
+			"name" : "peak_direction",
+			"name_alt" : "Peak direction",
+			"units" : "º",
+			"ndecimal" : 2,
+			"online" : true
+	},
+	"wave_power" : {
+			"name" : "wave_power",
+			"name_alt" : "Wave power",
+			"units" : "KW/m",
+			"ndecimal" : 2,
+			"online" : true
+	},
+	"Max_Crest_Through_Wave_Height" : {
+			"name" : "Max_Crest_Through_Wave_Height",
+			"name_alt" : "Max Crest Through Wave Height",
+			"units" : "m",
+			"ndecimal" : 2,
+			"online" : true
+	},
+	"Significant_Wave_Max_Period" : {
+			"name" : "Significant_Wave_Max_Period",
+			"name_alt" : "Significant Wave Max Period",
+			"units" : "s",
+			"ndecimal" : 2,
+			"online" : false
+	},	
+	"salinity" : {
+			"name" : "salinity",
+			"name_alt" : "Salinity",
+			"units" : "psu",
+			"ndecimal" : 2,
+			"online" : true
+	},	
+	"Depth" : {
+			"name" : "Depth",
+			"name_alt" : "Depth",
+			"units" : "m",
+			"ndecimal" : 2,
+			"online" : false
+	},
+	"temperature" : {
+			"name" : "temperature",
+			"name_alt" : "Temperature",
+			"units" : "ºC",
+			"ndecimal" : 1,
+			"online" : true
+	},
+	"oxygen" : {
+			"name" : "oxygen",
+			"name_alt" : "Oxygen",
+			"units" : "mg/l",
+			"ndecimal" : 2,
+			"online" : true
+	},
+	"cohesive_sediment" : {
+			"name" : "cohesive_sediment",
+			"name_alt" : "Cohesive sediment",
+			"units" : "mg/l",
+			"ndecimal" : 2,
+			"online" : true
+	},
+	"ammonia" : {
+			"name" : "ammonia",
+			"name_alt" : "Ammonia",
+			"units" : "mg/l",
+			"ndecimal" : 2,
+			"online" : true
+	},
+	"nitrite" : {
+			"name" : "nitrite",
+			"name_alt" : "Nitrite",
+			"units" : "mg/l",
+			"ndecimal" : 2,
+			"online" : true
+	},
+	"nitrate" : {
+			"name" : "nitrate",
+			"name_alt" : "Nitrate",
+			"units" : "mg/l",
+			"ndecimal" : 5,
+			"online" : true
+	},
+	"inorganic_phosphorus" : {
+			"name" : "inorganic_phosphorus",
+			"name_alt" : "Inorganic phosphorus",
+			"units" : "mg/l",
+			"ndecimal" : 2,
+			"online" : true
+	},
+	"phytoplankton" : {
+			"name" : "phytoplankton",
+			"name_alt" : "Phytoplankton",
+			"units" : "mg/l",
+			"ndecimal" : 4,
+			"online" : true
+	},
+	"zooplankton" : {
+			"name" : "zooplankton",
+			"name_alt" : "Zooplankton",
+			"units" : "mg/l",
+			"ndecimal" : 4,
+			"online" : true
+	},	
+	"air_temperature" : {
+			"name" : "air_temperature",
+			"name_alt" : "Air temperature",
+			"units" : "ºC",
+			"ndecimal" : 1,
+			"online" : true
+	},
+	"relative_humidity" : {
+			"name" : "relative_humidity",
+			"name_alt" : "Relative humidity",
+			"units" : "%",
+			"ndecimal" : 1,
+			"online" : true
+	},
+	"solar_radiation" : {
+			"name" : "solar_radiation",
+			"name_alt" : "Solar radiation",
+			"units" : "W/m-2",
+			"ndecimal" : 1,
+			"online" : true
+	},
+	"precipitation" : {
+			"name" : "precipitation",
+			"name_alt" : "Precipitation",
+			"units" : "mm",
+			"ndecimal" : 1,
+			"online" : true
+	},	
+	"mean_sea_level_pressure" : {
+			"name" : "mean_sea_level_pressure",
+			"name_alt" : "Mean sea level pressure",
+			"units" : "Pa",
+			"ndecimal" : 0,
+			"online" : true
+	},	
+	"atmospheric_pressure" : {
+			"name" : "atmospheric_pressure",
+			"name_alt" : "Atmospheric pressure",
+			"units" : "Pa",
+			"ndecimal" : 0,
+			"online" : true
+	},
+	"wind_modulus" : {
+			"name" : "wind_modulus",
+			"name_alt" : "Wind velocity",
+			"units" : "m/s",
+			"ndecimal" : 1,
+			"online" : true
+	},
+	"wind_direction" : {
+			"name" : "wind_direction",
+			"name_alt" : "Wind direction",
+			"units" : "º",
+			"ndecimal" : 1,
+			"online" : false
+	},
+	"wind_velocity_X" : {
+			"name" : "wind_velocity_X",
+			"name_alt" : "Wind velocity X",
+			"units" : "m/s",
+			"ndecimal" : 1,
+			"online" : false
+	},
+	"wind_velocity_Y" : {
+			"name" : "wind_velocity_Y",
+			"name_alt" : "wind velocity Y",
+			"units" : "m/s",
+			"ndecimal" : 1,
+			"online" : false
+	},
+	"channel_water_depth" : {
+				"name" : "channel_water_depth",
+				"name_alt" : "channel_water_depth",
+				"units" : "m/s",
+				"ndecimal" : 1,
+				"online" : false
+	},
+	"channel_water_level" : {
+				"name" : "channel_water_level",
+				"name_alt" : "channel_water_level",
+				"units" : "m/s",
+				"ndecimal" : 1,
+				"online" : false
+	},
+	"percentage_max_volume" : {
+				"name" : "percentage_max_volume",
+				"name_alt" : "percentage_max_volume",
+				"units" : "m/s",
+				"ndecimal" : 1,
+				"online" : false
+	},
+	"vertical_area" : {
+				"name" : "vertical_area",
+				"name_alt" : "vertical_area",
+				"units" : "m/s",
+				"ndecimal" : 1,
+				"online" : false
+	},
+	"flow_to_channels" : {
+				"name" : "flow_to_channels",
+				"name_alt" : "flow_to_channels",
+				"units" : "m/s",
+				"ndecimal" : 1,
+				"online" : false
+	},
+	"volume" : {
+				"name" : "volume",
+				"name_alt" : "volume",
+				"units" : "m/s",
+				"ndecimal" : 1,
+				"online" : false
+	},
+	"channel_flow" : {
+				"name" : "channel_flow",
+				"name_alt" : "Channel Flow",
+				"units" : "m/s",
+				"ndecimal" : 0,
+				"online" : true
+	},
+	"velocity" : {
+				"name" : "velocity",
+				"name_alt" : "velocity",
+				"units" : "m/s",
+				"ndecimal" : 1,
+				"online" : false
+	},
+	"GW_flow_to_channels" : {
+				"name" : "GW_flow_to_channels",
+				"name_alt" : "GW_flow_to_channels",
+				"units" : "m/s",
+				"ndecimal" : 1,
+				"online" : false
+	},
+	"pool_water_depth" : {
+				"name" : "pool_water_depth",
+				"name_alt" : "pool_water_depth",
+				"units" : "m/s",
+				"ndecimal" : 1,
+				"online" : false
+	},
+	"DT" : {
+				"name" : "DT",
+				"name_alt" : "DT",
+				"units" : "m/s",
+				"ndecimal" : 1,
+				"online" : false
+	},
+	"Local_DT" : {
+				"name" : "Local_DT",
+				"name_alt" : "Local_DT",
+				"units" : "m/s",
+				"ndecimal" : 1,
+				"online" : false
+	},
+	"Bottom_cohesive_sediment" : {
+				"name" : "Bottom_cohesive_sediment",
+				"name_alt" : "Bottom_cohesive_sediment",
+				"units" : "m/s",
+				"ndecimal" : 1,
+				"online" : false
+	},
+	"dissolved_refractory_organic_nitrogen" : {
+				"name" : "dissolved_refractory_organic_nitrogen",
+				"name_alt" : "dissolved_refractory_organic_nitrogen",
+				"units" : "m/s",
+				"ndecimal" : 1,
+				"online" : false
+	},
+	"dissolved_non-refractory_organic_nitrogen" : {
+				"name" : "dissolved_non-refractory_organic_nitrogen",
+				"name_alt" : "dissolved_non-refractory_organic_nitrogen",
+				"units" : "m/s",
+				"ndecimal" : 1,
+				"online" : false
+	},
+	"particulate_organic_nitrogen" : {
+				"name" : "particulate_organic_nitrogen",
+				"name_alt" : "particulate_organic_nitrogen",
+				"units" : "m/s",
+				"ndecimal" : 1,
+				"online" : false
+	},
+	"Bottom_particulate_organic_nitrogen" : {
+				"name" : "Bottom_particulate_organic_nitrogen",
+				"name_alt" : "Bottom_particulate_organic_nitrogen",
+				"units" : "m/s",
+				"ndecimal" : 1,
+				"online" : false
+	},
+	"Bottom_phytoplankton" : {
+				"name" : "Bottom_phytoplankton",
+				"name_alt" : "Bottom_phytoplankton",
+				"units" : "m/s",
+				"ndecimal" : 1,
+				"online" : false
+	},
+	"Bottom_zooplankton" : {
+				"name" : "Bottom_zooplankton",
+				"name_alt" : "Bottom_zooplankton",
+				"units" : "m/s",
+				"ndecimal" : 1,
+				"online" : false
+	},
+	"dissolved_refractory_organic_phosphorus" : {
+				"name" : "dissolved_refractory_organic_phosphorus",
+				"name_alt" : "dissolved_refractory_organic_phosphorus",
+				"units" : "m/s",
+				"ndecimal" : 1,
+				"online" : false
+	},
+	"dissolved_non-refractory_organic_phosphorus" : {
+				"name" : "dissolved_non-refractory_organic_phosphorus",
+				"name_alt" : "dissolved_non-refractory_organic_phosphorus",
+				"units" : "m/s",
+				"ndecimal" : 1,
+				"online" : false
+	},
+	"particulate_organic_phosphorus" : {
+				"name" : "particulate_organic_phosphorus",
+				"name_alt" : "particulate_organic_phosphorus",
+				"units" : "m/s",
+				"ndecimal" : 1,
+				"online" : false
+	},
+	"Bottom_particulate_organic_phosphorus" : {
+				"name" : "Bottom_particulate_organic_phosphorus",
+				"name_alt" : "Bottom_particulate_organic_phosphorus",
+				"units" : "m/s",
+				"ndecimal" : 1,
+				"online" : false
+	},
+	"PhytoGrossProd" : {
+				"name" : "PhytoGrossProd",
+				"name_alt" : "PhytoGrossProd",
+				"units" : "m/s",
+				"ndecimal" : 1,
+				"online" : false
+	},
+	"PhytoLightLimitation" : {
+				"name" : "PhytoLightLimitation",
+				"name_alt" : "PhytoLightLimitation",
+				"units" : "m/s",
+				"ndecimal" : 1,
+				"online" : false
+	},
+	"PhytoTempLimitation" : {
+				"name" : "PhytoTempLimitation",
+				"name_alt" : "PhytoTempLimitation",
+				"units" : "m/s",
+				"ndecimal" : 1,
+				"online" : false
+	},
+	"PhytoNitrogenLimitation" : {
+				"name" : "PhytoNitrogenLimitation",
+				"name_alt" : "PhytoNitrogenLimitation",
+				"units" : "m/s",
+				"ndecimal" : 1,
+				"online" : false
+	},
+	"PhytoPhosphorusLimitation" : {
+				"name" : "PhytoPhosphorusLimitation",
+				"name_alt" : "PhytoPhosphorusLimitation",
+				"units" : "m/s",
+				"ndecimal" : 1,
+				"online" : false
+	},
+	"PhytoOwnRates" : {
+				"name" : "PhytoOwnRates",
+				"name_alt" : "PhytoOwnRates",
+				"units" : "m/s",
+				"ndecimal" : 1,
+				"online" : false
+	},
+	"ZooOwnRates" : {
+				"name" : "ZooOwnRates",
+				"name_alt" : "ZooOwnRates",
+				"units" : "m/s",
+				"ndecimal" : 1,
+				"online" : false
+	},
+	"PhytoGrazing" : {
+				"name" : "PhytoGrazing",
+				"name_alt" : "PhytoGrazing",
+				"units" : "m/s",
+				"ndecimal" : 1,
+				"online" : false
+	},
+	"PhytoAssimilationExcretionIP" : {
+				"name" : "PhytoAssimilationExcretionIP",
+				"name_alt" : "PhytoAssimilationExcretionIP",
+				"units" : "m/s",
+				"ndecimal" : 1,
+				"online" : false
+	},
+	"PhytoAssimilationExcretionAmmonia" : {
+				"name" : "PhytoAssimilationExcretionAmmonia",
+				"name_alt" : "PhytoAssimilationExcretionAmmonia",
+				"units" : "m/s",
+				"ndecimal" : 1,
+				"online" : false
+	},
+	"PhytoAssimilationNitrate" : {
+				"name" : "PhytoAssimilationNitrate",
+				"name_alt" : "PhytoAssimilationNitrate",
+				"units" : "m/s",
+				"ndecimal" : 1,
+				"online" : false
+	},
+	"shear_stress" : {
+				"name" : "shear_stress",
+				"name_alt" : "shear_stress",
+				"units" : "m/s",
+				"ndecimal" : 1,
+				"online" : false
+	}
+}

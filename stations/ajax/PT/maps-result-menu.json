@@ -1,0 +1,20 @@
+{
+	"title": "MAPAS",
+	"lastInfoToShow":
+		{
+			"title": "Maretec",
+			"imageTitle": "images/logo_maretec_forecastrec.png"
+
+		},
+	"navbarElements":
+		{
+			"nb-models-00": "MAPAS <span class=\"caret\"></span></a>",
+			"ND-nb-maps-00": "CIRCULAÇÃO",
+			"ND-nb-maps-01": "ONDAS",
+			"ND-nb-maps-02": "BACIAS HIDROGRÁFICAS",
+			"nb-models-01": "ESTAÇÕES <span class=\"caret\"></span></a>",
+			"ND-nb-charts-00": "ESTAÇÕES AQUÁTICAS",
+			"ND-nb-charts-01": "ESTAÇÕES TERRESTRES",
+			"ND-nb-charts-02": "TODAS AS ESTAÇÕES"
+		}
+}

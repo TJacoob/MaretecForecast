@@ -1,0 +1,14 @@
+[
+	{
+		"pageElementId": "welcometext",
+		"pageElementContent": "<img src=\"../../logo.png\" class=\"img-fluid img-circle index-img\" style=\"max-width: 40%; and height: auto;\" alt=\"MARETEC\"><h1 id=\"welcome-font\">Welcome!</h1>"
+	},
+	{
+		"pageElementId": "whatwedo",
+		"pageElementContent": "<div data-aos=\"fade-up\"><h3>What We Do</h3><br><img src=\"images/mar.jpg\" class=\"img-fluid img-circle index-img\" style=\"max-width: 200px; and height: auto\"></div><br><br><p data-aos=\"fade-up\">MARETEC is IST's multidisciplinary research centre (www.maretec.org and www.mohid.com) whose main activities are numerical modelling covering almost all phases of the water cycle from watershed to river, estuary and ocean.</p><p data-aos=\"fade-up\">Since 2009, Maretec has invested in operational modelling and nowadays provides daily modelling results for circulation, ecology and waves for the Portuguese Coastal waters and watersheds at different scales. If you want more information about Maretec activities and reaseach please click on the link below.</p><p> </p><a href=\"http://maretec.org/\" class=\"btn btn-default btn-lg\" data-aos=\"fade-up\">Visit MARETEC webpage <span class=\"glyphicon glyphicon-hand-right\"></span></a>"
+	},
+	{
+		"pageElementId": "contact",
+		"pageElementContent": "<div data-aos=\"fade-up\"><h3>Contact Us</h3><br><img src=\"images/contacts.jpg\" class=\"img-fluid img-circle index-img\" style=\"max-width: 200px; and height: auto\"></div><br><br><h4>MARETEC<br>Marine Environment and Technology Center</h4><p><a href=\"http://maretec.org/\">www.maretec.org</a></p><p><b>IST – Instituto Superior Técnico<br><br>Department of Mechanical Engineering<br>University of Lisbon</b><br>Av. Rovisco Pais<br>1049-001 Lisboa<br>Portugal</p><p>Phone: (+351) 218 419 429</p><p>Email: <a href=\"mailto:operational@maretec.org\">operational@maretec.org</a></p>"
+	}
+]

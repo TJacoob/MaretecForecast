@@ -1,0 +1,755 @@
+{
+	"Water": [{
+		"color": "#ff9900",
+		"type": "FeatureCollection",
+		"features": [
+			{
+				"type": "Feature",
+				"id": "01",
+				"properties": {"name": "62025_Cabo_de_Penas_Buoy", "name_alt": "Cabo de Peñas Buoy", "Buoy ID":"62025","Hydrodinamic Model":"Mohid Water","Waves Model":"WaveWatch III"},
+				"geometry": {"type": "Point","coordinates": [-6.19,	43.73]},
+				"ObsSource": {"name": "Puertos del Estado", "urlImg": "img/logos/pde.png"},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},
+			{
+				"type": "Feature",
+				"id": "02",
+				"properties": {"name": "62082_Estaca_de_Bares_Buoy", "name_alt": "Estaca de Bares Buoy", "Buoy ID":"62082","Hydrodinamic Model":"Mohid Water","Waves Model":"WaveWatch III"},
+				"geometry": {"type": "Point","coordinates": [-7.62,	44.06]},
+				"ObsSource": {"name": "Puertos del Estado", "urlImg": "img/logos/pde.png"},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},		
+			{
+				"type": "Feature",
+				"id": "03",
+				"properties": {"name": "6201062_Ribeira_Buoy", "name_alt": "Ribeira Buoy", "Buoy ID":"6201062","Hydrodinamic Model":"Mohid Water","Waves Model":"WaveWatch III"},
+				"geometry": {"type": "Point","coordinates": [-8.94783,	42.5497]},
+				"ObsSource": {"name": "Xunta de Galicia", "urlImg": "img/logos/Xunta-Galicia_sm.png"},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},				
+			{
+				"type": "Feature",
+				"id": "04",
+				"properties": {	"name": "62083_Villano-Sisargas_Buoy", "name_alt": "Villano-Sisargas Buoy", "Buoy ID":"62083","Hydrodinamic Model":"Mohid Water","Waves Model":"WaveWatch III"},
+				"geometry": {"type": "Point","coordinates": [-9.21,	43.49]},
+				"ObsSource": {"name": "Puertos del Estado", "urlImg": "img/logos/pde.png"},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},
+			{
+				"type": "Feature",
+				"id": "05",
+				"properties": {"name": "62085_Cadiz_Buoy", "name_alt": "Cadiz Buoy", "Buoy ID":"62085","Hydrodinamic Model":"Mohid Water","Waves Model":"WaveWatch III"},
+				"geometry": {"type": "Point","coordinates": [-6.98,	36.84]},
+				"ObsSource": {"name": "Puertos del Estado", "urlImg": "img/logos/pde.png"},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},
+			{
+				"type": "Feature",
+				"id": "06",
+				"properties": {"name": "6201031_AGuarda_Buoy", "name_alt": "A Guarda Buoy", "Buoy ID":"6201031","Hydrodinamic Model":"Mohid Water","Waves Model":"WaveWatch III"},
+				"geometry": {"type": "Point","coordinates": [-8.90,	41.90]},
+				"ObsSource": {"name": "Xunta de Galicia", "urlImg": "img/logos/Xunta-Galicia_sm.png"},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},			
+			{
+				"type": "Feature",
+				"id": "07",
+				"properties": {"name": "6201040_Illas_Cies_Buoy", "name_alt": "Illas Cies Buoy", "Buoy ID":"6201040","Hydrodinamic Model":"Mohid Water","Waves Model":"WaveWatch III"},
+				"geometry": {"type": "Point","coordinates": [-8.91,	42.17]},
+				"ObsSource": {"name": "Xunta de Galicia", "urlImg": "img/logos/Xunta-Galicia_sm.png"},				
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},						
+			{
+				"type": "Feature",
+				"id": "08",
+				"properties": {"name": "ACorunha_TG", "name_alt": "A Corunha TG", "Hydrodinamic Model":"Mohid Water","Waves Model":"WaveWatch III"},
+				"geometry": {"type": "Point","coordinates": [-8.39,	43.36]},
+				"ObsSource": {"name": "IEO", "urlImg": "img/logos/ieo.png"},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},
+			{
+				"type": "Feature",
+				"id": "09",
+				"properties": {"name": "Algeciras_TG", "name_alt": "Algeciras TG", "Hydrodinamic Model":"Mohid Water","Waves Model":"WaveWatch III"},
+				"geometry": {"type": "Point","coordinates": [-5.40,	36.18]},
+				"ObsSource": {"name": "Puertos del Estado", "urlImg": "img/logos/pde.png"},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},			
+			{
+				"type": "Feature",
+				"id": "10",
+				"properties": {"name": "Aveiro_TG", "name_alt": "Aveiro TG", "Hydrodinamic Model":"Mohid Water","Waves Model":"WaveWatch III"},
+				"geometry": {"type": "Point","coordinates": [-8.74861,	40.64444]},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},
+			{
+				"type": "Feature",
+				"id": "11",
+				"properties": {"name": "Bonanza_TG", "name_alt": "Bonanza TG", "Hydrodinamic Model":"Mohid Water","Waves Model":"WaveWatch III"},
+				"geometry": {"type": "Point","coordinates": [-6.34,	36.80]},
+				"ObsSource": {"name": "Puertos del Estado", "urlImg": "img/logos/pde.png"},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},			
+			{
+				"type": "Feature",
+				"id": "12",
+				"properties": {"name": "Cascais_TG", "name_alt": "Cascais TG", "Hydrodinamic Model":"Mohid Water","Waves Model":"WaveWatch III"},
+				"geometry": {"type": "Point","coordinates": [-9.41806,	38.69444]},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},
+			{
+				"type": "Feature",
+				"id": "13",
+				"properties": {"name": "Faro_TG", "name_alt": "Faro TG", "Hydrodinamic Model":"Mohid Water","Waves Model":"WaveWatch III"},
+				"geometry": {"type": "Point","coordinates": [-7.898333,	36.904722]},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},		
+			{
+				"type": "Feature",
+				"id": "14",
+				"properties": {"name": "Ferrol_TG", "name_alt": "Ferrol TG", "Hydrodinamic Model":"Mohid Water","Waves Model":"WaveWatch III"},
+				"geometry": {"type": "Point","coordinates": [-8.33,	43.46]},
+				"ObsSource": {"name": "Puertos del Estado", "urlImg": "img/logos/pde.png"},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},	
+			{
+				"type": "Feature",
+				"id": "15",
+				"properties": {"name": "Figueira_da_Foz_TG", "name_alt": "Figueira da Foz TG", "Hydrodinamic Model":"Mohid Water","Waves Model":"WaveWatch III"},
+				"geometry": {"type": "Point","coordinates": [-8.85417,	40.14722]},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},	
+			{
+				"type": "Feature",
+				"id": "16",
+				"properties": {"name": "Gibraltar_TG", "name_alt": "Gibraltar TG", "Hydrodinamic Model":"Mohid Water","Waves Model":"WaveWatch III"},
+				"geometry": {"type": "Point","coordinates": [-5.36492,	36.14823]},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},		
+			{
+				"type": "Feature",
+				"id": "17",
+				"properties": {"name": "Gijon_TG", "name_alt": "Gijon TG", "Hydrodinamic Model":"Mohid Water","Waves Model":"WaveWatch III"},
+				"geometry": {"type": "Point","coordinates": [-5.693151,	43.62538]},
+				"ObsSource": {"name": "Puertos del Estado", "urlImg": "img/logos/pde.png"},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},			
+			{
+				"type": "Feature",
+				"id": "18",
+				"properties": {"name": "Huelva_TG", "name_alt": "Huelva TG", "Hydrodinamic Model":"Mohid Water","Waves Model":"WaveWatch III"},
+				"geometry": {"type": "Point","coordinates": [-6.83,	37.13]},
+				"ObsSource": {"name": "Puertos del Estado", "urlImg": "img/logos/pde.png"},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},				
+			{
+				"type": "Feature",
+				"id": "19",
+				"properties": {"name": "Lagos_TG", "name_alt": "Lagos TG", "Hydrodinamic Model":"Mohid Water","Waves Model":"WaveWatch III"},
+				"geometry": {"type": "Point","coordinates": [-8.66667,	37.09861]},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},		
+			{
+				"type": "Feature",
+				"id": "20",
+				"properties": {"name": "Lisboa_Porto_Buoy", "name_alt": "Porto Lisboa Buoy", "Hydrodinamic Model":"Mohid Water","Waves Model":"WaveWatch III"},
+				"geometry": {"type": "Point","coordinates": [-9.38583,	38.62361]},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},	
+			{
+				"type": "Feature",
+				"id": "21",
+				"properties": {"name": "Leixoes_TG", "name_alt": "Leixões TG", "Hydrodinamic Model":"Mohid Water","Waves Model":"WaveWatch III"},
+				"geometry": {"type": "Point","coordinates": [-8.70278,	41.18472]}, 
+				"ObsSource": {"name": "Instituto Hidrográfico", "urlImg": "img/logos/hidrografico.png"},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},		 
+			{
+				"type": "Feature",
+				"id": "22",
+				"properties": {"name": "Monican01_Buoy", "name_alt": "Monican01 Buoy", "Hydrodinamic Model":"Mohid Water","Waves Model":"WaveWatch III"},
+				"geometry": {"type": "Point","coordinates": [-9.64,	39.51]},
+				"ObsSource": {"name": "Instituto Hidrográfico", "urlImg": "img/logos/hidrografico.png"},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},				
+			{
+				"type": "Feature",
+				"id": "23",
+				"properties": {"name": "Monican02_Buoy", "name_alt": "Monican02 Buoy", "Hydrodinamic Model":"Mohid Water","Waves Model":"WaveWatch III"},
+				"geometry": {"type": "Point","coordinates": [-9.21,	39.56]},
+				"ObsSource": {"name": "Instituto Hidrográfico", "urlImg": "img/logos/hidrografico.png"},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},		
+			{
+				"type": "Feature",
+				"id": "24",
+				"properties": {"name": "Nazare_TG", "name_alt": "Nazaré TG", "Hydrodinamic Model":"Mohid Water","Waves Model":"WaveWatch III"},
+				"geometry": {"type": "Point","coordinates": [-9.07426,	39.58611]}, 
+				"ObsSource": {"name": "Instituto Hidrográfico", "urlImg": "img/logos/hidrografico.png"},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},						
+			{
+				"type": "Feature",
+				"id": "25",
+				"properties": {"name": "Peniche_TG", "name_alt": "Peniche TG", "Hydrodinamic Model":"Mohid Water","Waves Model":"WaveWatch III"},
+				"geometry": {"type": "Point","coordinates": [-9.36742,	39.35353]},
+				"ObsSource": {"name": "Instituto Hidrográfico", "urlImg": "img/logos/hidrografico.png"},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},	
+			{
+				"type": "Feature",
+				"id": "26",
+				"properties": {"name": "Raia01_Buoy", "name_alt": "Raia01 Buoy", "Hydrodinamic Model":"Mohid Water","Waves Model":"WaveWatch III"},
+				"geometry": {"type": "Point","coordinates": [-9.562, 41.1623]},
+				"ObsSource": {"name": "Instituto Hidrográfico", "urlImg": "img/logos/hidrografico.png"},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},				
+			{
+				"type": "Feature",
+				"id": "27",
+				"properties": {"name": "Sesimbra_TG", "name_alt": "Sesimbra TG", "Hydrodinamic Model":"Mohid Water","Waves Model":"WaveWatch III"},
+				"geometry": {"type": "Point","coordinates": [-9.11111,	38.44028]},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},		
+			{
+				"type": "Feature",
+				"id": "29",
+				"properties": {"name": "Sines_Buoy", "name_alt": "Sines Buoy", "Hydrodinamic Model":"Mohid Water","Waves Model":"WaveWatch III"},
+				"geometry": {"type": "Point","coordinates": [-8.92889,	37.92111]},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},		
+			{
+				"type": "Feature",
+				"id": "30",
+				"properties": {"name": "Sines_TG", "name_alt": "Sines TG", "Hydrodinamic Model":"Mohid Water","Waves Model":"WaveWatch III"},
+				"geometry": {"type": "Point","coordinates": [-8.888,	37.949]}, 
+				"ObsSource": {"name": "Instituto Hidrográfico", "urlImg": "img/logos/hidrografico.png"},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},					
+			{
+				"type": "Feature",
+				"id": "31",
+				"properties": {"name": "Tarifa_TG", "name_alt": "Tarifa TG", "Hydrodinamic Model":"Mohid Water","Waves Model":"WaveWatch III"},
+				"geometry": {"type": "Point","coordinates": [-5.60,	36.01]},
+				"ObsSource": {"name": "Puertos del Estado", "urlImg": "img/logos/pde.png"},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},				
+			{
+				"type": "Feature",
+				"id": "32",
+				"properties": {"name": "Viana_do_Castelo_TG", "name_alt": "Viana do Castelo TG", "Hydrodinamic Model":"Mohid Water","Waves Model":"WaveWatch III"},
+				"geometry": {"type": "Point","coordinates": [-8.83889, 41.68750]},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},		
+			{
+				"type": "Feature",
+				"id": "33",
+				"properties": {"name": "Vigo_TG", "name_alt": "Vigo TG", "Hydrodinamic Model":"Mohid Water","Waves Model":"WaveWatch III"},
+				"geometry": {"type": "Point","coordinates": [-8.73,	42.24]},
+				"ObsSource": {"name": "IEO", "urlImg": "img/logos/ieo.png"},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},			
+			{
+				"type": "Feature",
+				"id": "34",
+				"properties": {"name": "Vila_Real_Sto_Antonio_TG", "name_alt": "Vila Real Sto Antonio TG", "Hydrodinamic Model":"Mohid Water","Waves Model":"WaveWatch III"},
+				"geometry": {"type": "Point","coordinates": [-7.4125, 37.19306]},
+				"ObsSource": {"name": "Instituto Hidrográfico", "urlImg": "img/logos/hidrografico.png"},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},
+			{
+				"type": "Feature",
+				"id": "35",
+				"properties": {"name": "Villagarcia_TG", "name_alt": "Villagarcía TG", "Hydrodinamic Model":"Mohid Water","Waves Model":"WaveWatch III"},
+				"geometry": {"type": "Point","coordinates": [-8.77,	42.60]},
+				"ObsSource": {"name": "Puertos del Estado", "urlImg": "img/logos/pde.png"},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"},
+				"userobsdownload": ["campuzanofj.maretec@tecnico.ulisboa.pt"]
+			},			
+			{
+				"type": "Feature",
+				"id": "36",
+				"properties": {"name": "WaveRoller", "name_alt": "WaveRoller"}, 
+				"geometry": {"type": "Point","coordinates": [-9.30753,	39.38898]},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"},
+				"user": ["mail@wavec.org","campuzanofj.maretec@tecnico.ulisboa.pt"]
+			},			
+			{
+				"type": "Feature",
+				"id": "37",
+				"properties": {"name": "WindFloat", "name_alt": "WindFloat", "Depth":"45 m"},
+				"geometry": {"type": "Point","coordinates": [ -8.83998,	41.45368]},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"},
+				"user": ["info@principlepowerinc.com","fundacaoedp@edp.pt","mail@wavec.org","campuzanofj.maretec@tecnico.ulisboa.pt"]
+			},			
+			{
+				"type": "Feature",
+				"id": "38",
+				"properties": {"name": "PilotZone", "name_alt": "Pilot Zone", "Depth":"54.5 m"},
+				"geometry": {"type": "Point","coordinates": [-9.1,	39.875]},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"},
+				"user": ["oceanplug@ren.pt","campuzanofj.maretec@tecnico.ulisboa.pt"]
+			},			
+			{
+				"type": "Feature",
+				"id": "39",
+				"properties": {"name": "Re_Nord", "name_alt": "Île de Ré Nord", "Depth":"5.5 m"},
+				"geometry": {"type": "Point","coordinates": [-1.6069,	46.2800]},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"},
+				"user": ["andre.martinez@eigsi.fr","campuzanofj.maretec@tecnico.ulisboa.pt"]
+			},			
+			{
+				"type": "Feature",
+				"id": "40",
+				"properties": {"name": "Oleron_Nord", "name_alt": "Île d'Oléron Nord", "Depth":"14 m"},
+				"geometry": {"type": "Point","coordinates": [-1.4139, 46.0814]},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"},
+				"user": ["andre.martinez@eigsi.fr","campuzanofj.maretec@tecnico.ulisboa.pt"]
+			},			
+			{
+				"type": "Feature",
+				"id": "41",
+				"properties": {"name": "Oleron_Sud", "name_alt": "Île d'Oléron Sud", "Depth":"2.5 m"},
+				"geometry": {"type": "Point","coordinates": [-1.2150, 45.8014]},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"},
+				"user": ["andre.martinez@eigsi.fr","campuzanofj.maretec@tecnico.ulisboa.pt"]
+			},			
+			{
+				"type": "Feature",
+				"id": "45",
+				"properties": {"name": "Ile_DAix_TG", "name_alt": "Île d'Aix", "Depth":"3.5 m"},
+				"geometry": {"type": "Point","coordinates": [-1.1742,	46.0074]},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"},
+				"user": ["andre.martinez@eigsi.fr","campuzanofj.maretec@tecnico.ulisboa.pt"]
+			},			
+			{
+				"type": "Feature",
+				"id": "46",
+				"properties": {"name": "La_Rochelle_TG", "name_alt": "La Rochelle", "Depth":"5.0 m"},
+				"geometry": {"type": "Point","coordinates": [-1.227, 46.155]},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"},
+				"user": ["andre.martinez@eigsi.fr","campuzanofj.maretec@tecnico.ulisboa.pt"]
+			},			
+			{
+				"type": "Feature",
+				"id": "47",
+				"properties": {"name": "Port_Bloc_TG", "name_alt": "Port_Bloc", "Depth":"5 m"},
+				"geometry": {"type": "Point","coordinates": [-1.0616, 45.5685]},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"},
+				"user": ["andre.martinez@eigsi.fr","campuzanofj.maretec@tecnico.ulisboa.pt"]
+			},			
+			{
+				"type": "Feature",
+				"id": "48",
+				"properties": {"name": "62306_Gironde_Pauillac_Buoy", "name_alt": "Gironde Pauillac Buoy", "Depth":"3.9 m"},
+				"geometry": {"type": "Point","coordinates": [-0.7425, 45.1983]},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"},
+				"user": ["andre.martinez@eigsi.fr","campuzanofj.maretec@tecnico.ulisboa.pt"]
+			},			
+			{
+				"type": "Feature",
+				"id": "42",
+				"properties": {"name": "SANEST_P5", "name_alt": "SANEST P5"},
+				"geometry": {"type": "Point","coordinates": [-9.428889, 38.677778]},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"},
+				"user": ["hildadepablo@ist.utl.pt","campuzanofj.maretec@tecnico.ulisboa.pt"]
+			},			
+			{
+				"type": "Feature",
+				"id": "43",
+				"properties": {"name": "SANEST_P8", "name_alt": "SANEST P8"},
+				"geometry": {"type": "Point","coordinates": [-9.466389, 38.674722]},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"},
+				"user": ["hildadepablo@ist.utl.pt","campuzanofj.maretec@tecnico.ulisboa.pt"]
+			},			
+			{
+				"type": "Feature",
+				"id": "44",
+				"properties": {"name": "SANEST_P15", "name_alt": "SANEST P15"},
+				"geometry": {"type": "Point","coordinates": [-9.500000, 38.696111]},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"},
+				"user": ["hildadepablo@ist.utl.pt","campuzanofj.maretec@tecnico.ulisboa.pt"]
+			},			
+			{
+				"type": "Feature",
+				"id": "45",
+				"properties": {"name": "6202404_Faial_Pico_Buoy", "name_alt": "Faial-Pico Buoy"},
+				"geometry": {"type": "Point","coordinates": [-28.5377, 38.58770]},
+				"ObsSource": {"name": "Universidade dos Açores", "urlImg": "img/logos/uac_logo.jpg"},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"},
+				"user": ["filipe.jm.porteiro@azores.gov.pt","nevesferreira@tecnico.ulisboa.pt","campuzanofj.maretec@tecnico.ulisboa.pt"]
+			},			
+			{
+				"type": "Feature",
+				"id": "46",
+				"properties": {"name": "AquaSacrum", "name_alt": "AquaSacrum Buoy"},
+				"geometry": {"type": "Point","coordinates": [-8.8583493, 37.0320261]},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"},
+				"user": ["info@aquasacrum.pt","info@hctech.eu","campuzanofj.maretec@tecnico.ulisboa.pt"]
+			}
+		]
+	}],	
+	"Land": [{
+		"color": "#00cc66",
+		"type": "FeatureCollection",
+		"features": [
+					{
+				"type": "Feature",
+				"id": "138",
+				"properties": {"name": "Node_Alcantarilha", "name_alt": "Alcantarilha River", "Model":"Mohid Land","Domain": "WestIberia"},
+				"geometry": {"type": "Point","coordinates": [-8.350001,  37.1269]},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},
+					{
+				"type": "Feature",
+				"id": "139",
+				"properties": {"name": "Node_Alcobaca", "name_alt": "Alcobaça River", "Model":"Mohid Land","Domain": "WestIberia"},
+				"geometry": {"type": "Point","coordinates": [-9.07,  39.546898]},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},
+					{
+				"type": "Feature",
+				"id": "140",
+				"properties": {"name": "Node_Aljezur", "name_alt": "Aljezur River", "Model":"Mohid Land","Domain": "WestIberia"},
+				"geometry": {"type": "Point","coordinates": [-8.8500002,  39.846898]},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},		
+					{
+				"type": "Feature",
+				"id": "141",
+				"properties": {"name": "Node_Anilons", "name_alt": "Anllons River", "Model":"Mohid Land","Domain": "WestIberia"},
+				"geometry": {"type": "Point","coordinates": [-8.9100001,  43.246895]},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},		
+					{
+				"type": "Feature",
+				"id": "142",
+				"properties": {"name": "Node_Arade", "name_alt": "Arade River", "Model":"Mohid Land","Domain": "WestIberia"},
+				"geometry": {"type": "Point","coordinates": [-8.51,  37.1469]},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},	
+					{
+				"type": "Feature",
+				"id": "143",
+				"properties": {"name": "Node_Arnoia", "name_alt": "Arnoia River", "Model":"Mohid Land","Domain": "WestIberia"},
+				"geometry": {"type": "Point","coordinates": [-9.21,  39.406898]},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},	
+					{
+				"type": "Feature",
+				"id": "144",
+				"properties": {"name": "Node_Ave", "name_alt": "Ave River", "Model":"Mohid Land","Domain": "WestIberia"},
+				"geometry": {"type": "Point","coordinates": [-8.7100003,  41.366897]},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},	
+					{
+				"type": "Feature",
+				"id": "145",
+				"properties": {"name": "Node_Eo", "name_alt": "Eo River", "Model":"Mohid Land","Domain": "WestIberia"},
+				"geometry": {"type": "Point","coordinates": [-8.7100003,  41.486897]},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},	
+					{
+				"type": "Feature",
+				"id": "146",
+				"properties": {"name": "Node_Esva", "name_alt": "Esva River", "Model":"Mohid Land","Domain": "WestIberia"},
+				"geometry": {"type": "Point","coordinates": [-6.430002,  43.526895]},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},	
+					{
+				"type": "Feature",
+				"id": "147",
+				"properties": {"name": "Node_Eume", "name_alt": "Eume River", "Model":"Mohid Land","Domain": "WestIberia"},
+				"geometry": {"type": "Point","coordinates": [-8.170001,  43.406895]},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},	
+					{
+				"type": "Feature",
+				"id": "148",
+				"properties": {"name": "Node_Grande", "name_alt": "Grande River", "Model":"Mohid Land","Domain": "WestIberia"},
+				"geometry": {"type": "Point","coordinates": [-9.1299999,  43.126895]},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},	
+					{
+				"type": "Feature",
+				"id": "149",
+				"properties": {"name": "Node_GrandeDeXubia", "name_alt": "Gran de DeXubia River", "Model":"Mohid Land","Domain": "WestIberia"},
+				"geometry": {"type": "Point","coordinates": [-8.130001,  43.526895]},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},	
+					{
+				"type": "Feature",
+				"id": "150",
+				"properties": {"name": "Node_Landro", "name_alt": "Landro River", "Model":"Mohid Land","Domain": "WestIberia"},
+				"geometry": {"type": "Point","coordinates": [-7.610001,  43.646894]},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},	
+					{
+				"type": "Feature",
+				"id": "151",
+				"properties": {"name": "Node_Leca", "name_alt": "Leça River", "Model":"Mohid Land","Domain": "WestIberia"},
+				"geometry": {"type": "Point","coordinates": [-8.6500004,  41.226897]},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},	
+					{
+				"type": "Feature",
+				"id": "152",
+				"properties": {"name": "Node_Lerez", "name_alt": "Lerez River", "Model":"Mohid Land","Domain": "WestIberia"},
+				"geometry": {"type": "Point","coordinates": [-8.6500004,  42.426896]},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},	
+					{
+				"type": "Feature",
+				"id": "153",
+				"properties": {"name": "Node_Lima-PonteLima", "name_alt": "Lima River - Ponte Lima", "Model":"Mohid Land","Domain": "WestIberia"},
+				"geometry": {"type": "Point","coordinates": [-8.5900002,  41.766896]},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},	
+					{
+				"type": "Feature",
+				"id": "154",
+				"properties": {"name": "Node_Lima", "name_alt": "Lima River", "Model":"Mohid Land","Domain": "WestIberia"},
+				"geometry": {"type": "Point","coordinates": [-8.7900002,  41.706896]},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},	
+					{
+				"type": "Feature",
+				"id": "155",
+				"properties": {"name": "Node_Lis", "name_alt": "Lis River", "Model":"Mohid Land","Domain": "WestIberia"},
+				"geometry": {"type": "Point","coordinates": [-8.9100001,  39.886898]},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},	
+					{
+				"type": "Feature",
+				"id": "156",
+				"properties": {"name": "Node_Lisandro", "name_alt": "Lisandro River", "Model":"Mohid Land","Domain": "WestIberia"},
+				"geometry": {"type": "Point","coordinates": [-9.39,  38.946899]},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},						{
+				"type": "Feature",
+				"id": "157",
+				"properties": {"name": "Node_Mandeo", "name_alt": "Mandeo River", "Model":"Mohid Land","Domain": "WestIberia"},
+				"geometry": {"type": "Point","coordinates": [-8.210001,  43.306895]},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},	
+					{
+				"type": "Feature",
+				"id": "158",
+				"properties": {"name": "Node_Masma", "name_alt": "Masma River", "Model":"Mohid Land","Domain": "WestIberia"},
+				"geometry": {"type": "Point","coordinates": [-7.2700015,  43.526895]},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},			
+				{
+				"type": "Feature",
+				"id": "159",
+				"properties": {"name": "Node_Mera", "name_alt": "Mera River", "Model":"Mohid Land","Domain": "WestIberia"},
+				"geometry": {"type": "Point","coordinates": [-7.910001,  43.646894]},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},				
+				{
+				"type": "Feature",
+				"id": "160",
+				"properties": {"name": "Node_Mero", "name_alt": "Mero River", "Model":"Mohid Land","Domain": "WestIberia"},
+				"geometry": {"type": "Point","coordinates": [-8.350001,  43.306895]},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},				
+				{
+				"type": "Feature",
+				"id": "161",
+				"properties": {"name": "Node_Mira", "name_alt": "Mira River", "Model":"Mohid Land","Domain": "WestIberia"},
+				"geometry": {"type": "Point","coordinates": [-8.77000025,  37.7268997]},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},				
+				{
+				"type": "Feature",
+				"id": "162",
+				"properties": {"name": "Node_Mondego-PonteSantaClara", "name_alt": "Mondego River - Ponte Sta Clara ", "Model":"Mohid Land","Domain": "WestIberia"},
+				"geometry": {"type": "Point","coordinates": [-8.430001, 40.206898]},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},				
+				{
+				"type": "Feature",
+				"id": "164",
+				"properties": {"name": "Node_Mondego", "name_alt": "Mondego River", "Model":"Mohid Land","Domain": "WestIberia"},
+				"geometry": {"type": "Point","coordinates": [-7.2700015,  43.526895]},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},				
+				{
+				"type": "Feature",
+				"id": "165",
+				"properties": {"name": "Node_Navia", "name_alt": "Navia River", "Model":"Mohid Land","Domain": "WestIberia"},
+				"geometry": {"type": "Point","coordinates": [-6.730002,  43.526895]},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},				
+				{
+				"type": "Feature",
+				"id": "166",
+				"properties": {"name": "Node_Odeceixe", "name_alt": "Odeceixe River", "Model":"Mohid Land","Domain": "WestIberia"},
+				"geometry": {"type": "Point","coordinates": [-8.77000025,  37.4269]},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},				
+				{
+				"type": "Feature",
+				"id": "167",
+				"properties": {"name": "Node_Odiel", "name_alt": "Odiel River", "Model":"Mohid Land","Domain": "WestIberia"},
+				"geometry": {"type": "Point","coordinates": [-6.970002,  37.2469]},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},				
+				{
+				"type": "Feature",
+				"id": "168",
+				"properties": {"name": "Node_Ouro", "name_alt": "Ouro River", "Model":"Mohid Land","Domain": "WestIberia"},
+				"geometry": {"type": "Point","coordinates": [-7.330001,  43.586895]},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},				
+				{
+				"type": "Feature",
+				"id": "169",
+				"properties": {"name": "Node_Piedras", "name_alt": "Piedras River", "Model":"Mohid Land","Domain": "WestIberia"},
+				"geometry": {"type": "Point","coordinates": [-7.170002,  37.2469]},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},				
+				{
+				"type": "Feature",
+				"id": "170",
+				"properties": {"name": "Node_Sado", "name_alt": "Sado River", "Model":"Mohid Land","Domain": "WestIberia"},
+				"geometry": {"type": "Point","coordinates": [-8.6900003,  38.426899]},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},				
+				{
+				"type": "Feature",
+				"id": "171",
+				"properties": {"name": "Node_Sizandro", "name_alt": "Sizandro River", "Model":"Mohid Land","Domain": "WestIberia"},
+				"geometry": {"type": "Point","coordinates": [-9.37,  39.086899]},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},				
+				{
+				"type": "Feature",
+				"id": "172",
+				"properties": {"name": "Node_Sor", "name_alt": "Sor River", "Model":"Mohid Land","Domain": "WestIberia"},
+				"geometry": {"type": "Point","coordinates": [-7.690001,  43.726894]},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},				
+				{
+				"type": "Feature",
+				"id": "173",
+				"properties": {"name": "Node_Sorraia-PonteCoruche", "name_alt": "Sorraia River - Ponte Coruche ", "Model":"Mohid Land","Domain": "WestIberia"},
+				"geometry": {"type": "Point","coordinates": [-8.51,  38.946899]},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},				
+				{
+				"type": "Feature",
+				"id": "174",
+				"properties": {"name": "Node_Tamega-Torrao", "name_alt": "Tâmega-Torrão River", "Model":"Mohid Land","Domain": "WestIberia"},
+				"geometry": {"type": "Point","coordinates": [-8.210001,  41.146897]},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},				
+				{
+				"type": "Feature",
+				"id": "175",
+				"properties": {"name": "Node_Tinto", "name_alt": "Tinto River", "Model":"Mohid Land","Domain": "WestIberia"},
+				"geometry": {"type": "Point","coordinates": [-6.930002,  37.2269]},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},				
+				{
+				"type": "Feature",
+				"id": "176",
+				"properties": {"name": "Node_Tornada", "name_alt": "Tornada River", "Model":"Mohid Land","Domain": "WestIberia"},
+				"geometry": {"type": "Point","coordinates": [-9.1299999,  39.486898]},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},				
+				{
+				"type": "Feature",
+				"id": "177",
+				"properties": {"name": "Node_Ulia", "name_alt": "Ullia River", "Model":"Mohid Land","Domain": "WestIberia"},
+				"geometry": {"type": "Point","coordinates": [-8.6900003,  42.706895]},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},				
+				{
+				"type": "Feature",
+				"id": "178",
+				"properties": {"name": "Node_Umia", "name_alt": "Umia River", "Model":"Mohid Land","Domain": "WestIberia"},
+				"geometry": {"type": "Point","coordinates": [-8.6500004,  40.826897]},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},				
+				{
+				"type": "Feature",
+				"id": "179",
+				"properties": {"name": "Node_Verdugo", "name_alt": "Verdugo River", "Model":"Mohid Land","Domain": "WestIberia"},
+				"geometry": {"type": "Point","coordinates": [-8.5900002,  42.346896]},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},				
+				{
+				"type": "Feature",
+				"id": "180",
+				"properties": {"name": "Node_Vouga", "name_alt": "Vouga River", "Model":"Mohid Land","Domain": "WestIberia"},
+				"geometry": {"type": "Point","coordinates": [-8.6100004,  40.726897]},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},				
+				{
+				"type": "Feature",
+				"id": "181",
+				"properties": {"name": "Node_Xavias", "name_alt": "Xavias River", "Model":"Mohid Land","Domain": "WestIberia"},
+				"geometry": {"type": "Point","coordinates": [-9.08999995,  42.926895]},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},				
+				{
+				"type": "Feature",
+				"id": "182",
+				"properties": {"name": "Node_DebaIbaia_IP", "name_alt": "Deba River", "Model":"Mohid Land","Domain": "Iberian Peninsula"},
+				"geometry": {"type": "Point","coordinates": [-2.508404,  43.217495]},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},								
+				{
+				"type": "Feature",
+				"id": "183",
+				"properties": {"name": "Node_Douro_IP", "name_alt": "Douro River", "Model":"Mohid Land","Domain": "Iberian Peninsula"},
+				"geometry": {"type": "Point","coordinates": [-8.2084,  41.117497]},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},				
+				{
+				"type": "Feature",
+				"id": "184",
+				"properties": {"name": "Node_Ebro_IP", "name_alt": "Ebro River", "Model":"Mohid Land","Domain": "Iberian Peninsula"},
+				"geometry": {"type": "Point","coordinates": [0.5916,  41.217497]},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},				
+				{
+				"type": "Feature",
+				"id": "185",
+				"properties": {"name": "Node_Guadalquivir_IP", "name_alt": "Guadalquivir River", "Model":"Mohid Land","Domain": "Iberian Peninsula"},
+				"geometry": {"type": "Point","coordinates": [-6.008401,  37.3175]},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},				
+				{
+				"type": "Feature",
+				"id": "186",
+				"properties": {"name": "Node_Guadiana_IP", "name_alt": "Guadiana River", "Model":"Mohid Land","Domain": "Iberian Peninsula"},
+				"geometry": {"type": "Point","coordinates": [-7.5084,  37.5175]},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},				
+				{
+				"type": "Feature",
+				"id": "187",
+				"properties": {"name": "Node_Segura_IP", "name_alt": "Segura River", "Model":"Mohid Land","Domain": "Iberian Peninsula"},
+				"geometry": {"type": "Point","coordinates": [-0.8084025,  38.1175]},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},							
+					{
+				"type": "Feature",
+				"id": "188",
+				"properties": {"name": "Node_Vinalopo_IP", "name_alt": "Vinalopó River", "Model":"Mohid Land","Domain": "Iberian Peninsula"},
+				"geometry": {"type": "Point","coordinates": [-0.708402,  38.3175]},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			},							
+					{
+				"type": "Feature",
+				"id": "189",
+				"properties": {"name": "Node_Tejo_IP", "name_alt": "Tagus River", "Model":"Mohid Land","Domain": "Iberian Peninsula"},
+				"geometry": {"type": "Point","coordinates": [-8.2084,  39.417499]},
+				"modelSource": {"name": "MARETEC", "urlImg": "img/logos/maretec_logo_small.png"}
+			}			
+		]
+	}]
+}
+

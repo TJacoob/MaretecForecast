@@ -1,0 +1,30 @@
+[
+	{
+		"langMapId": "bLayer0",
+		"name": "Mapbox (Estradas), dados OpenStreetMap"
+	},
+	{
+		"langMapId": "bLayer1",
+		"name": "Mapas Stamen (Toner), dados OpenStreetMap"
+	},	
+	{
+		"langMapId": "bLayer2",
+		"name": "Mapas OpenMapSurfer"
+	},	
+	{
+		"langMapId": "bLayer3",
+		"name": "Bing Mapas (Aéreos)"
+	},
+	{
+		"langMapId": "bLayer4",
+		"name": "Bing Mapas (Estrada)"
+	},
+	{
+		"langMapId": "ncLayer0",
+		"name": "Sem cartas náuticas"
+	},
+	{
+		"langMapId": "ncLayer1",
+		"name": "Cartas náuticas Transas"
+	}
+]

@@ -1,0 +1,33 @@
+{
+	"cookieAdviseTitle_txt": "We value your privacy.",
+	"cookieAdviseDescription_txt": "This website uses cookies to enhance your user experience and to analyze this website's traffic data to allow us to serve you even better.&#13;&#10;For this we need your consent.",
+	"accept_txt": "Accept",
+	"decline_txt": "Decline",
+
+	"cookiesSelectionTitle_txt"	: "Your Choice Regarding Cookies on this Site",
+	"cookiesAreImportant_txt"	: "Cookies are important for the correct operation of web sites. Maretec uses cookies to enhance your user experience and present you with the data you request.",
+	"cookiesDataCollection_txt"	: "Depending on your choice, also colect data in order to analyze and optimize this site's operation.",
+	"cookiesHowToDecide_txt"	:"Click on \"Agree to All Cookies\" to accept all cookies or on \"Revise Cookie Preferences\" to access  detailed information on the cookies this site uses and make your choice on cookies to navigate this site.",
+	"cookiesAgreeBtnLabel_txt"	: "AGREE TO ALL COOKIES",
+	"cookiesMoreInfoBtnLabel"	: "REVISE COOKIE PREFERENCES",
+
+	"generalFootnote_txt"		: "Actual cookie operation depends on your browser's cookie settings. You must enable cookies on your browser settings in order to accept cookies on this site.",
+
+    "cookiesSelectionIntro_txt"	: "Please select what cookies should be enabled when you use this site:",
+    	"cookiesNecessaryHeadline_txt"  : "REQUIRED COOKIES",
+	"cookiesNecessaryText_txt"	    : "These cookies are required to enable this site's core functionality such as remembering your choice of language or map provider. Use of these coockies can not be denied.",
+	"cookiesAnaliticsHeadline_txt"	: "ANALYTICS COOKIES",
+    	"cookiesAnaliticsText_txt"	    : "These cookies allow us to analyze and optimize this site's operation. You can either accept or deny the use of analytics cookies. Data collected this way remains private and will not be shared with any third party.",
+    	"cookiesStatementOne_txt"       : " This site does not store any user data besides the data  described above. All data will be anonimously processed.",
+    	"cookiesStatementTwo_txt"       : "You can always deactivate cookies in your browser, but you must remember that deactivating cookies in your browser will inevitably degrade your user experience of this site.",
+    	"cookiesPreferencesSubmit_txt"  : "SUBMIT PREFERENCES",
+	"cookiesPreferencesCancel_txt"	: "CANCEL",
+
+	"preferencesSubmittedTitle_txt"	: "Preferences Submitted",
+	"preferencesSubmittedSubtitle_txt" : "You have successfully updated your cookies preferences",
+	"preferencesSubmitted_txt"	: "To change preferences at any time, click on the Information icon on your screen and select \"Use of Cookies on this Site\"",
+	"preferencesClose_txt"		: "CLOSE",
+
+	"cookiesPrivacyPolicyLink_txt"		: "Privacy Policy",
+    	"cookiesCopyright_txt"          : "&copy; 2019 Maretec & J. Rebelo"
+}

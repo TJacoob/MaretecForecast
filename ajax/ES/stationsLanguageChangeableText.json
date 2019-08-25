@@ -1,0 +1,17 @@
+{
+	"selSta_txt": "Estaciones Seleccionadas",
+	"name_txt": "Nombre",
+	"obs_txt": "Observaciones",
+	"availableParams_txt": "Parámetros Disponibles",
+	"selParam_txt": "Seleccionar parámetro",
+	"clear_txt": "<span class='fas fa-times'>  Cancelar",
+	"chart_txt": "<i class='fa fa-bar-chart'></i>  Gráfico",
+	"close_txt": "Cerrar",
+	"dSource_txt": "Origen de los datos",
+	"dChartErrorTitle_txt": "Error en la obtención de datos",
+	"dChartErrorDescription_txt": "En este momento no podemos obtener datos para mostrar el gráfico. Por favor, inténtelo más tarde.",
+	"maxStationsErrorTitle_txt": "Error: Número máximo de estaciones seleccionadas alcanzado.",
+	"maxStationsErrorDescription_txt": "Ha alcanzado el número máximo permitido de estaciones seleccionadas: 6",
+	"alreadySelectedStationErrorTitle_txt": "Error: estación ya seleccionada.",
+	"alreadySelectedStationErrorDescription_txt": "La estación seleccionada ya estaba seleccionada."
+}

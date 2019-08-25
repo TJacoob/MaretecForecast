@@ -1,0 +1,17 @@
+{
+	"selSta_txt": "Selected Stations",
+	"name_txt": "Name",
+	"obs_txt": "Observations",
+	"availableParams_txt": "Available Parameters",
+	"selParam_txt": "Select parameter",
+	"clear_txt": "<span class='fas fa-times'>  Clear",
+	"chart_txt": "<i class='fa fa-bar-chart'></i>  Chart",
+	"close_txt": "Close",
+	"dSource_txt": "Data Source",
+	"dChartErrorTitle_txt": "Error obtaining data.",
+	"dChartErrorDescription_txt": "It's not possible to obtain these data to present the chart, at this time. Please, try again later.",
+	"maxStationsErrorTitle_txt": "Error: Maximum number of possible selected stations reached.",
+	"maxStationsErrorDescription_txt": "You have reached the maximum number of possible selected stations: 6.",
+	"alreadySelectedStationErrorTitle_txt": "Error: station already selected.",
+	"alreadySelectedStationErrorDescription_txt": "A station that you selected is already selected."
+}

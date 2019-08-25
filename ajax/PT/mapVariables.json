@@ -1,0 +1,19 @@
+{
+	"Salinity": "Salinidade",
+	"Temperature": "Temperatura",
+	"Velocity": "Velocidade",
+	"Oxygen": "Oxigénio Dissolvido",
+	"Chla": "Clorofila-a",
+	"Zoo": "Zooplâncton",
+	"Nitrate": "Nitratos",
+	"Phosphate": "Fosfatos",
+	"Sediments": "Sedimentos",
+	"mean_wave_period": "Período Médio da Onda",
+	"significant_wave_height": "Altura Significativa da Onda",
+	"PorousMedia_RelWaterContent": "Humidade Relativa à Superfície do Solo",
+	"PorousMedia_WaterTableDepth": "Profundidade do Nível Freático do Solo",
+	"Vegetation_LeafAreaIndex": "Índice da Área Foliar", 
+	"Runoff_VelocityModulus": "Módulo da Velocidade de Escoamento",
+	"PorousMediaProp_Salinity": "Salinidade na Superfície do Solo",
+	"PorousMediaProp_Nitrate": "Nitratos na Superfície do Solo"
+}

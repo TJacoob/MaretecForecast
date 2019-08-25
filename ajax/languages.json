@@ -1,0 +1,18 @@
+{
+	"globalJSONDirectory": "ajax/",
+	"defaultLanguage":
+		{
+			"langId": "en",
+			"JSONDirectory": "EN/"
+		},
+	"otherAvailableLanguages": [
+		{
+			"langId": "pt",
+			"JSONDirectory": "PT/"
+		},
+		{
+			"langId": "es",
+			"JSONDirectory": "ES/"
+		}
+	]
+}
