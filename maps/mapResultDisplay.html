@@ -35,6 +35,9 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.21/moment-timezone-with-data-2012-2022.min.js"></script>
 	<!--<script src="https://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/src/js/bootstrap-datetimepicker.js"></script>-->
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.1.2/js/tempusdominus-bootstrap-4.min.js"></script>
+
+	<!-- Leaflet Rotated Marker CDN, necessary for Vector Layers Representation -->
+	<script src="https://cdn.jsdelivr.net/npm/leaflet-rotatedmarker@0.2.0/leaflet.rotatedMarker.min.js"></script>
 	
 	<script src="../js/cookie-manage.js"></script>
 	<script src="../js/common.js"></script>
@@ -173,6 +176,98 @@
 			border-radius:4px
 		}
 
+		#showHideScale {
+			bottom: 65px;
+			right: 10px;
+			position: absolute;
+			z-index: 2;
+		}
+
+		#showHideScale > button {
+			width: 20px !important;
+			padding-left: 3px !important;
+			outline: none !important;
+		}
+
+		.colorScaleOverlay{
+			//border-radius: 0.5em;
+			border: 1px solid #818181;
+			min-width: 250px;
+			min-height: 36px;
+			z-index: 100;
+			//background-color: black;
+			position: fixed !important;
+			right: 36px !important;
+			left: auto !important;
+			top: 84vh !important;
+			color:white;
+			//opacity: 0.5;
+			//overflow: hidden;
+			box-shadow: 4px 4px 2px 0px rgba(199,199,199,1);
+		}
+
+		.scaleStep{
+			position: absolute;
+			height: 100%;
+			transition: all .2s ease-in-out;
+		}
+
+		.scaleStep:hover{
+			transform: scale(1.5);
+			z-index: 101;
+			border-radius: 0.5em;
+		}
+
+		.unitText {
+			color: #202020;
+			z-index: 200;
+			font-weight: 600;
+			position: fixed !important;
+			right: 38px !important;
+			left:auto !important;
+			top: 80vh !important;
+			font-size: 16px;
+			//text-shadow: 1px 1px 1px rgba(28, 28, 28, 0.7);
+		}
+
+		.dateText {
+			color: #202020;
+			z-index: 200;
+			font-weight: 600;
+			position: fixed !important;
+			right: 166px !important;
+			left:auto !important;
+			top: 80vh !important;
+			font-size: 16px;
+			font-weight: 600;
+			//text-shadow: 1px 1px 1px rgba(28, 28, 28, 0.7);
+			//-webkit-text-stroke: 1px white;
+		}
+
+		.scaleText {
+			color: #202020;
+			font-size: 16px;
+			line-height: 34px;
+			font-weight: 600;
+			//text-shadow: 1px 1px 1px rgba(28, 28, 28, 0.7);
+			//-webkit-text-stroke: 1px #1c1c1c;
+			overflow: visible;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50% , -50%);
+			-webkit-transform: translate(-50%, -50%);
+		}
+
+		.coordinateText {
+			color: #202020;
+			z-index: 200;
+			position: fixed !important;
+			left: 14px !important;
+			top: 95vh !important;
+			font-size: 14px;
+			text-shadow: 1px 1px 1px rgba(28, 28, 28, 0.7);
+		}
 		
 		.no-dropdown-arrow:after { content: none }
 		
@@ -257,6 +352,14 @@
 	  <button id="hour-forward-button" class="map-btn btn btn-primary hour-basis"><i class="fas fa-step-forward"></i></button>
 	  <button id="day-forward-button" class="map-btn btn btn-primary"><i class="fas fa-fast-forward"></i></button>
 	</div>
+</div>
+
+<div id="scale">
+	<div class="colorScaleOverlay"></div>
+</div>
+
+<div id="showHideScale">
+	<button type="button" class="map-btn btn btn-info btn-md active" style=""><i class="fas fa-chevron-right"></i></button>
 </div>
 
 <div id="varChoose" class="dropdown">

@@ -36,10 +36,12 @@ $(document).ready(function() {
 	var daysNotFound = 0;
 
 	// Map Part Variables
-    var createdMap = false;
+    //var createdMap = false;
     var leaflet_map;
-    var data_layer;
-    var geojson_object;
+    var color_layer;
+    var vector_layer;
+    var first_data;
+    var second_data;
     var magnitudePropertiesJsonFilename = "magnitudes.json";
     var magnitude_properties ;
     var mapExists;
@@ -396,13 +398,36 @@ $(document).ready(function() {
     }
 
     function loadGeoJSON(){
+
+        //console.log(regionInfo);
 	    //console.log(actualVariable);
+	    //console.log(magnitude_properties[actualVariable.toUpperCase()]);
+	    if ( magnitude_properties[actualVariable.toUpperCase()].showTogether !== "" )
+        {
+            var second_variable = magnitude_properties[actualVariable.toUpperCase()].showTogether;
+            console.log(second_variable);
+            $.ajax({
+                dataType: "json",   // Not supported by IE10 and IE11
+                async: false,
+                url: getActualMapPath(second_variable),
+                success: function(data) {
+                    second_data = data;
+                    console.log(second_data);
+                },
+                error: function(err){
+                    //mapExists = false;
+                }
+            });
+        }
+        else
+            second_data = undefined;
+
         $.ajax({
             dataType: "json",   // Not supported by IE10 and IE11
             async: false,
-            url: getActualMapPath(),
+            url: getActualMapPath(actualVariable),
             success: function(data) {
-                geojson_object = data;
+                first_data = data;
                 $(".loader-wrap").hide();
                 mapExists = true;
                 drawMap();
@@ -415,11 +440,14 @@ $(document).ready(function() {
     
     function drawMap() {
 
-	    if ( data_layer !== undefined )
-            leaflet_map.removeLayer(data_layer);
+	    if ( color_layer !== undefined )
+            leaflet_map.removeLayer(color_layer);
 
-	    let colorScale = magnitude_properties[actualVariable.toUpperCase()].colorScale;
+        if ( vector_layer !== undefined )
+            leaflet_map.removeLayer(vector_layer);
 
+        var varInfo = magnitude_properties[actualVariable.toUpperCase()];
+	    var colorScale = varInfo.colorScale;
         function areaColor(feature) {
             //console.log(feature);
             return {
@@ -431,19 +459,60 @@ $(document).ready(function() {
                 fillOpacity: 1
             };
         }
-
-        data_layer = new L.geoJson(geojson_object,{
+        color_layer = new L.geoJson(first_data,{
             style: areaColor,
         });
-        data_layer.addTo(leaflet_map);
+        color_layer.addTo(leaflet_map);
 
+        // Clear Previous Scales
+        $(".colorScaleOverlay").empty();
+        // Create Color Scale
+        $(".colorScaleOverlay").append("<span class='dateText'>"+d.getDay()+"/"+d.getMonth()+"/"+d.getFullYear()+" - "+d.getHours()+":00</span>");
+        $(".colorScaleOverlay").append("<span class='unitText'>"+varInfo['unit']+"</span>");
+        colorScale.forEach(function(color, index){
+            let size = 100/(colorScale.length);
+            $(".colorScaleOverlay").append("<div id='color-"+index+"' class='scaleStep' style='background-color:"+color+"; width: "+size+"%; left:"+(index*size)+"%'></div>");
+            if ( index === 0 )
+                $("#color-0").append("<span class='scaleText'>" + varInfo["minValue"] + "</span>");
+            if ( index === colorScale.length-1 )
+                $("#color-"+(colorScale.length-1)).append("<span class='scaleText'>" + varInfo["maxValue"] + "</span>");
+        });
+
+        if ( second_data === undefined )
+            return;
+
+        function icons(feature){
+            return L.icon({
+                iconUrl: '../img/arrow.png',
+                iconSize: [32, 32],
+                //iconAnchor: [22, 94],
+                //popupAnchor: [-3, -76],
+                className: "rotation"
+            });
+            //return console.log(feature);
+        }
+
+        vector_layer = L.geoJSON(second_data, {
+            pointToLayer: function (feature, latlng) {
+                //console.log(feature);
+                return L.marker(latlng, {icon: icons(feature), rotationAngle: feature.properties["Velocity Direction"]});
+            },
+            //onEachFeature: onEachFeature //Can be Used For Filters
+        });
+        vector_layer.addTo(leaflet_map);
+        var newzoom = '' + (2*(leaflet_map.getZoom())) +'px';
+        $('#leaflet_map .rotation').css({'width':newzoom,'height':newzoom});
+
+        // Resize Icons on Zoom
+        leaflet_map.on('zoomend', function() {
+            var newzoom = '' + (2*(leaflet_map.getZoom())) +'px';
+            $('#leaflet_map .rotation').css({'width':newzoom,'height':newzoom});
+        });
     }
 
 
-	
-	
-	
-	
+
+
 	
 	// **** ------- IMAGE EVENTS ------ ****
 	
@@ -606,6 +675,14 @@ $(document).ready(function() {
 				
 			playerHidden = !playerHidden;
 		});
+
+        $( "#showHideScale > button" ).click(function() {
+            $( "#scale" ).fadeToggle( 300, function() {
+                $("#showHideScale > button").toggleClass("active");
+                $("#showHideScale > button > i").toggleClass("fa-chevron-left fa-chevron-right");
+            });
+
+        });
 	}
 	
 	
@@ -735,17 +812,17 @@ $(document).ready(function() {
 	}
 	
 	function actualizeImgSrc() {
-	    console.log("Atualizando o Tempo");
+	    //console.log("Atualizando o Tempo");
         if ( jsonAvailable() )
         {
-            console.log("Using MAP");
+            //console.log("Using MAP");
             $("#leaflet_map").show();
             $("#currentImage-wrap").hide();
             loadGeoJSON();
         }
         else
         {
-            console.log("Using IMAGE");
+            //console.log("Using IMAGE");
 
             $("#leaflet_map").hide();
             $("#currentImage-wrap").show();
@@ -781,7 +858,7 @@ $(document).ready(function() {
 	}
 
     // Devolve o caminho actual para a imagem, segundo  d (dateTime actual)
-    function getActualMapPath() {
+    function getActualMapPath(variable) {
         //return "https://picsum.photos/200/300/?random=" + Math.floor(Math.random() * 300); // imagens random
         //return imagePrefixURL + actualVariable + '/0/' + getActualFileName(d);
         //console.log(actualVariable);
@@ -792,7 +869,7 @@ $(document).ready(function() {
         //console.log(imagePrefixURL);
         let date = d.getFullYear() +"-"+ getTwoDigitNumber(d.getMonth()+1) +"-"+  getTwoDigitNumber(d.getDate())
         let time = getTwoDigitNumber(d.getHours())+"00";
-        return "../data/"+regionInfo["name"][regionIndex]+"/"+actualVariable+"/"+date+"/"+actualVariable.toLowerCase()+"_"+time+".json";
+        return "../data/"+regionInfo["name"][regionIndex]+"/"+variable+"/"+date+"/"+magnitude_properties[variable.toUpperCase().replace(/ /g,"_")].outputName+"_"+time+".json";
     }
 	
 	// Da o nome que o ficheiro deve ter em função de d (o dateTime actual)
