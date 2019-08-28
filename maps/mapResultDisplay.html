@@ -21,10 +21,10 @@
 	<link href="../css/language-selection.css" rel="stylesheet">
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<!--	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+	<!--	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
 
-				<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.js"></script>
-				<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 	 <!-- Make sure you put this AFTER Leaflet's CSS -->
 	<script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js" integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log==" crossorigin=""></script>
@@ -40,7 +40,7 @@
 	<script src="../js/common.js"></script>
 
 	<script src="../js/getURLParameters.js"></script>
-		<script src="../js/activable-item.js"></script>
+	<script src="../js/activable-item.js"></script>
 	<script src="../js/language-selection.js"></script>
 	<script src="../js/menu.js"></script>
 	<script src="../js/drift-master/dist/Drift.min.js"></script>		
@@ -210,13 +210,16 @@
 
 
 
-<div id="currentImage-wrap" class="container-fluid text-center" style="height: 100%; white-space: nowrap; text-align: center; padding-top: 10px; padding-bottom: 10px;">
+<div id="currentImage-wrap" class="container-fluid text-center" style="height: 100%; white-space: nowrap; text-align: center; padding-top: 10px; padding-bottom: 10px; display:none">
 	<span style="display: inline-block; height: 100%; vertical-align: middle;" class="helper"></span>
 </div>
 <!--<div class="container-fluid" style="border-radius: 10px; width: 160px; background: rgba(110, 110, 110, 0.7);  z-index: 99999; position: absolute; padding-bottom: 0px; padding-top: 15px; padding-bottom: 15px; padding-right: 10px; top: 80px; left: 10px"><!--style="height: 100%">
 	<p style ="font-weight: bold">Actual variable:</p>
 	<p id="var-text-display"></p>
 </div>//-->
+
+<div id='leaflet_map' style='width: 100vw; height: 90vh; z-index:0;'></div>
+
 
 <div class="container-fluid text-center" style="border-radius: 10px; width: 260px; background: rgba(110, 110, 110, 0.0);  z-index: 2; position: absolute; padding-bottom: 0px; padding-top: 15px; padding-bottom: 15px; padding-right: 10px; bottom: 0px; right: 10px"><!--style="height: 100%">-->
 	<div id="player-group-button" class="btn-group" data-toggle="buttons">
@@ -268,28 +271,29 @@
 
 
 <div id="threddsServerData" class="btn-group">
-    <button href="" type="button" class="btn map-btn btn-primary" role="button" style="padding: 0px;"><i class="fas fa-server"></i></a>
+    <button href="" type="button" class="btn map-btn btn-primary" role="button" style="padding: 0px;"><i class="fas fa-server"></i></button>
 </div>
 
 
-            <div id="dateChoose" class="form-group">
-                <div class='input-group date' id='datetimepicker1'  data-target-input="nearest">
-  <!--                  <input id='dateInput' type='hidden' style="border:none" class="form-control time-menu" />
-                    <span class="btn btn-primary input-group-addon"><span class="fas fa-calendar-alt"></span>
-                    </span>-->
-                    <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1" readonly/>
-                    <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
-                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                    </div>
-                </div>
-            </div>
-
-	<div id="info-btn-container" style="z-index: 34; position: absolute; top: 140px; left: 10px">
-		<button type="button" class="btn btn-primary" data-toggle="modal" onClick="loadInstructions();">
-			<span class="fas fa-question"></span>
-		</button>
+<div id="dateChoose" class="form-group">
+	<div class='input-group date' id='datetimepicker1'  data-target-input="nearest">
+		<!--
+		<input id='dateInput' type='hidden' style="border:none" class="form-control time-menu" />
+		<span class="btn btn-primary input-group-addon"><span class="fas fa-calendar-alt"></span>
+		</span>
+		-->
+		<input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1" readonly />
+		<div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+			<div class="input-group-text"><i class="fa fa-calendar"></i></div>
+		</div>
 	</div>
+</div>
 
+<div id="info-btn-container" style="z-index: 34; position: absolute; top: 140px; left: 10px">
+	<button type="button" class="btn btn-primary" data-toggle="modal" onClick="loadInstructions();">
+		<span class="fas fa-question"></span>
+	</button>
+</div>
 
 
 

@@ -1,0 +1,313 @@
+{
+  "AMMONIA": {
+    "name": "Ammonia",
+    "hdfName": "ammonia",
+    "maxValue": 1,
+    "minValue": 0,
+    "rounding": 8,
+    "unit": "mg/l",
+    "formula": "",
+    "vector": false,
+    "showTogether": "",
+    "colorScale": [
+      "rgba(202, 222, 227,0.85)",
+      "rgba(184, 212, 217,0.85)",
+      "rgba(166, 201, 208,0.85)",
+      "rgba(149, 190, 199,0.85)",
+      "rgba(131, 179, 190,0.85)",
+      "rgba(113, 169, 180,0.85)",
+      "rgba(96, 158, 171,0.85)",
+      "rgba(78, 147, 162,0.85)",
+      "rgba(61,137,153,0.85)",
+      "rgba(56,125,140,0.85)"
+    ]
+  },
+
+  "COHESIVE_SEDIMENT": {
+    "name": "Cohesive Sediment",
+    "hdfName": "cohesive sediment",
+    "maxValue": 5,
+    "minValue": 0,
+    "rounding": 8,
+    "unit": "mg/l",
+    "formula": "",
+    "vector": false,
+    "showTogether": "",
+    "colorScale": [
+      "rgba(202, 222, 227,0.85)",
+      "rgba(184, 212, 217,0.85)",
+      "rgba(166, 201, 208,0.85)",
+      "rgba(149, 190, 199,0.85)",
+      "rgba(131, 179, 190,0.85)",
+      "rgba(113, 169, 180,0.85)",
+      "rgba(96, 158, 171,0.85)",
+      "rgba(78, 147, 162,0.85)",
+      "rgba(61,137,153,0.85)",
+      "rgba(56,125,140,0.85)"
+    ]
+  },
+
+  "CHLA": {
+    "name": "Chlorophila",
+    "hdfName": "chlorophila",
+    "maxValue": 10,
+    "minValue": 0,
+    "rounding": 2,
+    "unit": "",
+    "formula": "",
+    "vector": false,
+    "showTogether": "",
+    "colorScale": [
+      "rgba(202, 222, 227,0.85)",
+      "rgba(184, 212, 217,0.85)",
+      "rgba(166, 201, 208,0.85)",
+      "rgba(149, 190, 199,0.85)",
+      "rgba(131, 179, 190,0.85)",
+      "rgba(113, 169, 180,0.85)",
+      "rgba(96, 158, 171,0.85)",
+      "rgba(78, 147, 162,0.85)",
+      "rgba(61,137,153,0.85)",
+      "rgba(56,125,140,0.85)"
+    ]
+  },
+
+  "NITRATE": {
+    "name": "Nitrate",
+    "hdfName": "nitrate",
+    "maxValue": 10,
+    "minValue": 0,
+    "rounding": 2,
+    "unit": "",
+    "formula": "",
+    "vector": false,
+    "showTogether": "",
+    "colorScale": [
+      "rgba(202, 222, 227,0.85)",
+      "rgba(184, 212, 217,0.85)",
+      "rgba(166, 201, 208,0.85)",
+      "rgba(149, 190, 199,0.85)",
+      "rgba(131, 179, 190,0.85)",
+      "rgba(113, 169, 180,0.85)",
+      "rgba(96, 158, 171,0.85)",
+      "rgba(78, 147, 162,0.85)",
+      "rgba(61,137,153,0.85)",
+      "rgba(56,125,140,0.85)"
+    ]
+  },
+
+  "OXYGEN": {
+    "name": "Oxygen",
+    "hdfName": "oxygen",
+    "maxValue": 15,
+    "minValue": 5,
+    "rounding": 3,
+    "unit": "mg/l",
+    "formula": "",
+    "vector": false,
+    "showTogether": "",
+    "colorScale": [
+      "rgba(202, 222, 227,0.85)",
+      "rgba(184, 212, 217,0.85)",
+      "rgba(166, 201, 208,0.85)",
+      "rgba(149, 190, 199,0.85)",
+      "rgba(131, 179, 190,0.85)",
+      "rgba(113, 169, 180,0.85)",
+      "rgba(96, 158, 171,0.85)",
+      "rgba(78, 147, 162,0.85)",
+      "rgba(61,137,153,0.85)",
+      "rgba(56,125,140,0.85)"
+    ]
+  },
+
+  "PHOSPHATE": {
+    "name": "Phosphate",
+    "hdfName": "phosphate",
+    "maxValue": 10,
+    "minValue": 0,
+    "rounding": 2,
+    "unit": "",
+    "formula": "",
+    "vector": false,
+    "showTogether": "",
+    "colorScale": [
+      "rgba(202, 222, 227,0.85)",
+      "rgba(184, 212, 217,0.85)",
+      "rgba(166, 201, 208,0.85)",
+      "rgba(149, 190, 199,0.85)",
+      "rgba(131, 179, 190,0.85)",
+      "rgba(113, 169, 180,0.85)",
+      "rgba(96, 158, 171,0.85)",
+      "rgba(78, 147, 162,0.85)",
+      "rgba(61,137,153,0.85)",
+      "rgba(56,125,140,0.85)"
+    ]
+  },
+
+  "SALINITY": {
+    "name": "Salinity",
+    "hdfName": "salinity",
+    "maxValue": 40,
+    "minValue": 0,
+    "rounding": 2,
+    "unit": "mg/l",
+    "formula": "",
+    "vector": false,
+    "showTogether": "",
+    "colorScale": [
+      "rgba(202, 222, 227,0.85)",
+      "rgba(184, 212, 217,0.85)",
+      "rgba(166, 201, 208,0.85)",
+      "rgba(149, 190, 199,0.85)",
+      "rgba(131, 179, 190,0.85)",
+      "rgba(113, 169, 180,0.85)",
+      "rgba(96, 158, 171,0.85)",
+      "rgba(78, 147, 162,0.85)",
+      "rgba(61,137,153,0.85)",
+      "rgba(56,125,140,0.85)"
+    ]
+  },
+
+  "VELOCITY": {
+    "name": "Velocity",
+    "hdfName": "velocity modulus",
+    "maxValue": 1,
+    "minValue": 0,
+    "rounding": 2,
+    "unit": "m/s",
+    "formula": "",
+    "vector": false,
+    "showTogether": "Velocity Direction",
+    "colorScale": [
+      "rgba(202, 222, 227,0.85)",
+      "rgba(184, 212, 217,0.85)",
+      "rgba(166, 201, 208,0.85)",
+      "rgba(149, 190, 199,0.85)",
+      "rgba(131, 179, 190,0.85)",
+      "rgba(113, 169, 180,0.85)",
+      "rgba(96, 158, 171,0.85)",
+      "rgba(78, 147, 162,0.85)",
+      "rgba(61,137,153,0.85)",
+      "rgba(56,125,140,0.85)"
+    ]
+  },
+
+  "VELOCITY_DIRECTION": {
+    "name": "Velocity Direction",
+    "hdfName": ["velocity U", "velocity V"],
+    "maxValue": 1,
+    "minValue": 0,
+    "rounding": 0,
+    "unit": "degrees",
+    "formula": "",
+    "vector": true,
+    "showTogether": "",
+    "colorScale": [
+      "rgba(202, 222, 227,0.85)",
+      "rgba(184, 212, 217,0.85)",
+      "rgba(166, 201, 208,0.85)",
+      "rgba(149, 190, 199,0.85)",
+      "rgba(131, 179, 190,0.85)",
+      "rgba(113, 169, 180,0.85)",
+      "rgba(96, 158, 171,0.85)",
+      "rgba(78, 147, 162,0.85)",
+      "rgba(61,137,153,0.85)",
+      "rgba(56,125,140,0.85)"
+    ]
+  },
+
+  "TEMPERATURE": {
+    "name": "Temperature",
+    "hdfName": "temperature",
+    "maxValue": 30,
+    "minValue": 15,
+    "rounding": 1,
+    "unit": "Cº",
+    "formula": "",
+    "vector": false,
+    "showTogether": "",
+    "colorScale": [
+      "rgba(55, 107, 176,0.95)",
+      "rgba(69,117,180,0.95)",
+      "rgba(116,173,209,0.95)",
+      "rgba(171,217,233,0.95)",
+      "rgba(224,243,248,0.95)",
+      "rgba(254,224,144,0.95)",
+      "rgba(253,174,97,0.95)",
+      "rgba(244,109,67,0.95)",
+      "rgba(215,48,39,0.95)",
+      "rgba(176, 29, 21,0.95)"
+    ]
+  },
+
+  "ZOO": {
+    "name": "Zooplankton",
+    "hdfName": "zooplankton",
+    "maxValue": 10,
+    "minValue": 0,
+    "rounding": 5,
+    "unit": "mg/l",
+    "formula": "",
+    "vector": false,
+    "showTogether": "",
+    "colorScale": [
+      "rgba(202, 222, 227,0.85)",
+      "rgba(184, 212, 217,0.85)",
+      "rgba(166, 201, 208,0.85)",
+      "rgba(149, 190, 199,0.85)",
+      "rgba(131, 179, 190,0.85)",
+      "rgba(113, 169, 180,0.85)",
+      "rgba(96, 158, 171,0.85)",
+      "rgba(78, 147, 162,0.85)",
+      "rgba(61,137,153,0.85)",
+      "rgba(56,125,140,0.85)"
+    ]
+  },
+
+  "MEAN_WAVE_PERIOD": {
+    "name": "Mean Wave Period",
+    "hdfName": "mean_wave_period",
+    "maxValue": 10,
+    "minValue": 0,
+    "rounding": 5,
+    "unit": "s",
+    "formula": "",
+    "vector": false,
+    "showTogether": "",
+    "colorScale": [
+      "rgba(202, 222, 227,0.85)",
+      "rgba(184, 212, 217,0.85)",
+      "rgba(166, 201, 208,0.85)",
+      "rgba(149, 190, 199,0.85)",
+      "rgba(131, 179, 190,0.85)",
+      "rgba(113, 169, 180,0.85)",
+      "rgba(96, 158, 171,0.85)",
+      "rgba(78, 147, 162,0.85)",
+      "rgba(61,137,153,0.85)",
+      "rgba(56,125,140,0.85)"
+    ]
+  },
+
+  "SIGNIFICANT_WAVE_HEIGHT": {
+    "name": "Significant Wave Height",
+    "hdfName": "significant_wave_height",
+    "maxValue": 10,
+    "minValue": 0,
+    "rounding": 2,
+    "unit": "m",
+    "formula": "",
+    "vector": false,
+    "showTogether": "",
+    "colorScale": [
+      "rgba(202, 222, 227,0.85)",
+      "rgba(184, 212, 217,0.85)",
+      "rgba(166, 201, 208,0.85)",
+      "rgba(149, 190, 199,0.85)",
+      "rgba(131, 179, 190,0.85)",
+      "rgba(113, 169, 180,0.85)",
+      "rgba(96, 158, 171,0.85)",
+      "rgba(78, 147, 162,0.85)",
+      "rgba(61,137,153,0.85)",
+      "rgba(56,125,140,0.85)"
+    ]
+  }
+}

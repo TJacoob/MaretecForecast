@@ -43,7 +43,7 @@
             "maxNextDaysAllowed": ["4",""],
             "timeHourBasis": ["1","1"],
             "threddsServerDataLink": ["http://thredds.maretec.org/thredds/catalog/MOHID_WATER/PORTUGAL_0.06DEG_50L_3H/FORECAST/catalog.html",""],
-            "movedToJSONTime": ""
+            "movedToJSONTime": ["2019-06-04-00-00",""]
           },
           "geometry": {
             "type": "Polygon",

@@ -34,14 +34,32 @@ $(document).ready(function() {
 	
 	var hoursNotFound = 0;
 	var daysNotFound = 0;
-//$(function () {
+
+	// Map Part Variables
+    var createdMap = false;
+    var leaflet_map;
+    var data_layer;
+    var geojson_object;
+    var magnitudePropertiesJsonFilename = "magnitudes.json";
+    var magnitude_properties ;
+    var mapExists;
+    var movedToJSONTime;
+
+    //$(function () {
 	//					$dtp.datetimepicker();
 		//			});
 	//$(document).trigger("readyNavbar");
 	loadRegionDomainInfoAndInitializeItems();
 	loadDefaultPossibleVariables();
 	presentVarSetAndRegisterEventOfVariableChange();
+
 	registLoadFirstImageEvents();
+    if (jsonAvailable())
+        createMap();
+
+    registPlayerButtonEvents();
+
+
 	//Sets às funções dos botões são feitos no handler de load da primeira imagem, pois só podem ser feitos após tal.
 	setInitialLanguage();
 	//$("[langid='pt']").click();
@@ -49,175 +67,195 @@ $(document).ready(function() {
 	
 	function loadRegionDomainInfoAndInitializeItems() {
 		//$(document).on("languagesLoaded", function(jsonDirectory) {
-			$.ajax({url: getDefaultLanguageDirectory() + mapResultLanguageChangeableTextJsonFilename, async: false, dataType: 'json', success: function(data) {	
-			//$.getJSON(getDefaultLanguageDirectory() + mapResultLanguageChangeableTextJsonFilename, function(data) {
-				$("#page-title").html("> "+ data.mapNamePage_txt + " > ");
-				
-				//Este é o unico que tem que ficar
-				for(var key in data)
-					$('[lang-id="' + key + '"]').html(data[key])
-				
-				
-				//Botões horas e dias.
-				
-				var dayBasisItens = $(".interval-player .day-basis");
-				var hourBasisItens = $(".interval-player .hour-basis");
-				
-				for(var i = 0 ; i < dayBasisItens.length; i++)
-					dayBasisItens[i].innerHTML = dayBasisItens[i].getAttribute("interval") + " " +((parseInt(dayBasisItens[i].getAttribute("interval")) == 1)? data.day_txt : data.days_txt);	
-				for(var i = 0 ; i < hourBasisItens.length; i++)
-					hourBasisItens[i].innerHTML = hourBasisItens[i].getAttribute("interval") + " " +((parseInt(hourBasisItens[i].getAttribute("interval")) == 1)? data.hour_txt : data.hours_txt);
 
-				
-			}});
-			
+        $.ajax({url: getDefaultLanguageDirectory() + mapResultLanguageChangeableTextJsonFilename, async: false, dataType: 'json', success: function(data) {
+        //$.getJSON(getDefaultLanguageDirectory() + mapResultLanguageChangeableTextJsonFilename, function(data) {
+            $("#page-title").html("> "+ data.mapNamePage_txt + " > ");
 
-			$.ajax({url: getDefaultLocalLanguageDirectory() + mapDomainPropertiesJsonFilename, async: false, dataType: 'json', success: function(data) {	
-		//	$.getJSON(getDefaultLocalLanguageDirectory() + mapDomainPropertiesJsonFilename, function(data) {
+            //Este é o unico que tem que ficar
+            for(var key in data)
+                $('[lang-id="' + key + '"]').html(data[key])
 
-				
-				for(var key in data)
-					for(var keyAux in data[key][0].features) {
-						var internalName = data[key][0].features[keyAux].properties.internalName;
-						if(Array.isArray(internalName)) {
-							for(var keyAuxName in internalName) {
-								if(internalName[keyAuxName] === region) {
-									regionInfo = data[key][0].features[keyAux].properties;
-									regionIndex = keyAuxName;
-								}
-							}
-						} else {
-							if(internalName === region)
-								regionInfo = data[key][0].features[keyAux].properties;
-						}
-					}
-			}});
-				//var regionInfo = data[region];
-				var defaultRegionName = (typeof regionIndex === 'undefined')? regionInfo.name : regionInfo.name[regionIndex];
-				
-				//$("#domain-text").html($("#domain-text").html() + "<span id='region-name'>" + defaultRegionName + "</span>");
-				console.log(defaultRegionName);
-				addElementToTitle("<span id='region-name'>" + defaultRegionName + "</span>");
-				langFeatureId = regionInfo.langFeatureId;
-				imagePrefixURL = (typeof regionIndex === 'undefined')? regionInfo.imagePrefixURL : regionInfo.imagePrefixURL[regionIndex];
-				
-				availableVariables = (typeof regionIndex === 'undefined')? regionInfo.availableVariables : regionInfo.availableVariables[regionIndex];
-				
-				threddsServerDataLink = (typeof regionIndex === 'undefined')? regionInfo.threddsServerDataLink : regionInfo.threddsServerDataLink[regionIndex];
-				
-				var startTimeSplitted = (typeof regionIndex === 'undefined')? regionInfo.startTime.split("-") : regionInfo.startTime[regionIndex].split("-");
-				
-				dMin = new Date(parseInt(startTimeSplitted[0]), parseInt(startTimeSplitted[1]) - 1, parseInt(startTimeSplitted[2]), 0);
-				
-				if(((typeof regionIndex === 'undefined')? regionInfo.finishTime : regionInfo.finishTime[regionIndex])) { //Se a região tem um campo com finishTime, vamos po-lo em dMax
-					var finishTimeSplitted = (typeof regionIndex === 'undefined')? regionInfo.finishTime.split("-") : regionInfo.finishTime[regionIndex].split("-");;		
 
-					dMax = new Date(parseInt(finishTimeSplitted[0]), parseInt(finishTimeSplitted[1]) - 1, parseInt(finishTimeSplitted[2]), 0);
-					//d = dMax;
-					d.setTime(dMax.getTime());
-					
-				} else if(((typeof regionIndex === 'undefined')? regionInfo.maxNextDaysAllowed : regionInfo.maxNextDaysAllowed[regionIndex])) { //Se não, se a região tem um campo com maximo de dias permitidos para a frente, calculamos a data maxima e pomos
-					dMax = new Date();
-					dMax.setHours(0);
-					dMax.setDate(dMax.getDate() + parseInt(((typeof regionIndex === 'undefined')? regionInfo.maxNextDaysAllowed : regionInfo.maxNextDaysAllowed[regionIndex])));
+            //Botões horas e dias.
 
-					
-				} //Senao, vai ter de ser visto caso a caso.
+            var dayBasisItens = $(".interval-player .day-basis");
+            var hourBasisItens = $(".interval-player .hour-basis");
 
-				var dateFormat;
-				var useCurrentUnit;
-				
-				//Se tem uma base diária, vamos desactivar os controlos horários
-				
-				if(parseInt(((typeof regionIndex === 'undefined')? regionInfo.timeHourBasis : regionInfo.timeHourBasis[regionIndex])) > 23) {
-					$(".hour-basis").addClass("disabled");
-					dailyBasis = true;
-					d.setHours(0,0,0);
-					$(".interval-player .day-basis[interval=1]").addClass("active");
-					dateFormat = 'YYYY-MM-DD';
-					useCurrentUnit = 'day';
-				} else {
-					$(".interval-player .hour-basis[interval=1]").addClass("active");
-					dateFormat = 'YYYY-MM-DD HH:00';
-					useCurrentUnit = 'hour';
-				}
+            for(var i = 0 ; i < dayBasisItens.length; i++)
+                dayBasisItens[i].innerHTML = dayBasisItens[i].getAttribute("interval") + " " +((parseInt(dayBasisItens[i].getAttribute("interval")) == 1)? data.day_txt : data.days_txt);
+            for(var i = 0 ; i < hourBasisItens.length; i++)
+                hourBasisItens[i].innerHTML = hourBasisItens[i].getAttribute("interval") + " " +((parseInt(hourBasisItens[i].getAttribute("interval")) == 1)? data.hour_txt : data.hours_txt);
 
-				//inicializaçao do datetimepicker, com os parametros obtidos
-				$dtp.datetimepicker({
-					ignoreReadonly: true,
-					useCurrent: useCurrentUnit,
-					format: dateFormat,
-					locale: getDefaultLanguage(),
-					defaultDate: d,
-					minDate: dMin,
-					maxDate: dMax
-				});
-			
-				$dtp.on("change.datetimepicker", function(e) { //evento para função chamada cada vez que se muda a data ou hora no calendario
-				//	console.log($dtp.data("DateTimePicker").date());
-					//console.log();
-					//console.log($dtp.datetimepicker('viewDate'));
-					//$('#datetimepicker').datetimepicker("date", d);
-					if( $dtp && $dtp.datetimepicker('viewDate') ) //Para verificar, se não sao undefined , o que acontecia, por usar defaultDate
-						changeDateTimeOnPicker($dtp.datetimepicker('viewDate'));
-				});
-				
-				//Registar evento mudança de linguagem no calendario e no título e nos botões
-				$(document).on("languageChange", function(e, langId, jsonDirectory, isDefaultLanguage) {	
-					//$('#datetimepicker').datetimepicker("locale"
-				//	$dtp.datetimepicker("date", langId);
-					$dtp.datetimepicker('locale', langId);			
-				//	$dtp.data("DateTimePicker").locale(langId);	 //mudar calendário
-					
-					$.getJSON(jsonDirectory + mapResultLanguageChangeableTextJsonFilename, function(data) {
-						$("#page-title").html("> "+ data.mapNamePage_txt + " > ");
-						
-						//botões
-						var dayBasisItens = $(".interval-player .day-basis");
-						var hourBasisItens = $(".interval-player .hour-basis");
-						
-						for(var i = 0 ; i < dayBasisItens.length; i++)
-							dayBasisItens[i].innerHTML = dayBasisItens[i].getAttribute("interval") + " " +((parseInt(dayBasisItens[i].getAttribute("interval")) == 1)? data.day_txt : data.days_txt);
-								
-						for(var i = 0 ; i < hourBasisItens.length; i++)
-							hourBasisItens[i].innerHTML = hourBasisItens[i].getAttribute("interval") + " " +((parseInt(hourBasisItens[i].getAttribute("interval")) == 1)? data.hour_txt : data.hours_txt);
 
-					});
-					
-				
-					//mudar o nome da região para a língua
-					if(isDefaultLanguage)
-						addElementToTitle("<span id='region-name'>" + defaultRegionName + "</span>");
-					else
-						$.getJSON(jsonDirectory + domainsNameLangJsonFilename, function(data) { // ELIMINAR DOMAINSLANG.JSON
-							var langDomainName = ((typeof regionIndex === 'undefined')? data[langFeatureId] : data[langFeatureId][regionIndex]);
-							if(langDomainName)
-								addElementToTitle("<span id='region-name'>" + langDomainName + "</span>");
-							else
-								addElementToTitle("<span id='region-name'>" + defaultRegionName + "</span>");
-						});
+        }});
 
-				
-				
-				});
-				
-				$dtp.click(function(e) { e.preventDefault(); console.log($(".bootstrap-datetimepicker-widget")); $dtp.datetimepicker("hide"); } /*$dtp. e.preventDefault();console.log($dtp); }*/);
-				
-				//Carregar threddsServerData
-				if(threddsServerDataLink == "")
-					$("#threddsServerData").hide();
-				else
-					$("#threddsServerData").click(function () {
-						window.location.href = threddsServerDataLink;
-					});
-					
-				
-				
-				
-				
-				
-				//trigger para evento a dizer que a informação foi toda carregada
-				//$(document).trigger("regionDomainInfoLoaded", []);
+
+        $.ajax({url: getDefaultLocalLanguageDirectory() + mapDomainPropertiesJsonFilename, async: false, dataType: 'json', success: function(data) {
+        //	$.getJSON(getDefaultLocalLanguageDirectory() + mapDomainPropertiesJsonFilename, function(data) {
+
+
+            for(var key in data)
+                for(var keyAux in data[key][0].features) {
+                    var internalName = data[key][0].features[keyAux].properties.internalName;
+                    if(Array.isArray(internalName)) {
+                        for(var keyAuxName in internalName) {
+                            if(internalName[keyAuxName] === region) {
+                                regionInfo = data[key][0].features[keyAux].properties;
+                                regionIndex = keyAuxName;
+                            }
+                        }
+                    } else {
+                        if(internalName === region)
+                            regionInfo = data[key][0].features[keyAux].properties;
+                    }
+                }
+        }});
+
+        // Load Magnitude Properties
+        $.ajax({
+            url: getDefaultLocalLanguageDirectory() + magnitudePropertiesJsonFilename,
+            async: false,
+            dataType: 'json',
+            success: function(data) {
+                //console.log(data);
+                magnitude_properties = data;
+            }});
+
+        //var regionInfo = data[region];
+        var defaultRegionName = (typeof regionIndex === 'undefined')? regionInfo.name : regionInfo.name[regionIndex];
+
+        //$("#domain-text").html($("#domain-text").html() + "<span id='region-name'>" + defaultRegionName + "</span>");
+        //console.log(regionInfo);
+        //console.log(defaultRegionName);
+        addElementToTitle("<span id='region-name'>" + defaultRegionName + "</span>");
+        langFeatureId = regionInfo.langFeatureId;
+        imagePrefixURL = (typeof regionIndex === 'undefined')? regionInfo.imagePrefixURL : regionInfo.imagePrefixURL[regionIndex];
+
+        availableVariables = (typeof regionIndex === 'undefined')? regionInfo.availableVariables : regionInfo.availableVariables[regionIndex];
+
+        threddsServerDataLink = (typeof regionIndex === 'undefined')? regionInfo.threddsServerDataLink : regionInfo.threddsServerDataLink[regionIndex];
+
+        var movedToJSONParser = (typeof regionIndex === 'undefined')? regionInfo.movedToJSONTime.split("-") : regionInfo.movedToJSONTime[regionIndex].split("-");
+        movedToJSONTime = new Date(parseInt(movedToJSONParser[0]), parseInt(movedToJSONParser[1]) - 1, parseInt(movedToJSONParser[2]), 0);
+
+        var startTimeSplitted = (typeof regionIndex === 'undefined')? regionInfo.startTime.split("-") : regionInfo.startTime[regionIndex].split("-");
+
+        dMin = new Date(parseInt(startTimeSplitted[0]), parseInt(startTimeSplitted[1]) - 1, parseInt(startTimeSplitted[2]), 0);
+
+        if(((typeof regionIndex === 'undefined')? regionInfo.finishTime : regionInfo.finishTime[regionIndex])) { //Se a região tem um campo com finishTime, vamos po-lo em dMax
+            var finishTimeSplitted = (typeof regionIndex === 'undefined')? regionInfo.finishTime.split("-") : regionInfo.finishTime[regionIndex].split("-");;
+
+            dMax = new Date(parseInt(finishTimeSplitted[0]), parseInt(finishTimeSplitted[1]) - 1, parseInt(finishTimeSplitted[2]), 0);
+            //d = dMax;
+            d.setTime(dMax.getTime());
+
+        } else if(((typeof regionIndex === 'undefined')? regionInfo.maxNextDaysAllowed : regionInfo.maxNextDaysAllowed[regionIndex])) { //Se não, se a região tem um campo com maximo de dias permitidos para a frente, calculamos a data maxima e pomos
+            dMax = new Date();
+            dMax.setHours(0);
+            dMax.setDate(dMax.getDate() + parseInt(((typeof regionIndex === 'undefined')? regionInfo.maxNextDaysAllowed : regionInfo.maxNextDaysAllowed[regionIndex])));
+
+
+        } //Senao, vai ter de ser visto caso a caso.
+
+        var dateFormat;
+        var useCurrentUnit;
+
+        //Se tem uma base diária, vamos desactivar os controlos horários
+
+        if(parseInt(((typeof regionIndex === 'undefined')? regionInfo.timeHourBasis : regionInfo.timeHourBasis[regionIndex])) > 23) {
+            $(".hour-basis").addClass("disabled");
+            dailyBasis = true;
+            d.setHours(0,0,0);
+            $(".interval-player .day-basis[interval=1]").addClass("active");
+            dateFormat = 'YYYY-MM-DD';
+            useCurrentUnit = 'day';
+        } else {
+            $(".interval-player .hour-basis[interval=1]").addClass("active");
+            dateFormat = 'YYYY-MM-DD HH:00';
+            useCurrentUnit = 'hour';
+        }
+
+        //inicializaçao do datetimepicker, com os parametros obtidos
+        $dtp.datetimepicker({
+            ignoreReadonly: true,
+            useCurrent: useCurrentUnit,
+            format: dateFormat,
+            locale: getDefaultLanguage(),
+            defaultDate: d,
+            minDate: dMin,
+            maxDate: dMax
+        });
+
+        $dtp.on("change.datetimepicker", function(e) { //evento para função chamada cada vez que se muda a data ou hora no calendario
+        //	console.log($dtp.data("DateTimePicker").date());
+            //console.log();
+            //console.log($dtp.datetimepicker('viewDate'));
+            //$('#datetimepicker').datetimepicker("date", d);
+            if( $dtp && $dtp.datetimepicker('viewDate') ) //Para verificar, se não sao undefined , o que acontecia, por usar defaultDate
+                changeDateTimeOnPicker($dtp.datetimepicker('viewDate'));
+        });
+
+        //Registar evento mudança de linguagem no calendario e no título e nos botões
+        $(document).on("languageChange", function(e, langId, jsonDirectory, isDefaultLanguage) {
+            //$('#datetimepicker').datetimepicker("locale"
+        //	$dtp.datetimepicker("date", langId);
+            $dtp.datetimepicker('locale', langId);
+        //	$dtp.data("DateTimePicker").locale(langId);	 //mudar calendário
+
+            $.getJSON(jsonDirectory + mapResultLanguageChangeableTextJsonFilename, function(data) {
+                $("#page-title").html("> "+ data.mapNamePage_txt + " > ");
+
+                //botões
+                var dayBasisItens = $(".interval-player .day-basis");
+                var hourBasisItens = $(".interval-player .hour-basis");
+
+                for(var i = 0 ; i < dayBasisItens.length; i++)
+                    dayBasisItens[i].innerHTML = dayBasisItens[i].getAttribute("interval") + " " +((parseInt(dayBasisItens[i].getAttribute("interval")) == 1)? data.day_txt : data.days_txt);
+
+                for(var i = 0 ; i < hourBasisItens.length; i++)
+                    hourBasisItens[i].innerHTML = hourBasisItens[i].getAttribute("interval") + " " +((parseInt(hourBasisItens[i].getAttribute("interval")) == 1)? data.hour_txt : data.hours_txt);
+
+            });
+
+
+            //mudar o nome da região para a língua
+            if(isDefaultLanguage)
+                addElementToTitle("<span id='region-name'>" + defaultRegionName + "</span>");
+            else
+                $.getJSON(jsonDirectory + domainsNameLangJsonFilename, function(data) { // ELIMINAR DOMAINSLANG.JSON
+                    var langDomainName = ((typeof regionIndex === 'undefined')? data[langFeatureId] : data[langFeatureId][regionIndex]);
+                    if(langDomainName)
+                        addElementToTitle("<span id='region-name'>" + langDomainName + "</span>");
+                    else
+                        addElementToTitle("<span id='region-name'>" + defaultRegionName + "</span>");
+                });
+
+
+
+        });
+
+        $dtp.click(function(e){
+            e.preventDefault();
+            //console.log($(".bootstrap-datetimepicker-widget"));
+            $dtp.datetimepicker("hide");
+        } /*$dtp. e.preventDefault();console.log($dtp); }*/);
+
+        //Carregar threddsServerData
+        if(threddsServerDataLink == "")
+            $("#threddsServerData").hide();
+        else
+            $("#threddsServerData").click(function () {
+                window.location.href = threddsServerDataLink;
+            });
+
+
+
+
+
+
+        //trigger para evento a dizer que a informação foi toda carregada
+        //$(document).trigger("regionDomainInfoLoaded", []);
 			
 			
 		//});
@@ -292,7 +330,115 @@ $(document).ready(function() {
 	}
 	
 	
-	
+
+
+	// **** MAP Functions ****
+
+    // Checks the region Info to decide if it serves an image or a map
+    function jsonAvailable(){
+
+	    //console.log(d);
+
+	    if( movedToJSONTime === ""  )
+	        return false;
+
+	    if ( movedToJSONTime >= d )  // movedtoJSON might need to be parsed
+	        return false;
+
+	    return true;
+    }
+
+    function createMap(){
+
+	    //console.log(regionInfo);
+        leaflet_map = L.map('leaflet_map').setView([41.2, -8.5], 8);   // TODO: Get Domain Coordinates
+
+        L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+            maxZoom: 18,
+            minZoom: 5,
+            id: 'mapbox.streets',
+            accessToken: 'pk.eyJ1IjoidGphY29iIiwiYSI6ImNqbmwwM3YzNjBqd24zd21odmJzZWtvdjIifQ.nxSKNkLbSsGPs-uALoJqVw'
+        }).addTo(leaflet_map);
+
+        //registPlayerButtonEvents();
+
+        //loadGeoJSON();
+        while ( !mapExists && jsonAvailable() )
+        {
+            //changeDay(-1)
+            ///*
+            if(!dailyBasis && (hoursNotFound <= 24)) { //base horaria e ainda nao passaram 24 horas
+                hoursNotFound++;
+                changeHour(-1);
+            } else if((dailyBasis || (hoursNotFound > 24)) &&  (daysNotFound <= 8)) { //base diária ou base horária e ja passaram 24 horas, mas ainda não 8 dias
+                daysNotFound++
+                changeDay(-1);
+            } else if ((daysNotFound > 8) && (daysNotFound <= 60)) {
+                daysNotFound+=8;
+                changeDay(-8);
+            } else if (daysNotFound > 60) {
+                daysNotFound+=30;
+                changeDay(-30);
+            }
+            //*/
+        }
+
+        // If something goes wrong and no Map is available till JSON Started, then change for regular Image
+        if ( !jsonAvailable() )
+        {
+            $("#leaflet_map").hide();
+            $("#currentImage-wrap").show();
+            //registLoadFirstImageEvents();
+
+        }
+
+    }
+
+    function loadGeoJSON(){
+	    //console.log(actualVariable);
+        $.ajax({
+            dataType: "json",   // Not supported by IE10 and IE11
+            async: false,
+            url: getActualMapPath(),
+            success: function(data) {
+                geojson_object = data;
+                $(".loader-wrap").hide();
+                mapExists = true;
+                drawMap();
+            },
+            error: function(err){
+                mapExists = false;
+            }
+        });
+    }
+    
+    function drawMap() {
+
+	    if ( data_layer !== undefined )
+            leaflet_map.removeLayer(data_layer);
+
+	    let colorScale = magnitude_properties[actualVariable.toUpperCase()].colorScale;
+
+        function areaColor(feature) {
+            //console.log(feature);
+            return {
+                fillColor: colorScale[feature.properties[actualVariable]],
+                weight: 0,
+                opacity: 0,
+                color: colorScale[feature.properties[actualVariable]],
+                dashArray: '3',
+                fillOpacity: 1
+            };
+        }
+
+        data_layer = new L.geoJson(geojson_object,{
+            style: areaColor,
+        });
+        data_layer.addTo(leaflet_map);
+
+    }
+
 
 	
 	
@@ -335,7 +481,7 @@ $(document).ready(function() {
 		$("#currentImage-wrap").append(img);
 		
 		
-		console.log("dd");
+		//console.log("dd");
 		
 		img.className = "img-fluid";
 		img.id = "currentImage";
@@ -365,14 +511,14 @@ $(document).ready(function() {
 			dMax.setTime(d.getTime());
 			//$dtp.data("DateTimePicker").maxDate();
 			$dtp.datetimepicker("maxDate", dMax);
-			console.log(dMax);
-			console.log("fez");
+			//console.log(dMax);
+			//console.log("fez");
 		}
 		
 		registNewImageLoadEvents();
 		
 		//so aqui pode surgir os calendars e fazer sets
-		registPlayerButtonEvents();
+		//registPlayerButtonEvents();
 		
 		if(firstImageErrorOccured)
 			findAndSetCorrectMaxDate();
@@ -477,15 +623,16 @@ $(document).ready(function() {
 	function changeHour(val) {
 		//Pois o setTime utiliza o numero de milisegundos desde 1 Jan 1970, para a frente ou para trás.
 		//Por isso, tem de se ir buscar a data actual e adicionar tal valor
-		console.log(val);
-		console.log(dMax);
+		//console.log(val);
+		//console.log(dMax);
+
 		var dNextTime = d.getTime() + val*3600000;
-		console.log(dNextTime);
+		//console.log(dNextTime);
 		if(!dateTest(dNextTime)) {
 			$('#errorNoMapImageModal').modal('show')
 			//alert("Não existem imagens para este momento. +");
 			if(isPlaying) play();
-			console.log(dMax);
+			//console.log(dMax);
 			return;
 		}
 
@@ -494,7 +641,7 @@ $(document).ready(function() {
 
 		//É preciso fazer também actualizar o calendário
 		synchronizeTimeOnCalendar();
-		
+
 		//E, por fim, o nome do ficheiro
 		actualizeImgSrc(d);
 	}
@@ -502,11 +649,12 @@ $(document).ready(function() {
 	//Change Day precisa de ser distinto de change hours, por causa de aspectos como, por exemplo, mudança da hora que acrescenta hora inadevertidamente
 	// e deixa de funcionar, se fizessemos changeHour(24), podia dar uma hora diferente do dia seguinte.
 	function changeDay(val) {
+
 		//a necessidade de Change Day tem a ver com situações de mudança horaria
 		var nextDate = new Date(d.getTime());
-		console.log(nextDate);
+		//console.log(nextDate);
 		nextDate.setDate(nextDate.getDate()+val);
-		console.log(nextDate);
+		//console.log(nextDate);
 		//Necessario, por causa da mudanca da hora. No dia em que mudava a hora, e preciso mudar ou 23 ou 25 horas (consoante solsticio ou equinocio),
 		//por isso fazemos simplesmente set da hora anterior.
 		nextDate.setHours(d.getHours());
@@ -532,16 +680,18 @@ $(document).ready(function() {
 	
 	// Função que trata do play, fazendo passar as imagens
 	function play() {
+
 		var funcToUse = (dailyBasis)? changeDay : changeHour;
 		var delay = 1000; //em milisegundos, o tempo para mudar.
 		isPlaying = !isPlaying;
-		
+
 		if(isPlaying) { //Se se quer playing, vai iniciar timer;
-		
+
+		    //console.log(funcToUse);
 			//é necessário criar função anónima, pois necessitavamos passar argumentos e a funcao passada como argumento, nao pode ter
 			intervalFunc = setInterval( function() {
-										funcToUse(interval)//funcToUse(1); quando so mudava um dia ou uma hora...
-									}, delay);
+                funcToUse(interval)//funcToUse(1); quando so mudava um dia ou uma hora...
+            }, delay);
 			$("#plButton").html("<span class=\"fas fa-pause\"></span>");
 			$("#plButton").addClass("active");
 		} else {
@@ -585,26 +735,42 @@ $(document).ready(function() {
 	}
 	
 	function actualizeImgSrc() {
-		actualImageLoaded = false;
-		$("#currentImage").attr("src", getActualPath());
-		$("#currentImage").attr("data-zoom", getActualPath());
-		if(drift) drift.setZoomImageURL(getActualPath());
-		
-		// Check a propriedade complete. Porque se o load está logo complete, 
-		// é pq a imagem já está disponível. Provavelmente, já foi feito o load anteriormente e está na cache.
-		// Assim, nem, vamos pôr o ecrã de load (loader-wrap). Se não está, então pomos.
-		// É retirado, quando faz onload, ou seja, Quando o load fica completo. Mediante evento registado
-		// nas primeiras funções.
-		if(!$("#currentImage").prop("complete") && !firstLoad) {
-			// agora vai fazer esperar 0,5 segundos, antes de mostrar o loader. Só após 0,5 segundos é que mostra.
-			// decidiu-se isso, precisamente por causa do play, às vezes há casos em que a imagem carrega logo a seguir e 
-			// aparece logo o ecrã de load.
-			setTimeout(function(){
-				if(!actualImageLoaded)
-					$(".loader-wrap").show();
-			}, 500);
-			
-		}
+	    console.log("Atualizando o Tempo");
+        if ( jsonAvailable() )
+        {
+            console.log("Using MAP");
+            $("#leaflet_map").show();
+            $("#currentImage-wrap").hide();
+            loadGeoJSON();
+        }
+        else
+        {
+            console.log("Using IMAGE");
+
+            $("#leaflet_map").hide();
+            $("#currentImage-wrap").show();
+
+            actualImageLoaded = false;
+            $("#currentImage").attr("src", getActualPath());
+            $("#currentImage").attr("data-zoom", getActualPath());
+            if(drift) drift.setZoomImageURL(getActualPath());
+
+            // Check a propriedade complete. Porque se o load está logo complete,
+            // é pq a imagem já está disponível. Provavelmente, já foi feito o load anteriormente e está na cache.
+            // Assim, nem, vamos pôr o ecrã de load (loader-wrap). Se não está, então pomos.
+            // É retirado, quando faz onload, ou seja, Quando o load fica completo. Mediante evento registado
+            // nas primeiras funções.
+            if(!$("#currentImage").prop("complete") && !firstLoad) {
+                // agora vai fazer esperar 0,5 segundos, antes de mostrar o loader. Só após 0,5 segundos é que mostra.
+                // decidiu-se isso, precisamente por causa do play, às vezes há casos em que a imagem carrega logo a seguir e
+                // aparece logo o ecrã de load.
+                setTimeout(function(){
+                    if(!actualImageLoaded)
+                        $(".loader-wrap").show();
+                }, 500);
+
+            }
+        }
 			
 	}
 	
@@ -613,6 +779,21 @@ $(document).ready(function() {
 		//return "https://picsum.photos/200/300/?random=" + Math.floor(Math.random() * 300); // imagens random
 		return imagePrefixURL + actualVariable + '/0/' + getActualFileName(d);
 	}
+
+    // Devolve o caminho actual para a imagem, segundo  d (dateTime actual)
+    function getActualMapPath() {
+        //return "https://picsum.photos/200/300/?random=" + Math.floor(Math.random() * 300); // imagens random
+        //return imagePrefixURL + actualVariable + '/0/' + getActualFileName(d);
+        //console.log(actualVariable);
+        //console.log(defaultRegionName);
+        //console.log(regionInfo["name"][regionIndex]);
+        //console.log(imagePrefixURL);
+        //console.log(getActualFileName(d));
+        //console.log(imagePrefixURL);
+        let date = d.getFullYear() +"-"+ getTwoDigitNumber(d.getMonth()+1) +"-"+  getTwoDigitNumber(d.getDate())
+        let time = getTwoDigitNumber(d.getHours())+"00";
+        return "../data/"+regionInfo["name"][regionIndex]+"/"+actualVariable+"/"+date+"/"+actualVariable.toLowerCase()+"_"+time+".json";
+    }
 	
 	// Da o nome que o ficheiro deve ter em função de d (o dateTime actual)
 	function getActualFileName(dateObject) {
