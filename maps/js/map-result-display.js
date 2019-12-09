@@ -440,6 +440,7 @@ $(document).ready(function() {
     
     function drawMap() {
 
+
 	    if ( color_layer !== undefined )
             leaflet_map.removeLayer(color_layer);
 
@@ -467,7 +468,7 @@ $(document).ready(function() {
         // Clear Previous Scales
         $(".colorScaleOverlay").empty();
         // Create Color Scale
-        $(".colorScaleOverlay").append("<span class='dateText'>"+d.getDay()+"/"+d.getMonth()+"/"+d.getFullYear()+" - "+d.getHours()+":00</span>");
+        $(".colorScaleOverlay").append("<span class='dateText'>"+d.getFullYear()+"-"+(getTwoDigitNumber(d.getUTCMonth()+1))+"-"+getTwoDigitNumber(d.getUTCDate()+" "+d.getHours()+":00</span>"));
         $(".colorScaleOverlay").append("<span class='unitText'>"+varInfo['unit']+"</span>");
         colorScale.forEach(function(color, index){
             let size = 100/(colorScale.length);
